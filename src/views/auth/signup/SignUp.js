@@ -1,13 +1,16 @@
 import React, { useState } from "react";
+import { useCookies } from "react-cookie";
 
 import background from "../../../assets/img/register_bg.png";
 import Navbar from "../../../components/Navbars/AuthNavbar.js";
 import Api from "../../../services/api/Api";
+import Footer from "../../../components/footers/Footer";
 
 export default function SignUp() {
 
   // Credentials that will be used by api
   const [credentials, setCredentials] = useState({})
+  const [cookies, setCookie, removeCookie] = useCookies(["userToken"]);
 
   // Set the new value + update credentials State
   const onChange = (event) => {
@@ -15,20 +18,20 @@ export default function SignUp() {
     setCredentials(credentials)
   }
 
-  const onSignUp = async (event) => {
-    // console.log('event.target.form.: ', event.target.form)
-    if (!event.target.form.checkValidity())
-      return
+  const signUp = async (event) => {
+    //Avoid form submission / refresh
+    event.preventDefault()
 
     // setShowError(false)
     try {
-      const res = await Api.auth.signup(credentials);
-      // setShowSignUp(false)
-      // setShowLogIn(!showLogIn)
+      const response = await Api.auth.signup(credentials);
+      const token = response.data.token;
+
+      //Saving token in a cookie + in apis header
+      setCookie("userToken", token, { path: '/' });
+      Api.init(token)
     } catch (e) {
-      console.log('error signing up: ', e)
-      // setError(error.response.data.message)
-      // setShowError(true)
+      console.log('SignUp error: ', e)
     }
   }
 
@@ -60,7 +63,7 @@ export default function SignUp() {
 
                   {/* Sign Up Form */}
                   <div className="flex-auto px-4 lg:px-10 py-10 pt-0">
-                    <form id="signup_form" onSubmit={event => event.preventDefault()}>
+                    <form id="signup_form" onSubmit={signUp}>
 
                       {/* First Name Input */}
                       <div className="relative w-full mb-3">
@@ -198,11 +201,10 @@ export default function SignUp() {
                       <div className="text-center mt-6">
                         <button
                           className="bg-gray-900 text-white active:bg-gray-700 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 w-full ease-linear transition-all duration-150"
-                          type="button"
+                          type="submit"
                           form="signup_form"
-                          onClick={onSignUp}
                         >
-                          Create Account
+                          Create Admin Account
                       </button>
                       </div>
                     </form>
@@ -211,6 +213,7 @@ export default function SignUp() {
               </div>
             </div>
           </div>
+          <Footer />
         </section>
       </main>
     </>

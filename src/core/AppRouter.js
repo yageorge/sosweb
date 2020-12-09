@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { useCookies } from "react-cookie";
 
 import Landing from "../views/landing/Landing";
 import SignUp from "../views/auth/signup/SignUp"
 import Login from "../views/auth/login/Login"
+
+import Admin from "../views/admin/Admin";
 
 
 import {
@@ -14,26 +17,58 @@ import {
 
 function AppRouter() {
 
+    const [auth, setAuth] = useState(false)
+
+    const [cookies, setCookies] = useCookies()
+
+    const checkAuth = () => {
+        const bool = cookies['userToken'] !== undefined;
+        console.log('bool for cookie: ', bool)
+        setAuth(bool)
+    }
+
+    useEffect(() => {
+        checkAuth()
+    })
+
     // return router design
     return (
         <BrowserRouter>
             <Switch>
+
                 {/* public routes */}
                 <Route path="/" exact component={Landing} />
-
-                {/* routes without layouts */}
-                <Route path="/landing" exact component={Landing} />
                 <Route path="/signup" exact component={SignUp} />
                 <Route path="/login" exact component={Login} />
-
-                {/* routes with layouts */}
-
+                <Route path="/admin" component={Admin} />
+                {/* authorized user routes */}
+                {/* <ProtectedRoute redirectTo="/auth"
+                    renderCondition={auth}
+                    exact path="/"
+                    component={Project} /> */}
 
                 {/* redirect to root page */}
                 <Redirect from="*" to="/" />
+
             </Switch>
         </BrowserRouter>
     );
+}
+
+const ProtectedRoute = ({
+    renderCondition,
+    redirectTo,
+    component: Component,
+    ...rest
+}) => {
+    // return the a Route tag if the condition [renderCondition] is true,
+    // otherwise return redirect to [redirectTo]
+    return (
+        <Route
+            {...rest}
+            render={() => renderCondition ?
+                (<Component />) : (<Redirect to={redirectTo} />)
+            } />)
 }
 
 export default AppRouter;

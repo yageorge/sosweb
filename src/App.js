@@ -10,7 +10,7 @@ function App() {
   const [cookies, setCookies, removeCookies] = useCookies()
 
   // initialize APIs
-  Api.init(cookies['XSRF-TOKEN'])
+  Api.init(cookies['userToken'])
 
   return (
     <AppRouter />

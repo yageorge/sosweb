@@ -1,16 +1,19 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useCookies } from "react-cookie";
 
 import Navbar from "../../../components/Navbars/AuthNavbar.js";
 import background from "../../../assets/img/register_bg.png";
 import Api from "../../../services/api/Api";
+import Footer from "../../../components/footers/Footer";
 
 export default function Login() {
 
+  const [state, setState] = useState(false)
   // Credentials that will be used by api
   const [credentials, setCredentials] = useState({})
-  const [cookies] = useCookies()
+  const [cookies, setCookie, removeCookie] = useCookies(["userToken"]);
+
 
   // Set the new value + update credentials State
   const onChange = (event) => {
@@ -18,24 +21,32 @@ export default function Login() {
     setCredentials(credentials)
   }
 
-  const onLogIn = async (event) => {
-    // console.log('event.target.form.: ', event.target.form)
-    if (!event.target.form.checkValidity())
-      return
+  const logIn = async (event) => {
+    //Avoid form submission / refresh
+    event.preventDefault()
 
     // setShowError(false)
     try {
-      const res = await Api.auth.login(credentials);
-      Api.init(cookies['CSRF-TOKEN'])
-      console.log('login success: ', res)
-      // setShowSignUp(false)
-      // setShowLogIn(!showLogIn)
+      const response = await Api.auth.login(credentials);
+      const token = response.data.token;
+
+      //Saving token in a cookie + in apis header
+      setCookie("userToken", token, { path: '/' });
+      Api.init(token)
+
+      //setState will lead to window reload()
+      setState(true)
     } catch (e) {
-      console.log('error signing up: ', e)
-      // setError(error.response.data.message)
-      // setShowError(true)
+      console.log('Login Error: ', e)
     }
   }
+
+  useEffect(() => {
+    if (state) {
+      // refresh the page
+      window.location.reload()
+    }
+  }, [state])
 
   return (
     <>
@@ -66,7 +77,7 @@ export default function Login() {
 
                   {/* Sign In Form */}
                   <div className="flex-auto px-4 lg:px-10 py-10 pt-0">
-                    <form id="login_form" onSubmit={event => event.preventDefault()}>
+                    <form id="login_form" onSubmit={logIn}>
 
                       {/* Email Input */}
                       <div className="relative w-full mb-3">
@@ -123,9 +134,8 @@ export default function Login() {
                       <div className="text-center mt-6">
                         <button
                           className="bg-gray-900 text-white active:bg-gray-700 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 w-full ease-linear transition-all duration-150"
-                          type="button"
+                          type="submit"
                           form="login_form"
-                          onClick={onLogIn}
                         >
                           Sign In
                     </button>
@@ -154,6 +164,7 @@ export default function Login() {
               </div>
             </div>
           </div>
+          <Footer />
         </section>
       </main>
     </>
