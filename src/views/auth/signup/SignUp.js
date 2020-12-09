@@ -1,9 +1,37 @@
-import React from "react";
+import React, { useState } from "react";
 
-import Navbar from "../../../components/Navbars/AuthNavbar.js";
 import background from "../../../assets/img/register_bg.png";
+import Navbar from "../../../components/Navbars/AuthNavbar.js";
+import Api from "../../../services/api/Api";
 
 export default function SignUp() {
+
+  // Credentials that will be used by api
+  const [credentials, setCredentials] = useState({})
+
+  // Set the new value + update credentials State
+  const onChange = (event) => {
+    credentials[event.target.name] = event.target.value;
+    setCredentials(credentials)
+  }
+
+  const onSignUp = async (event) => {
+    // console.log('event.target.form.: ', event.target.form)
+    if (!event.target.form.checkValidity())
+      return
+
+    // setShowError(false)
+    try {
+      const res = await Api.auth.signup(credentials);
+      // setShowSignUp(false)
+      // setShowLogIn(!showLogIn)
+    } catch (e) {
+      console.log('error signing up: ', e)
+      // setError(error.response.data.message)
+      // setShowError(true)
+    }
+  }
+
   return (
     <>
       <Navbar transparent />
@@ -32,7 +60,7 @@ export default function SignUp() {
 
                   {/* Sign Up Form */}
                   <div className="flex-auto px-4 lg:px-10 py-10 pt-0">
-                    <form>
+                    <form id="signup_form" onSubmit={event => event.preventDefault()}>
 
                       {/* First Name Input */}
                       <div className="relative w-full mb-3">
@@ -49,6 +77,7 @@ export default function SignUp() {
                           id="firstName"
                           name="firstName"
                           placeholder="First Name"
+                          onChange={onChange}
                         />
                       </div>
 
@@ -67,6 +96,7 @@ export default function SignUp() {
                           id="lastName"
                           name="lastName"
                           placeholder="Last Name"
+                          onChange={onChange}
                         />
                       </div>
 
@@ -85,6 +115,7 @@ export default function SignUp() {
                           id="email"
                           name="email"
                           placeholder="Email"
+                          onChange={onChange}
                         />
                       </div>
 
@@ -103,6 +134,7 @@ export default function SignUp() {
                           id="password"
                           name="password"
                           placeholder="Password"
+                          onChange={onChange}
                         />
                       </div>
 
@@ -121,6 +153,7 @@ export default function SignUp() {
                           id="passwordConfirmation"
                           name="passwordConfirmation"
                           placeholder="Confirm Password"
+                          onChange={onChange}
                         />
                       </div>
 
@@ -139,6 +172,7 @@ export default function SignUp() {
                           id="companyName"
                           name="companyName"
                           placeholder="Company Name"
+                          onChange={onChange}
                         />
                       </div>
 
@@ -157,6 +191,7 @@ export default function SignUp() {
                           id="departmentName"
                           name="departmentName"
                           placeholder="Department Name"
+                          onChange={onChange}
                         />
                       </div>
 
@@ -165,6 +200,7 @@ export default function SignUp() {
                           className="bg-gray-900 text-white active:bg-gray-700 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 w-full ease-linear transition-all duration-150"
                           type="button"
                           form="signup_form"
+                          onClick={onSignUp}
                         >
                           Create Account
                       </button>
