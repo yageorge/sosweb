@@ -3,7 +3,7 @@
 
 // // components
 
-// import AdminNavbar from "components/Navbars/AdminNavbar.js";
+// import AdminNavbar from "components/navbars/AdminNavbar.js";
 // import Sidebar from "components/Sidebar/Sidebar.js";
 // import HeaderStats from "components/Headers/HeaderStats.js";
 // import FooterAdmin from "components/Footers/FooterAdmin.js";

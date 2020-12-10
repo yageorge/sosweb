@@ -1,21 +1,24 @@
-import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useContext, useState } from "react";
+import { Link, useHistory } from "react-router-dom";
 import { useCookies } from "react-cookie";
-
 import Api from "../../../services/api/Api";
+
+import { AppContext } from "../../../services/context/AppContext"
 
 
 export default function Login() {
 
-  const [state, setState] = useState(false)
+  const { state, dispatch } = useContext(AppContext);
+
+  // const [state, setState] = useState(false)
   // Credentials that will be used by api
   const [credentials, setCredentials] = useState({})
-  const [cookies, setCookie, removeCookie] = useCookies(["userToken"]);
-
+  const [, setCookie,] = useCookies(["userToken"]);
+  const history = useHistory();
 
   // Set the new value + update credentials State
   const onChange = (event) => {
-    credentials[event.target.name] = event.target.value;
+    credentials[event.target.name] = event.target.value
     setCredentials(credentials)
   }
 
@@ -30,21 +33,21 @@ export default function Login() {
 
       //Saving token in a cookie + in apis header
       setCookie("userToken", token, { path: '/' });
+
+      dispatch({
+        type: 'setCookie',
+        cookie: token
+      })
+
       Api.init(token)
 
       //setState will lead to window reload()
-      setState(true)
+      history.push('/admin');
     } catch (e) {
       console.log('Login Error: ', e)
     }
   }
 
-  useEffect(() => {
-    if (state) {
-      // refresh the page
-      window.location.reload()
-    }
-  }, [state])
 
   return (
     <>

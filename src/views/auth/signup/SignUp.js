@@ -7,7 +7,7 @@ export default function SignUp() {
 
   // Credentials that will be used by api
   const [credentials, setCredentials] = useState({})
-  const [cookies, setCookie, removeCookie] = useCookies(["userToken"]);
+  const [, setCookie,] = useCookies(["userToken"]);
 
   // Set the new value + update credentials State
   const onChange = (event) => {

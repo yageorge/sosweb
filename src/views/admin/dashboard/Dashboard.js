@@ -8,6 +8,7 @@ import CardPageVisits from "../../../components/cards/CardPageVisits.js";
 import CardSocialTraffic from "../../../components/cards/CardSocialTraffic.js";
 
 export default function Dashboard() {
+  console.log('dashboard accessed')
   return (
     <>
       <div className="flex flex-wrap">

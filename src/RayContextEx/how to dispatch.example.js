@@ -12,7 +12,6 @@
 
 //     const { state, dispatch }: any = useContext(AppContext);
 
-
 //     // how to dispatch changes in appcontext
 //     const Order = async (products: any) => {
 

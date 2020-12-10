@@ -23,8 +23,8 @@ export default function Auth() {
                         }}
                     ></div>
                     <Switch>
-                        <Route path="/auth/login" exact component={Login} />
-                        <Route path="/auth/signup" exact component={SignUp} />
+                        <Route exact path="/auth/login" component={Login} />
+                        <Route exact path="/auth/signup" component={SignUp} />
                         <Redirect from="/auth" to="/auth/login" />
                     </Switch>
                     <Footer />
