@@ -1,11 +1,15 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import { useHistory } from "react-router-dom";
 import { useCookies } from "react-cookie";
 
 import Api from "../../../services/api/Api";
+import { AppContext } from "../../../services/context/AppContext"
 
 export default function SignUp() {
 
-  // Credentials that will be used by api
+  const history = useHistory();
+
+  const { state, dispatch } = useContext(AppContext);
   const [credentials, setCredentials] = useState({})
   const [, setCookie,] = useCookies(["userToken"]);
 
