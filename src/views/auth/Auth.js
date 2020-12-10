@@ -1,15 +1,14 @@
 import React from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
 
-// components
+import background from "../../assets/img/register_bg.png";
+import Navbar from "../../components/navbars/AuthNavbar.js";
+import Footer from "../../components/footers/Footer";
 
-import Navbar from "components/Navbars/AuthNavbar.js";
-import FooterSmall from "components/Footers/FooterSmall.js";
+import Login from "./login/Login";
+import SignUp from "./signup/SignUp";
 
-// views
-
-import Login from "views/auth/Login.js";
-import Register from "views/auth/Register.js";
+//TODO move common functions / like states etc etc to this file and pass them in props / check group project
 
 export default function Auth() {
     return (
@@ -20,16 +19,15 @@ export default function Auth() {
                     <div
                         className="absolute top-0 w-full h-full bg-gray-900 bg-no-repeat bg-full"
                         style={{
-                            backgroundImage:
-                                "url(" + require("assets/img/register_bg_2.png") + ")",
+                            backgroundImage: `url(${background})`,
                         }}
                     ></div>
                     <Switch>
                         <Route path="/auth/login" exact component={Login} />
-                        <Route path="/auth/register" exact component={Register} />
+                        <Route path="/auth/signup" exact component={SignUp} />
                         <Redirect from="/auth" to="/auth/login" />
                     </Switch>
-                    <FooterSmall absolute />
+                    <Footer />
                 </section>
             </main>
         </>

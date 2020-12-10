@@ -2,9 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useCookies } from "react-cookie";
 
 import Landing from "../views/landing/Landing";
-import SignUp from "../views/auth/signup/SignUp"
-import Login from "../views/auth/login/Login"
-
+import Auth from "../views/auth/Auth"
 import Admin from "../views/admin/Admin";
 
 
@@ -38,8 +36,7 @@ function AppRouter() {
 
                 {/* public routes */}
                 <Route path="/" exact component={Landing} />
-                <Route path="/signup" exact component={SignUp} />
-                <Route path="/login" exact component={Login} />
+                <Route path="/auth" component={Auth} />
                 <Route path="/admin" component={Admin} />
                 {/* authorized user routes */}
                 {/* <ProtectedRoute redirectTo="/auth"
