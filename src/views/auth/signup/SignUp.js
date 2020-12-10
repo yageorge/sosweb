@@ -27,6 +27,16 @@ export default function SignUp() {
       //Saving token in a cookie + in apis header
       setCookie("userToken", token, { path: '/' });
       Api.init(token)
+
+      //Saving token in AppContext
+      dispatch({
+        type: 'setCookie',
+        cookie: token
+      })
+
+      //Redirecting to /admin
+      history.push('/admin');
+
     } catch (e) {
       console.log('SignUp error: ', e)
     }

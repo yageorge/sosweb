@@ -10,7 +10,6 @@ const initialState = {
 let reducer = (state, action) => {
 
     switch (action.type) {
-
         case "setCookie": {
             return { ...state, cookie: action.cookie }
         }
@@ -20,9 +19,9 @@ let reducer = (state, action) => {
 };
 
 function AppContextProvider(props) {
-    // const [cookies, setCookie, removeCookie] = useCookies(["userToken"]);
+
     const [cookies] = useCookies(["userToken"]);
-    console.log('cookies:', cookies);
+    console.log('cookies in AppContext.js:', cookies);
     initialState.cookie = Object.keys(cookies).length ? cookies['userToken'] : '';
 
     const fullInitialState = {

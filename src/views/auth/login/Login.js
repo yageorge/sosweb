@@ -8,13 +8,11 @@ import { AppContext } from "../../../services/context/AppContext"
 
 export default function Login() {
 
-  const { state, dispatch } = useContext(AppContext);
+  const history = useHistory();
 
-  // const [state, setState] = useState(false)
-  // Credentials that will be used by api
+  const { state, dispatch } = useContext(AppContext);
   const [credentials, setCredentials] = useState({})
   const [, setCookie,] = useCookies(["userToken"]);
-  const history = useHistory();
 
   // Set the new value + update credentials State
   const onChange = (event) => {
@@ -33,16 +31,17 @@ export default function Login() {
 
       //Saving token in a cookie + in apis header
       setCookie("userToken", token, { path: '/' });
+      Api.init(token)
 
+      //Saving token in AppContext
       dispatch({
         type: 'setCookie',
         cookie: token
       })
 
-      Api.init(token)
-
-      //setState will lead to window reload()
+      //Redirecting to /admin
       history.push('/admin');
+
     } catch (e) {
       console.log('Login Error: ', e)
     }
