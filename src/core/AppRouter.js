@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext, Component } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 
 import Landing from "../views/landing/Landing";
 import Auth from "../views/auth/Auth"

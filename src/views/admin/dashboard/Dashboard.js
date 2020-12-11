@@ -6,7 +6,6 @@ import CardLineChart from "../../../components/cards/CardLineChart.js";
 import CardBarChart from "../../../components/cards/CardBarChart.js";
 
 export default function Dashboard() {
-  console.log('dashboard accessed')
   return (
     <>
       <div className="flex flex-wrap">

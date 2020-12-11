@@ -9,7 +9,7 @@ export default function SignUp() {
 
   const history = useHistory();
 
-  const { state, dispatch } = useContext(AppContext);
+  const { dispatch } = useContext(AppContext);
   const [credentials, setCredentials] = useState({})
   const [, setCookie,] = useCookies(["userToken"]);
 

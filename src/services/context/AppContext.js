@@ -21,7 +21,6 @@ let reducer = (state, action) => {
 function AppContextProvider(props) {
 
     const [cookies] = useCookies(["userToken"]);
-    console.log('cookies in AppContext.js:', cookies);
     initialState.cookie = Object.keys(cookies).length ? cookies['userToken'] : '';
 
     const fullInitialState = {

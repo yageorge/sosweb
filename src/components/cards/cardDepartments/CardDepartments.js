@@ -1,9 +1,29 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
+import Api from "../../../services/api/Api";
 import TableHeader from "../common/TableHeader"
 import Table from "./components/Table"
 
 export default function CardDepartments() {
+
+  const [departments, setDepartments] = useState(null);
+
+  const getDepartments = async () => {
+    try {
+
+      const response = await Api.departments.getDepartments();
+      setDepartments(response.data);
+
+    } catch (e) {
+      alert('Failed to get Departments: ', e);
+    }
+  }
+
+  useEffect(() => {
+    getDepartments();
+  }, []);
+
+
   return (
     <>
       <div
@@ -13,7 +33,7 @@ export default function CardDepartments() {
         <TableHeader title='Departments' />
 
         <div className="block w-full overflow-x-auto">
-          <Table />
+          <Table data={departments} />
         </div>
 
       </div>

@@ -13,13 +13,12 @@ function Header(props) {
 };
 
 
-export default function TableBody(props) {
+export default function TableBody() {
 
     // Rendering the table head
     return (
         <thead>
             <tr>
-                <Header title="Id" />
 
                 <Header title="Name" />
 

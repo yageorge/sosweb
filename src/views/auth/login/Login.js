@@ -10,7 +10,7 @@ export default function Login() {
 
   const history = useHistory();
 
-  const { state, dispatch } = useContext(AppContext);
+  const { dispatch } = useContext(AppContext);
   const [credentials, setCredentials] = useState({})
   const [, setCookie,] = useCookies(["userToken"]);
 
