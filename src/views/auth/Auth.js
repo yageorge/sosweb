@@ -1,7 +1,7 @@
 import React from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
 
-import background from "../../assets/img/register_bg.png";
+import background from "../../assets/img/auth_bg.png";
 import Navbar from "../../components/navbars/AuthNavbar.js";
 import Footer from "../../components/footers/Footer";
 
@@ -17,7 +17,7 @@ export default function Auth() {
             <main>
                 <section className="relative w-full h-full py-40 min-h-screen">
                     <div
-                        className="absolute top-0 w-full h-full bg-gray-900 bg-no-repeat bg-full"
+                        className="absolute top-0 w-full h-full bg-gray-800 bg-no-repeat bg-full"
                         style={{
                             backgroundImage: `url(${background})`,
                         }}
@@ -27,7 +27,7 @@ export default function Auth() {
                         <Route exact path="/auth/signup" component={SignUp} />
                         <Redirect from="/auth" to="/auth/login" />
                     </Switch>
-                    <Footer />
+                    <Footer absolute />
                 </section>
             </main>
         </>

@@ -3,20 +3,19 @@ import { Switch, Route, Redirect } from "react-router-dom";
 
 // components
 
-import AdminNavbar from "../../components/navbars/AdminNavbar.js";
-import Sidebar from "../../components/sidebar/Sidebar.js";
-import HeaderStats from "../../components/headers/HeaderStats.js";
-import Footer from "../../components/footers/Footer.js";
+import AdminNavbar from "../../components/navbars/AdminNavbar";
+import Sidebar from "../../components/sidebar/Sidebar";
+import HeaderStats from "../../components/headers/HeaderStats";
+import Footer from "../../components/footers/Footer";
 
 // views
 
-import Dashboard from "./dashboard/Dashboard.js";
-// import Maps from "views/admin/Maps.js";
-// import Settings from "views/admin/Settings.js";
-// import Tables from "views/admin/Tables.js";
+import Dashboard from "./dashboard/Dashboard";
+import Departments from "./depatments/Departments"
+import Employees from "./employees/Employees"
 
 export default function Admin() {
-  console.log('Admin accessed');
+
   return (
     <>
       <Sidebar />
@@ -28,12 +27,12 @@ export default function Admin() {
 
           <Switch>
             <Route exact path="/admin/dashboard" component={Dashboard} />
-            {/* <Route path="/admin/maps" exact component={Maps} />
-            <Route path="/admin/settings" exact component={Settings} />
-            <Route path="/admin/tables" exact component={Tables} /> */}
+            <Route exact path="/admin/departments" component={Departments} />
+            <Route exact path="/admin/employees" component={Employees} />
             <Redirect from="/admin" to="/admin/dashboard" />
           </Switch>
 
+          {/* Common Footer */}
           <Footer />
         </div>
       </div>

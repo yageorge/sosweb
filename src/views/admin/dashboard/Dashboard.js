@@ -4,8 +4,6 @@ import React from "react";
 
 import CardLineChart from "../../../components/cards/CardLineChart.js";
 import CardBarChart from "../../../components/cards/CardBarChart.js";
-import CardPageVisits from "../../../components/cards/CardPageVisits.js";
-import CardSocialTraffic from "../../../components/cards/CardSocialTraffic.js";
 
 export default function Dashboard() {
   console.log('dashboard accessed')
@@ -17,14 +15,6 @@ export default function Dashboard() {
         </div>
         <div className="w-full xl:w-4/12 px-4">
           <CardBarChart />
-        </div>
-      </div>
-      <div className="flex flex-wrap mt-4">
-        <div className="w-full xl:w-8/12 mb-12 xl:mb-0 px-4">
-          <CardPageVisits />
-        </div>
-        <div className="w-full xl:w-4/12 px-4">
-          <CardSocialTraffic />
         </div>
       </div>
     </>
