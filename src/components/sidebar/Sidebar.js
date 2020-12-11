@@ -89,6 +89,29 @@ export default function Sidebar() {
                 </Link>
               </li>
 
+              {/* Courses/trainings */}
+              <li className="items-center">
+                <Link
+                  className={
+                    "text-xs uppercase py-3 font-bold block " +
+                    (window.location.href.indexOf("/admin/courses") !== -1
+                      ? "text-blue-500 hover:text-blue-600"
+                      : "text-gray-800 hover:text-gray-600")
+                  }
+                  to="/admin/courses"
+                >
+                  <i
+                    className={
+                      "fas fa-graduation-cap mr-2 text-sm " +
+                      (window.location.href.indexOf("/admin/courses") !== -1
+                        ? "opacity-75"
+                        : "text-gray-400")
+                    }
+                  ></i>{" "}
+                  Courses/Trainings
+                </Link>
+              </li>
+
 
               {/* Departments */}
               <li className="items-center">

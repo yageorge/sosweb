@@ -1,5 +1,6 @@
 import axios from "axios";
 import Auth from "./Auth";
+import Departments from "./Departments";
 
 axios.defaults.baseURL = 'http://127.0.0.1:8000/api'
 axios.defaults.withCredentials = true
@@ -22,4 +23,5 @@ export default {
 
     auth: { ...Auth },
 
+    departments: { ...Departments },
 }

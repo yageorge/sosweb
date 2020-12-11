@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function CardDepartments() {
+export default function CardCourses() {
   return (
     <>
       <div
@@ -13,7 +13,7 @@ export default function CardDepartments() {
               <h3
                 className=
                 "font-semibold text-lg text-white flex-grow" >
-                Departments
+                Courses / Trainings
               </h3>
 
               <button className="content-end">
@@ -24,7 +24,7 @@ export default function CardDepartments() {
           </div>
         </div>
         <div className="block w-full overflow-x-auto">
-          {/* Projects table */}
+
           <table className="items-center w-full bg-transparent border-collapse">
             <thead>
               <tr>
@@ -36,7 +36,27 @@ export default function CardDepartments() {
                 <th
                   className=
                   "px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-no-wrap font-semibold text-left bg-blue-800 text-blue-300 border-blue-700">
-                  Name
+                  Title
+                </th>
+                <th
+                  className=
+                  "px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-no-wrap font-semibold text-left bg-blue-800 text-blue-300 border-blue-700">
+                  Description
+                </th>
+                <th
+                  className=
+                  "px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-no-wrap font-semibold text-left bg-blue-800 text-blue-300 border-blue-700">
+                  Total Lectures
+                </th>
+                <th
+                  className=
+                  "px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-no-wrap font-semibold text-left bg-blue-800 text-blue-300 border-blue-700">
+                  Total Minutes
+                </th>
+                <th
+                  className=
+                  "px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-no-wrap font-semibold text-left bg-blue-800 text-blue-300 border-blue-700">
+                  Category
                 </th>
                 <th
                   className=
@@ -62,11 +82,27 @@ export default function CardDepartments() {
                 </th>
 
                 <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4">
-                  Administration
+                  Tasks Management
                 </td>
 
                 <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4">
-                  11/12/2020
+                  Learn how to manage...
+                </td>
+
+                <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4">
+                  26
+                </td>
+
+                <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4">
+                  78 min
+                </td>
+
+                <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4">
+                  Business Management
+                </td>
+
+                <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4">
+                  09/12/2020
                 </td>
 
                 {/* Delete button */}
@@ -83,14 +119,32 @@ export default function CardDepartments() {
                   <span
                     className=
                     "ml-3 font-bold text-white">
-                    2
+                    1
                   </span>
                 </th>
+
                 <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4">
-                  Information Technology
+                  Learn React-JS
                 </td>
+
                 <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4">
-                  12/12/2020
+                  Complete course...
+                </td>
+
+                <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4">
+                  109
+                </td>
+
+                <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4">
+                  9 hours 02 min
+                </td>
+
+                <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4">
+                  Web Development
+                </td>
+
+                <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4">
+                  12/06/2020
                 </td>
 
                 {/* Delete button */}
@@ -99,6 +153,7 @@ export default function CardDepartments() {
                     <i className="fas fa-trash text-red-500 mr-2 text-md"></i>
                   </button>
                 </td>
+
               </tr>
 
             </tbody>

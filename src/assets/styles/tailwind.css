@@ -2256,6 +2256,12 @@ video {
   color: rgba(72, 187, 120, var(--text-opacity));
 }
 
+.text-amber-500 {
+  --text-opacity: 1;
+  color: #FFBF00;
+  color: rgba(255, 191, 0, var(--text-opacity));
+}
+
 .text-teal-500 {
   --text-opacity: 1;
   color: #38b2ac;

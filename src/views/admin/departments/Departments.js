@@ -1,6 +1,6 @@
 import React from "react";
 
-import CardDepartments from "../../../components/cards/CardDepartments";
+import CardDepartments from "../../../components/cards/cardDepartments/CardDepartments";
 
 export default function Departments() {
   return (

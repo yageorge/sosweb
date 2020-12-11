@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function CardDepartments() {
+export default function CardEmployees() {
   return (
     <>
       <div
@@ -24,7 +24,7 @@ export default function CardDepartments() {
           </div>
         </div>
         <div className="block w-full overflow-x-auto">
-          {/* Projects table */}
+
           <table className="items-center w-full bg-transparent border-collapse">
             <thead>
               <tr>
