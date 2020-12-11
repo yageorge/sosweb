@@ -9,7 +9,7 @@ export default function Table(props) {
     return (
         <table className="items-center w-full bg-transparent border-collapse">
             <TableHead />
-            <TableBody data={props.data}/>
+            <TableBody data={props.data} />
         </table>
     );
 };

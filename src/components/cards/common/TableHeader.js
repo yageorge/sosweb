@@ -2,6 +2,7 @@ import React from 'react';
 
 export default function TableHeader(props) {
 
+
     // Rendering the title + Add Button of a card table
     return (
         <div className="rounded-t mb-0 px-4 py-3 border-0">
@@ -14,8 +15,10 @@ export default function TableHeader(props) {
                         {props.title}
                     </h3>
 
-                    <button>
-                        <i className="fas fa-plus-circle mr-2 text-4xl text-amber-500"></i>
+                    <button onClick={props.onClick}>
+                        <i
+                            className={(props.buttonIcon) + "mr-2 text-4xl"}>
+                        </i>
                     </button>
 
                 </div>

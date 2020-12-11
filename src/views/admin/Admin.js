@@ -12,7 +12,8 @@ import Footer from "../../components/footers/Footer";
 
 import Dashboard from "./dashboard/Dashboard";
 import Courses from "./courses/Courses"
-import Departments from "./departments/Departments"
+import IndexDepartments from "./departments/IndexDepartments"
+import CreateDepartment from "./departments/CreateDepartment"
 import Employees from "./employees/Employees"
 
 export default function Admin() {
@@ -29,7 +30,8 @@ export default function Admin() {
           <Switch>
             <Route exact path="/admin/dashboard" component={Dashboard} />
             <Route exact path="/admin/courses" component={Courses} />
-            <Route exact path="/admin/departments" component={Departments} />
+            <Route exact path="/admin/departments" component={IndexDepartments} />
+            <Route exact path="/admin/department/create" component={CreateDepartment} />
             <Route exact path="/admin/employees" component={Employees} />
             <Redirect from="/admin" to="/admin/dashboard" />
           </Switch>

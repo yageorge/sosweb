@@ -1,13 +1,13 @@
 import React from "react";
 
-import CardDepartments from "../../../components/cards/cardDepartments/CardDepartments";
+import Create from "../../../components/cards/departments/create/Create";
 
-export default function Departments() {
+export default function CreateDepartment() {
   return (
     <>
       <div className="flex flex-wrap mt-4">
         <div className="w-full mb-12 px-4">
-          <CardDepartments />
+          <Create />
         </div>
       </div>
     </>

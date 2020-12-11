@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from "react";
 
 import Api from "../../../services/api/Api";
-import TableHeader from "../common/TableHeader"
-import Table from "./components/Table"
+import Departments from "../../../components/cards/departments/view/Departments";
 
-export default function CardDepartments() {
+export default function IndexDepartments() {
 
   const [departments, setDepartments] = useState(null);
 
@@ -23,19 +22,12 @@ export default function CardDepartments() {
     getDepartments();
   }, []);
 
-
   return (
     <>
-      <div
-        className=
-        "relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded bg-blue-900 text-white">
-
-        <TableHeader title='Departments' />
-
-        <div className="block w-full overflow-x-auto">
-          <Table data={departments} />
+      <div className="flex flex-wrap mt-4">
+        <div className="w-full mb-12 px-4">
+          <Departments departments={departments} />
         </div>
-
       </div>
     </>
   );
