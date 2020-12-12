@@ -1,12 +1,51 @@
+import React, { useState } from "react"
+import { useHistory } from "react-router-dom";
+
+import Api from "../../../../services/api/Api";
+import Alert from "../../../../services/alert/Alert";
 import TableHeader from "../../common/TableHeader"
 import Forum from "./components/Forum";
 
 export default function Create(props) {
 
-  // Saving new Deparment
-  const onClick = (e) => {
-    // e.preventDefault()
-    // history.push("/admin/department/create")
+  const history = useHistory();
+  const [department, setDepartment] = useState({})
+  const [alert, setAlert] = useState('')
+  const [showAlert, setShowAlert] = useState(false)
+
+  const onChange = (event) => {
+    department[event.target.name] = event.target.value
+    setDepartment(department)
+    setShowAlert(false)
+  }
+
+  // Creating new Deparment
+  const create = async (event) => {
+    //Avoid form submission / refresh
+    event.preventDefault()
+
+    try {
+
+      const response = await Api.departments.addDepartment(department);
+
+      console.log(response.data['error'])
+
+      if (!response.data['error']) {
+
+        setShowAlert(false)
+        //Redirecting to departments
+        history.push('/admin/departments');
+
+      } else {
+        setAlert(response.data['error'])
+        setShowAlert(true)
+      }
+
+    } catch (e) {
+      setAlert(e)
+      setShowAlert(true)
+    }
+    console.log('alert: ', alert)
   }
 
   return (
@@ -16,11 +55,12 @@ export default function Create(props) {
         "relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded bg-blue-900 text-white">
 
         <TableHeader
-          title="Create New Department"
-          buttonIcon="fas fa-save text-green-500 "
-          onClick={onClick} />
+          title="Create New Department" />
 
-        <Forum />
+        <Forum onChange={onChange} create={create} />
+
+        {showAlert ? <Alert alert={alert} />
+          : null}
 
       </div>
     </>

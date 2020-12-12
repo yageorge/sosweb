@@ -5,7 +5,7 @@ export default function Forum(props) {
     // Rendering table
     return (
         <div className="flex-auto px-4 lg:px-10 py-10 pt-0">
-            <form id="department_form" >
+            <form id="department_form" onSubmit={props.create}>
 
                 {/* Department Name Input */}
                 <div className="relative w-full mb-3">
@@ -22,7 +22,7 @@ export default function Forum(props) {
                         id="departmentName"
                         name="departmentName"
                         placeholder="Department Name"
-                    // onChange={onChange}
+                        onChange={props.onChange}
                     />
                 </div>
 
@@ -30,7 +30,7 @@ export default function Forum(props) {
                     <button
                         className="bg-gray-900 text-white active:bg-gray-700 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 w-full ease-linear transition-all duration-150"
                         type="submit"
-                        form="login_form"
+                        form="department_form"
                     >
                         Create
                     </button>

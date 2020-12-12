@@ -7,7 +7,7 @@ function Cell(props) {
 
   return (
     <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4">
-      {props.value}
+      <p className="uppercase">{props.value}</p>
     </td>
   );
 
