@@ -19,6 +19,11 @@ export default function Create(props) {
     setShowAlert(false)
   }
 
+  // Back Button onClick
+  const onClick = (e) => {
+    history.push("/admin/departments")
+  }
+
   // Creating new Deparment
   const create = async (event) => {
     //Avoid form submission / refresh
@@ -51,8 +56,11 @@ export default function Create(props) {
         className=
         "relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded bg-blue-900 text-white">
 
+        {/* Creating Table header including a back button */}
         <TableHeader
-          title="Create New Department" />
+          title="Create New Department"
+          buttonIcon="fas fa-arrow-circle-left text-green-500 "
+          onClick={onClick} />
 
         <Forum onChange={onChange} create={create} />
 

@@ -1,34 +1,42 @@
 import React from 'react';
 import moment from "moment";
 
-import AlertDialog from '../../../../../services/alert/AlertDialog';
+import AlertConfirmation from '../../../../../services/alert/AlertConfirmation';
 import AlertModal from '../../../../../services/alert/AlertModal';
 
 import Api from "../../../../../services/api/Api";
 
 
-const deleteDepartment = async (departmentId) => {
-    try {
-
-
-        const response = await Api.departments.deleteDepartment(departmentId);
-        console.log('delete response', response)
-        if (!response.data['error']) {
-
-
-        } else {
-
-        }
-
-    } catch (e) {
-
-    }
-}
-
 // Rendering 1 department row
 export default function Row(props) {
 
     const department = props.department
+
+    const deleteDepartment = async (departmentId, departmentName) => {
+        try {
+
+            const response = await Api.departments.deleteDepartment(departmentId);
+
+            if (!response.data['error']) {
+
+                //refreshing the screen
+                window.location.reload();
+
+            } else {
+
+                //Inform user of an error
+                const errorMsg = response.data['error']
+                AlertModal(
+                    "An error has occured: " + errorMsg
+                )
+            }
+
+        } catch (e) {
+            AlertModal(
+                "An error has occured: " + e
+            )
+        }
+    }
 
     // Render 1 cell
     function Cell(props) {
@@ -62,8 +70,12 @@ export default function Row(props) {
             <td>
                 <button
                     onClick={() =>
-                        AlertDialog(() =>
-                            deleteDepartment(department.id), department.name)}>
+                        AlertConfirmation(
+                            "Are you sure?",
+                            "Do you want to delete:",
+                            department.name,
+                            () => deleteDepartment(department.id, department.name)
+                        )}>
 
                     <i className="fas fa-trash text-red-500 text-md"></i>
                 </button>

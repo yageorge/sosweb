@@ -2,23 +2,20 @@ import { confirmAlert } from 'react-confirm-alert'; // Import
 import 'react-confirm-alert/src/react-confirm-alert.css'; // Import css
 
 
-//TODO get some UI good stuff from AlertModal to here
-
-
-// Will display a pop-up Alert message
-export default function AlertDialog(deleteFn, name) {
+// Will display a pop-up Confirmation Alert message
+export default function AlertConfirmation(title, message, item, deleteFn) {
     confirmAlert({
         customUI: ({ onClose }) => {
             return (
                 <div className="min-w-0 break-words bg-white rounded p-8 shadow-lg">
 
                     <h1 className="text-lg font-semibold">
-                        Are you sure?
+                        {title}
                     </h1>
 
-                    <p> Do you want to delete: </p>
+                    <p> {message} </p>
 
-                    <p className="my-4"> {name.toUpperCase()} </p>
+                    <p className="my-4"> {item.toUpperCase()} </p>
 
                     <p className="text-xs text-red-500"> (This action cannot be undone) </p>
 
@@ -43,21 +40,4 @@ export default function AlertDialog(deleteFn, name) {
             );
         }
     });
-
-
-
-    // confirmAlert({
-    //     title: 'Are you sure?',
-    //     message: 'Do you want to delete: ' + name.toUpperCase(),
-    //     buttons: [
-    //         {
-    //             label: 'Yes',
-    //             onClick: () => deleteFn()
-    //         },
-    //         {
-    //             label: 'No',
-    //             onClick: () => false
-    //         }
-    //     ]
-    // });
 }

@@ -2,6 +2,7 @@ import React from 'react';
 
 export default function TableHeader(props) {
 
+  //Render a button, if a function button exist in params
   const renderButton = () => {
     if (typeof props.onClick === 'function') {
       return <button onClick={props.onClick}>
