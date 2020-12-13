@@ -2,8 +2,10 @@ import React, { useContext, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { useCookies } from "react-cookie";
 
-import Api from "../../../services/api/Api";
 import { AppContext } from "../../../services/context/AppContext"
+import Api from "../../../services/api/Api";
+import Alert from "../../../services/alert/Alert";
+
 
 export default function SignUp() {
 
@@ -13,8 +15,12 @@ export default function SignUp() {
   const [credentials, setCredentials] = useState({})
   const [, setCookie,] = useCookies(["userToken"]);
 
+  const [alert, setAlert] = useState('')
+  const [showAlert, setShowAlert] = useState(false)
+
   // Set the new value + update credentials State
   const onChange = (event) => {
+    setShowAlert(false)
     credentials[event.target.name] = event.target.value;
     setCredentials(credentials)
   }
@@ -42,7 +48,9 @@ export default function SignUp() {
       history.push('/admin');
 
     } catch (e) {
-      console.log('SignUp error: ', e)
+      console.log('Signup Error: ', e)
+      setAlert("SignUp failed! Please check the console log for more details :D")
+      setShowAlert(true)
     }
   }
 
@@ -137,6 +145,7 @@ export default function SignUp() {
                       id="password"
                       name="password"
                       placeholder="Password"
+                      minLength="8"
                       onChange={onChange}
                     />
                   </div>
@@ -156,6 +165,7 @@ export default function SignUp() {
                       id="passwordConfirmation"
                       name="passwordConfirmation"
                       placeholder="Confirm Password"
+                      minLength="8"
                       onChange={onChange}
                     />
                   </div>
@@ -210,6 +220,12 @@ export default function SignUp() {
                 </form>
               </div>
             </div>
+
+            {/* Rendering conditional Alert Message */}
+            {showAlert ?
+              <Alert alert={alert} />
+              : null}
+
           </div>
         </div>
       </div>

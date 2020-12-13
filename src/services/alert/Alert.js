@@ -2,7 +2,7 @@ import React from 'react';
 
 // Will display an on screen Alert message
 export default function Alert(props) {
-    console.log('props alerts', props.alert)
+
     return (
 
         <div className="text-white px-6 py-4 border-0 rounded relative bg-red-500">
@@ -12,7 +12,7 @@ export default function Alert(props) {
             </span>
 
             <span className="inline-block align-middle mr-8">
-                <b className="capitalize">Alert! {props.alert}</b>
+                <b className="capitalize">{props.alert}</b>
             </span>
 
         </div>

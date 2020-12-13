@@ -67,8 +67,9 @@ export default function Create() {
         onChange={onChange}
         submitFunction={create} />
 
-      {/* Alert handling */}
-      {showAlert ? <Alert alert={alert} />
+      {/* Rendering conditional Alert Message */}
+      {showAlert ?
+        <Alert alert={alert} />
         : null}
 
     </div>

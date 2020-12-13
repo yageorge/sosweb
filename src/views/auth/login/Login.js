@@ -1,9 +1,10 @@
 import React, { useContext, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { useCookies } from "react-cookie";
-import Api from "../../../services/api/Api";
 
 import { AppContext } from "../../../services/context/AppContext"
+import Api from "../../../services/api/Api";
+import Alert from "../../../services/alert/Alert";
 
 
 export default function Login() {
@@ -14,8 +15,12 @@ export default function Login() {
   const [credentials, setCredentials] = useState({})
   const [, setCookie,] = useCookies(["userToken"]);
 
+  const [alert, setAlert] = useState('')
+  const [showAlert, setShowAlert] = useState(false)
+
   // Set the new value + update credentials State
   const onChange = (event) => {
+    setShowAlert(false)
     credentials[event.target.name] = event.target.value
     setCredentials(credentials)
   }
@@ -43,7 +48,8 @@ export default function Login() {
       history.push('/admin');
 
     } catch (e) {
-      console.log('Login Error: ', e)
+      setAlert("Login failed! The email or password you've entered doesn't match any account.")
+      setShowAlert(true)
     }
   }
 
@@ -102,6 +108,7 @@ export default function Login() {
                       id="password"
                       name="password"
                       placeholder="Password"
+                      minLength="8"
                       onChange={onChange}
                     />
                   </div>
@@ -120,18 +127,24 @@ export default function Login() {
                     </label>
                   </div>
 
+                  {/* Sign in button */}
                   <div className="text-center mt-6">
                     <button
                       className="bg-gray-900 text-white active:bg-gray-700 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 w-full ease-linear transition-all duration-150"
                       type="submit"
-                      form="login_form"
-                    >
+                      form="login_form" >
                       Sign In
                     </button>
                   </div>
+
                 </form>
               </div>
             </div>
+
+            {/* Rendering conditional Alert Message */}
+            {showAlert ?
+              <Alert alert={alert} />
+              : null}
 
             {/* Forgot Password + Create New Account */}
             <div className="flex flex-wrap mt-6 relative">
@@ -141,14 +154,17 @@ export default function Login() {
                   onClick={(e) => e.preventDefault()}
                   className="text-gray-300"
                 >
-                  <small>Forgot password?</small>
+                  <small>TODO: Forgot password?</small>
                 </a>
               </div>
+
+              {/* New Account link */}
               <div className="w-1/2 text-right">
-                <Link to="/signup" className="text-gray-300">
+                <Link to="/auth/signup" className="text-gray-300">
                   <small>Create new account</small>
                 </Link>
               </div>
+
             </div>
           </div>
         </div>
