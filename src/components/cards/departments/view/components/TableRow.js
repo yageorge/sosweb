@@ -1,4 +1,5 @@
 import React from 'react';
+import { useHistory, Link } from "react-router-dom";
 import moment from "moment";
 
 import AlertConfirmation from '../../../../../services/alert/AlertConfirmation';
@@ -10,6 +11,7 @@ import Api from "../../../../../services/api/Api";
 // Rendering 1 department row
 export default function Row(props) {
 
+    const history = useHistory();
     const department = props.department
 
     const deleteDepartment = async (departmentId, departmentName) => {
@@ -58,11 +60,18 @@ export default function Row(props) {
             <Cell value={moment(department.created_at).format("DD MMM YYYY - hh:mm a")} />
 
             {/* Edit button */}
-            <td>
-                <button>
+
+            <Link to={`/admin/department/${department.id}/edit`}>
+                <i className="far fa-edit text-green-500 text-md"></i>
+            </Link>
+
+            {/* <td>
+                <button
+                    onClick={() => history.push("/admin/department/edit")}
+                >
                     <i className="far fa-edit text-green-500 text-md"></i>
                 </button>
-            </td>
+            </td> */}
 
 
 
