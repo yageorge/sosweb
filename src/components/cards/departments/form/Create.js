@@ -4,7 +4,7 @@ import { useHistory } from "react-router-dom";
 import Api from "../../../../services/api/Api";
 import Alert from "../../../../services/alert/Alert";
 import TableHeader from "../../common/TableHeader"
-import Forum from "./components/Form";
+import Form from "./components/Form";
 
 export default function Create() {
 
@@ -29,15 +29,13 @@ export default function Create() {
   const create = async (event) => {
     //Avoid form submission / refresh
     event.preventDefault()
-
+    console.log('department: ', department)
     try {
 
       const response = await Api.departments.addDepartment(department);
 
       if (!response.data['error']) {
-
-        setShowAlert(false)
-        //Redirecting to departments
+        // If no errors updating, return to departments
         history.push('/admin/departments');
 
       } else {
@@ -52,27 +50,27 @@ export default function Create() {
   }
 
   return (
-    <>
-      <div
-        className=
-        "relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded bg-blue-900 text-white">
 
-        {/* Creating Table header including a back button */}
-        <TableHeader
-          title="Create New Department"
-          buttonIcon="fas fa-arrow-circle-left text-green-500 "
-          onClick={onClick} />
+    <div
+      className=
+      "relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded bg-blue-900 text-white">
 
-        {/* Rendering form */}
-        <Forum
-          action="Create"
-          onChange={onChange}
-          submitFunction={create} />
+      {/* Creating Table header including a back button */}
+      <TableHeader
+        title="Create New Department"
+        buttonIcon="fas fa-arrow-circle-left text-green-500 "
+        onClick={onClick} />
 
-        {showAlert ? <Alert alert={alert} />
-          : null}
+      {/* Rendering form */}
+      <Form
+        action="Create"
+        onChange={onChange}
+        submitFunction={create} />
 
-      </div>
-    </>
+      {/* Alert handling */}
+      {showAlert ? <Alert alert={alert} />
+        : null}
+
+    </div>
   );
 }

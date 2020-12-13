@@ -8,7 +8,7 @@ export default function Alert(props) {
         <div className="text-white px-6 py-4 border-0 rounded relative bg-red-500">
 
             <span className="text-xl inline-block mr-5 align-middle">
-                <i className="fas fa-bell"></i>
+                <i className="fas fa-bell mr-2"></i>
             </span>
 
             <span className="inline-block align-middle mr-8">

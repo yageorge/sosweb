@@ -2,6 +2,8 @@ import React from 'react';
 
 export default function Forum(props) {
 
+  const department = props.department
+
   // Rendering table
   return (
     <div className="flex-auto px-4 lg:px-10 py-10 pt-0">
@@ -12,7 +14,7 @@ export default function Forum(props) {
 
           <label
             className="block uppercase text-gray-700 text-xs font-bold mb-2"
-            htmlFor="departmentName">
+            htmlFor="name">
             Name
           </label>
 
@@ -20,11 +22,11 @@ export default function Forum(props) {
             className="px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:shadow-outline w-full ease-linear transition-all duration-150"
             type="text"
             required={true}
-            id="departmentName"
-            name="departmentName"
-            placeholder="Department Name"
-            value={props.department}
-            // value={props.department ? department.name : ""}
+            id="name"
+            name="name"
+            placeholder="Name"
+            defaultValue={department ? department.name : ""}
+            maxLength="64"
             onChange={props.onChange}
           />
         </div>

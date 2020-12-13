@@ -4,36 +4,46 @@ import { useHistory, useParams } from "react-router-dom";
 import Api from "../../../../services/api/Api";
 import Alert from "../../../../services/alert/Alert";
 import TableHeader from "../../common/TableHeader"
-import Forum from "./components/Form";
+import Form from "./components/Form";
 
 export default function Edit() {
 
   const history = useHistory();
   const [department, setDepartment] = useState({})
+  const [showForm, setShowForm] = useState(false)
   const [alert, setAlert] = useState('')
   const [showAlert, setShowAlert] = useState(false)
 
   //Receiving department id param to edit
   const { id } = useParams();
 
-  // Fetching the department to edit
+  // Get department to edit
   const getDepartment = async () => {
     try {
-      console.log('edit department id ', id)
+
       const response = await Api.departments.editDepartment(id);
-      console.log('response of get 1 department: ', response.data)
 
-      //Able to get department, next: arrange well this here for error + load department values in FORM
+      if (!response.data['error']) {
+        setDepartment(response.data)
+        setShowForm(true)
+      } else {
+        setShowForm(false)
+        setAlert(response.data['error'])
+        setShowAlert(true)
+      }
 
-    } catch (error) {
-
+    } catch (e) {
+      setShowForm(false)
+      setAlert(e)
+      setShowAlert(true)
     }
   }
 
   useEffect(() => {
     getDepartment();
-  })
+  }, [])
 
+  // Capturing user input - Deparment data
   const onChange = (event) => {
     department[event.target.name] = event.target.value
     setDepartment(department)
@@ -45,19 +55,18 @@ export default function Edit() {
     history.push("/admin/departments")
   }
 
-  // Editing Deparment
-  const edit = async (event) => {
+  // Update Deparment
+  const update = async (event) => {
     //Avoid form submission / refresh
     event.preventDefault()
 
     try {
 
-      const response = await Api.departments.updateDepartment(department);
+      const response = await Api.departments.updateDepartment(department, department.id);
 
       if (!response.data['error']) {
 
-        setShowAlert(false)
-        //Redirecting to departments
+        // If no errors updating, return to departments
         history.push('/admin/departments');
 
       } else {
@@ -72,26 +81,32 @@ export default function Edit() {
   }
 
   return (
-    <>
-      <div
-        className=
-        "relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded bg-blue-900 text-white">
 
-        {/* Creating Table header including a back button */}
-        <TableHeader
-          title="Edit Department"
-          buttonIcon="fas fa-arrow-circle-left text-green-500 "
-          onClick={onClick} />
+    <div
+      className=
+      "relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded bg-blue-900 text-white">
 
-        <Forum
+      {/* Creating Table header including a back button */}
+      <TableHeader
+        title="Edit Department"
+        buttonIcon="fas fa-arrow-circle-left text-green-500 "
+        onClick={onClick} />
+
+      {/* Only show Edit form when getDepartment is complete */}
+      {showForm ?
+        <Form
           action="Edit"
           onChange={onChange}
-          submitFunction={edit} />
+          submitFunction={update}
+          department={department} />
+        : null}
 
-        {showAlert ? <Alert alert={alert} />
-          : null}
+      {/* Alert handling */}
+      {showAlert ?
+        <Alert alert={alert} />
+        : null}
 
-      </div>
-    </>
+    </div>
+
   );
 }
