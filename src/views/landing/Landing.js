@@ -29,7 +29,7 @@ export default function Landing() {
                     Your In-House development starts with us.
                   </h1>
                   <p className="mt-4 text-lg text-gray-300">
-                    Manage your Departments and employees, Create your courses and training content.
+                    Manage your Departments and users, Create your courses and training content.
                     And you are Ready to Go!
                   </p>
                 </div>

@@ -136,26 +136,26 @@ export default function Sidebar() {
                 </Link>
               </li>
 
-              {/* Employees */}
+              {/* Users */}
               <li className="items-center">
                 <Link
                   className={
                     "text-xs uppercase py-3 font-bold block " +
-                    (window.location.href.indexOf("/admin/employees") !== -1
+                    (window.location.href.indexOf("/admin/users") !== -1
                       ? "text-blue-500 hover:text-blue-600"
                       : "text-gray-800 hover:text-gray-600")
                   }
-                  to="/admin/employees"
+                  to="/admin/users"
                 >
                   <i
                     className={
                       "fas fa-user-tie mr-2 text-sm " +
-                      (window.location.href.indexOf("/admin/employees") !== -1
+                      (window.location.href.indexOf("/admin/users") !== -1
                         ? "opacity-75"
                         : "text-gray-400")
                     }
                   ></i>{" "}
-                  Employees
+                  Users
                 </Link>
               </li>
 

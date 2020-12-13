@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function CardEmployees() {
+export default function CardUsers() {
   return (
     <>
       <div
@@ -13,7 +13,7 @@ export default function CardEmployees() {
               <h3
                 className=
                 "font-semibold text-lg text-white flex-grow" >
-                Employees
+                Users
               </h3>
 
               <button className="content-end">

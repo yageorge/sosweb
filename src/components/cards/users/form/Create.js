@@ -9,34 +9,34 @@ import Form from "./components/Form";
 export default function Create() {
 
   const history = useHistory();
-  const [department, setDepartment] = useState({})
+  const [user, setUser] = useState({})
   const [alert, setAlert] = useState('')
   const [showAlert, setShowAlert] = useState(false)
 
-  // Saving User input in department state
+  // Saving User input in user state
   const onChange = (event) => {
-    department[event.target.name] = event.target.value
-    setDepartment(department)
+    user[event.target.name] = event.target.value
+    setUser(user)
     setShowAlert(false)
   }
 
   // Back Button onClick
   const onClick = () => {
-    history.push("/admin/departments")
+    history.push("/admin/users")
   }
 
-  // Creating new Deparment
+  // Creating new User
   const create = async (event) => {
     //Avoid form submission / refresh
     event.preventDefault()
 
     try {
 
-      const response = await Api.departments.addDepartment(department);
+      const response = await Api.users.addUser(user);
 
       if (!response.data['error']) {
-        // If no errors updating, return to departments
-        history.push('/admin/departments');
+        // If no errors updating, return to users
+        history.push('/admin/users');
 
       } else {
         setAlert(response.data['error'])
@@ -57,7 +57,7 @@ export default function Create() {
 
       {/* Creating Table header including a back button */}
       <TableHeader
-        title="Create New Department"
+        title="Create New User"
         buttonIcon="fas fa-arrow-circle-left text-green-500 "
         onClick={onClick} />
 

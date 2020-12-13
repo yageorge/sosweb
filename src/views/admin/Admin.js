@@ -15,7 +15,10 @@ import Courses from "./courses/Courses"
 import IndexDepartments from "./departments/IndexDepartments"
 import CreateDepartment from "./departments/CreateDepartment"
 import EditDepartment from "./departments/EditDepartment"
-import Employees from "./employees/Employees"
+
+import IndexUsers from "./users/IndexUsers"
+import CreateUser from "./users/CreateUser"
+import EditUser from "./users/EditUser"
 
 export default function Admin() {
 
@@ -31,11 +34,20 @@ export default function Admin() {
           <Switch>
             <Route exact path="/admin/dashboard" component={Dashboard} />
             <Route exact path="/admin/courses" component={Courses} />
+
+            {/* Departments Routes */}
             <Route exact path="/admin/departments" component={IndexDepartments} />
             <Route exact path="/admin/department/create" component={CreateDepartment} />
             <Route exact path="/admin/department/:id/edit" component={EditDepartment} />
-            <Route exact path="/admin/employees" component={Employees} />
+
+            {/* Users Routes */}
+            <Route exact path="/admin/users" component={IndexUsers} />
+            <Route exact path="/admin/user/create" component={CreateUser} />
+            <Route exact path="/admin/user/:id/edit" component={EditUser} />
+
+            {/* Redirect * to dashboard */}
             <Redirect from="/admin" to="/admin/dashboard" />
+
           </Switch>
 
           {/* Common Footer */}

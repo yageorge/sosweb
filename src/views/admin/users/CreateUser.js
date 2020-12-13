@@ -1,13 +1,13 @@
 import React from "react";
 
-import CardEmployees from "../../../components/cards/CardEmployees";
+import Create from "../../../components/cards/users/form/Create";
 
-export default function Employees() {
+export default function CreateUser() {
   return (
     <>
       <div className="flex flex-wrap mt-4">
         <div className="w-full mb-12 px-4">
-          <CardEmployees />
+          <Create />
         </div>
       </div>
     </>

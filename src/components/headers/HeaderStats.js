@@ -15,7 +15,7 @@ export default function HeaderStats() {
             <div className="flex flex-wrap">
               <div className="w-full lg:w-6/12 xl:w-3/12 px-4">
                 <CardStats
-                  statSubtitle="Employees"
+                  statSubtitle="Users"
                   statTitle="277"
                   statIconName="fas fa-users"
                   statIconColor="bg-red-500"
