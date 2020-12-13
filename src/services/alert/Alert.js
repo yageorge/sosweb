@@ -1,5 +1,6 @@
 import React from 'react';
 
+// Will display an on screen Alert message
 export default function Alert(props) {
     console.log('props alerts', props.alert)
     return (

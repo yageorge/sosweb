@@ -26,6 +26,8 @@ export default function TableBody() {
 
                 <Header title="" />
 
+                <Header title="" />
+
             </tr>
         </thead>
     );

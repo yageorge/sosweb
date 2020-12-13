@@ -28,8 +28,6 @@ export default function Create(props) {
 
       const response = await Api.departments.addDepartment(department);
 
-      console.log(response.data['error'])
-
       if (!response.data['error']) {
 
         setShowAlert(false)
@@ -45,7 +43,6 @@ export default function Create(props) {
       setAlert(e)
       setShowAlert(true)
     }
-    console.log('alert: ', alert)
   }
 
   return (
