@@ -19,7 +19,7 @@ export default function Row(props) {
             "Are you sure?",
             "Do you want to delete:",
             department.name,
-            () => deleteDepartment(department.id, department.name)
+            () => deleteDepartment(department.id)
         )
     }
 

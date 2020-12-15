@@ -34,7 +34,8 @@ export default function Edit() {
 
     } catch (e) {
       setShowForm(false)
-      setAlert(e)
+      // setAlert(e)
+      console.log('catch (error)', e)
       setShowAlert(true)
     }
   }

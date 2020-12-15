@@ -1,5 +1,7 @@
 import React from 'react';
 
+import UserInput from "../../../common/UserInput"
+
 export default function Forum(props) {
 
   const department = props.department
@@ -10,26 +12,14 @@ export default function Forum(props) {
       <form id="department_form" onSubmit={props.submitFunction}>
 
         {/* Department Name Input */}
-        <div className="relative w-full mb-3">
-
-          <label
-            className="block uppercase text-gray-700 text-xs font-bold mb-2"
-            htmlFor="name">
-            Name
-          </label>
-
-          <input
-            className="px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:shadow-outline w-full ease-linear transition-all duration-150"
-            type="text"
-            required={true}
-            id="name"
-            name="name"
-            placeholder="Name"
-            defaultValue={department ? department.name : ""}
-            maxLength="64"
-            onChange={props.onChange}
-          />
-        </div>
+        <UserInput
+          inputId="name"
+          inputName="Name"
+          inputType="text"
+          defaultValue={department ? department.name : ""}
+          maxLength="64"
+          onChange={props.onChange}
+        />
 
         {/* Submit form Button */}
         <div className="text-center mt-6">

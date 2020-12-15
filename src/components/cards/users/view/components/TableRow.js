@@ -18,17 +18,18 @@ export default function Row(props) {
         AlertConfirmation(
             "Are you sure?",
             "Do you want to delete:",
-            user.name,
-            () => deleteUser(user.id, user.name)
+            user.firstName,
+            () => deleteUser(user.id)
         )
     }
 
     // Deleting User
     const deleteUser = async (id) => {
         try {
+
             const response = await Api.users.deleteUser(id);
 
-            // If no error occurred
+            // If no error occurred:
             if (!response.data['error']) {
                 // Refreshing the screen
                 window.location.reload();
@@ -43,7 +44,7 @@ export default function Row(props) {
 
         } catch (e) {
             AlertModal(
-                "An error has occured: " + e
+                "An exception has occured: " + e
             )
         }
     }
@@ -69,9 +70,9 @@ export default function Row(props) {
 
             <Cell value={user.email} />
 
-            <Cell value={user.department_id} />
+            <Cell value={user.departmentName} />
 
-            <Cell value={user.isAdmin} />
+            <Cell value={user.isAdmin ? "Admin" : ""} />
 
             <Cell value={moment(user.created_at).format("DD MMM YYYY - hh:mm a")} />
 

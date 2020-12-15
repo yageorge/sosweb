@@ -6,6 +6,8 @@ import { AppContext } from "../../../services/context/AppContext"
 import Api from "../../../services/api/Api";
 import Alert from "../../../services/alert/Alert";
 
+import UserInput from "../../../components/cards/common/UserInput"
+
 
 export default function Login() {
 
@@ -75,43 +77,23 @@ export default function Login() {
                 <form id="login_form" onSubmit={logIn}>
 
                   {/* Email Input */}
-                  <div className="relative w-full mb-3">
-                    <label
-                      className="block uppercase text-gray-700 text-xs font-bold mb-2"
-                      htmlFor="email"
-                    >
-                      Email
-                    </label>
-                    <input
-                      className="px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:shadow-outline w-full ease-linear transition-all duration-150"
-                      type="email"
-                      required={true}
-                      id="email"
-                      name="email"
-                      placeholder="Email"
-                      onChange={onChange}
-                    />
-                  </div>
+                  <UserInput
+                    inputId="email"
+                    inputName="Email"
+                    inputType="email"
+                    maxLength="64"
+                    onChange={onChange}
+                  />
 
                   {/* Password Input */}
-                  <div className="relative w-full mb-3">
-                    <label
-                      className="block uppercase text-gray-700 text-xs font-bold mb-2"
-                      htmlFor="password"
-                    >
-                      Password
-                    </label>
-                    <input
-                      className="px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:shadow-outline w-full ease-linear transition-all duration-150"
-                      type="password"
-                      required={true}
-                      id="password"
-                      name="password"
-                      placeholder="Password"
-                      minLength="8"
-                      onChange={onChange}
-                    />
-                  </div>
+                  <UserInput
+                    inputId="password"
+                    inputName="Password"
+                    inputType="password"
+                    minLength="8"
+                    maxLength="64"
+                    onChange={onChange}
+                  />
 
                   {/* Remember me checkbox */}
                   <div>

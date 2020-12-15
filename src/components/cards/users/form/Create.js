@@ -15,6 +15,7 @@ export default function Create() {
 
   // Saving User input in user state
   const onChange = (event) => {
+    console.log('Create / onchange event name/value: ', event.target.name + " / " + event.target.value)
     user[event.target.name] = event.target.value
     setUser(user)
     setShowAlert(false)
@@ -32,6 +33,7 @@ export default function Create() {
 
     try {
 
+      // UNDONE - postman created succ user , but error here check /////////////////////
       const response = await Api.users.addUser(user);
 
       if (!response.data['error']) {
@@ -44,8 +46,9 @@ export default function Create() {
       }
 
     } catch (e) {
-      setAlert(e)
-      setShowAlert(true)
+      console.log('catch error create user: ', e)
+      // setAlert(e)
+      // setShowAlert(true)
     }
   }
 

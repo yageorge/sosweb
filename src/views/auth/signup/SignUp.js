@@ -6,6 +6,8 @@ import { AppContext } from "../../../services/context/AppContext"
 import Api from "../../../services/api/Api";
 import Alert from "../../../services/alert/Alert";
 
+import UserInput from "../../../components/cards/common/UserInput"
+
 
 export default function SignUp() {
 
@@ -54,6 +56,7 @@ export default function SignUp() {
     }
   }
 
+
   return (
     <>
       <div className="container mx-auto px-4 h-full">
@@ -73,140 +76,69 @@ export default function SignUp() {
               <div className="flex-auto px-4 lg:px-10 py-10 pt-0">
                 <form id="signup_form" onSubmit={signUp}>
 
+
                   {/* First Name Input */}
-                  <div className="relative w-full mb-3">
-                    <label
-                      className="block uppercase text-gray-700 text-xs font-bold mb-2"
-                      htmlFor="firstName"
-                    >
-                      First Name
-                      </label>
-                    <input
-                      className="px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:shadow-outline w-full ease-linear transition-all duration-150"
-                      type="text"
-                      required={true}
-                      id="firstName"
-                      name="firstName"
-                      placeholder="First Name"
-                      onChange={onChange}
-                    />
-                  </div>
+                  <UserInput
+                    inputId="firstName"
+                    inputName="First Name"
+                    inputType="text"
+                    maxLength="64"
+                    onChange={onChange}
+                  />
 
                   {/* Last Name Input */}
-                  <div className="relative w-full mb-3">
-                    <label
-                      className="block uppercase text-gray-700 text-xs font-bold mb-2"
-                      htmlFor="lastName"
-                    >
-                      Last Name
-                      </label>
-                    <input
-                      className="px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:shadow-outline w-full ease-linear transition-all duration-150"
-                      type="text"
-                      required={true}
-                      id="lastName"
-                      name="lastName"
-                      placeholder="Last Name"
-                      onChange={onChange}
-                    />
-                  </div>
+                  <UserInput
+                    inputId="lastName"
+                    inputName="Last Name"
+                    inputType="text"
+                    maxLength="64"
+                    onChange={onChange}
+                  />
 
                   {/* Email Input */}
-                  <div className="relative w-full mb-3">
-                    <label
-                      className="block uppercase text-gray-700 text-xs font-bold mb-2"
-                      htmlFor="email"
-                    >
-                      Email
-                      </label>
-                    <input
-                      className="px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:shadow-outline w-full ease-linear transition-all duration-150"
-                      type="email"
-                      required={true}
-                      id="email"
-                      name="email"
-                      placeholder="Email"
-                      onChange={onChange}
-                    />
-                  </div>
+                  <UserInput
+                    inputId="email"
+                    inputName="Email"
+                    inputType="email"
+                    maxLength="64"
+                    onChange={onChange}
+                  />
 
                   {/* Password Input */}
-                  <div className="relative w-full mb-3">
-                    <label
-                      className="block uppercase text-gray-700 text-xs font-bold mb-2"
-                      htmlFor="password"
-                    >
-                      Password
-                      </label>
-                    <input
-                      className="px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:shadow-outline w-full ease-linear transition-all duration-150"
-                      type="password"
-                      required={true}
-                      id="password"
-                      name="password"
-                      placeholder="Password"
-                      minLength="8"
-                      onChange={onChange}
-                    />
-                  </div>
+                  <UserInput
+                    inputId="password"
+                    inputName="Password"
+                    inputType="password"
+                    minLength="8"
+                    maxLength="64"
+                    onChange={onChange}
+                  />
 
                   {/* Password Confirmation Input */}
-                  <div className="relative w-full mb-3">
-                    <label
-                      className="block uppercase text-gray-700 text-xs font-bold mb-2"
-                      htmlFor="passwordConfirmation"
-                    >
-                      Confirm Password
-                      </label>
-                    <input
-                      className="px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:shadow-outline w-full ease-linear transition-all duration-150"
-                      type="password"
-                      required={true}
-                      id="passwordConfirmation"
-                      name="passwordConfirmation"
-                      placeholder="Confirm Password"
-                      minLength="8"
-                      onChange={onChange}
-                    />
-                  </div>
+                  <UserInput
+                    inputId="passwordConfirmation"
+                    inputName="Confirm Password"
+                    inputType="password"
+                    minLength="8"
+                    maxLength="64"
+                    onChange={onChange}
+                  />
 
                   {/* Company Name Input */}
-                  <div className="relative w-full mb-3">
-                    <label
-                      className="block uppercase text-gray-700 text-xs font-bold mb-2"
-                      htmlFor="companyName"
-                    >
-                      Company Name
-                      </label>
-                    <input
-                      className="px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:shadow-outline w-full ease-linear transition-all duration-150"
-                      type="text"
-                      required={true}
-                      id="companyName"
-                      name="companyName"
-                      placeholder="Company Name"
-                      onChange={onChange}
-                    />
-                  </div>
+                  <UserInput
+                    inputId="companyName"
+                    inputName="Company Name"
+                    inputType="text"
+                    onChange={onChange}
+                  />
 
                   {/* Department Name Input */}
-                  <div className="relative w-full mb-3">
-                    <label
-                      className="block uppercase text-gray-700 text-xs font-bold mb-2"
-                      htmlFor="departmentName"
-                    >
-                      Department Name
-                      </label>
-                    <input
-                      className="px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:shadow-outline w-full ease-linear transition-all duration-150"
-                      type="text"
-                      required={true}
-                      id="departmentName"
-                      name="departmentName"
-                      placeholder="Department Name"
-                      onChange={onChange}
-                    />
-                  </div>
+                  <UserInput
+                    inputId="departmentName"
+                    inputName="Department Name"
+                    inputType="text"
+                    onChange={onChange}
+                  />
 
                   <div className="text-center mt-6">
                     <button
