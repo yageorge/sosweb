@@ -2,6 +2,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
+import Tab from "./elements/Tab"
+
 export default function Sidebar() {
   const [collapseShow, setCollapseShow] = React.useState("hidden");
   return (
@@ -66,146 +68,62 @@ export default function Sidebar() {
             {/* Navigation */}
 
             <ul className="md:flex-col md:min-w-full flex flex-col list-none">
-              <li className="items-center">
-                <Link
-                  className={
-                    "text-xs uppercase py-3 font-bold block " +
-                    // if dashboard is selected condition, adjust color to highlight
-                    (window.location.href.indexOf("/admin/dashboard") !== -1
-                      ? "text-blue-500 hover:text-blue-600"
-                      : "text-gray-800 hover:text-gray-600")
-                  }
-                  to="/admin/dashboard"
-                >
-                  <i
-                    className={
-                      "fas fa-tv mr-2 text-sm " +
-                      (window.location.href.indexOf("/admin/dashboard") !== -1
-                        ? "opacity-75"
-                        : "text-gray-400")
-                    }
-                  ></i>{" "}
-                  Dashboard
-                </Link>
-              </li>
 
-              {/* Courses/trainings */}
-              <li className="items-center">
-                <Link
-                  className={
-                    "text-xs uppercase py-3 font-bold block " +
-                    (window.location.href.indexOf("/admin/courses") !== -1
-                      ? "text-blue-500 hover:text-blue-600"
-                      : "text-gray-800 hover:text-gray-600")
-                  }
-                  to="/admin/courses"
-                >
-                  <i
-                    className={
-                      "fas fa-graduation-cap mr-2 text-sm " +
-                      (window.location.href.indexOf("/admin/courses") !== -1
-                        ? "opacity-75"
-                        : "text-gray-400")
-                    }
-                  ></i>{" "}
-                  Courses/Trainings
-                </Link>
-              </li>
+              {/* Dashboard Tab */}
+              <Tab
+                title="Dashboard"
+                path="/admin/dashboard"
+                icon="fas fa-tv"
+              />
 
+              {/* Courses/trainings Tab */}
+              <Tab
+                title="Courses/Trainings"
+                path="/admin/courses"
+                icon="fas fa-graduation-cap"
+              />
 
-              {/* Departments */}
-              <li className="items-center">
-                <Link
-                  className={
-                    "text-xs uppercase py-3 font-bold block " +
-                    (window.location.href.indexOf("/admin/departments") !== -1
-                      ? "text-blue-500 hover:text-blue-600"
-                      : "text-gray-800 hover:text-gray-600")
-                  }
-                  to="/admin/departments"
-                >
-                  <i
-                    className={
-                      "fas fa-building mr-2 text-sm " +
-                      (window.location.href.indexOf("/admin/departments") !== -1
-                        ? "opacity-75"
-                        : "text-gray-400")
-                    }
-                  ></i>{" "}
-                  Departments
-                </Link>
-              </li>
+              {/* Departments Tab */}
+              <Tab
+                title="Departments"
+                path="/admin/departments"
+                icon="fas fa-building"
+              />
 
               {/* Users */}
-              <li className="items-center">
-                <Link
-                  className={
-                    "text-xs uppercase py-3 font-bold block " +
-                    (window.location.href.indexOf("/admin/users") !== -1
-                      ? "text-blue-500 hover:text-blue-600"
-                      : "text-gray-800 hover:text-gray-600")
-                  }
-                  to="/admin/users"
-                >
-                  <i
-                    className={
-                      "fas fa-user-tie mr-2 text-sm " +
-                      (window.location.href.indexOf("/admin/users") !== -1
-                        ? "opacity-75"
-                        : "text-gray-400")
-                    }
-                  ></i>{" "}
-                  Users
-                </Link>
-              </li>
+              <Tab
+                title="Users"
+                path="/admin/users"
+                icon="fas fa-user-tie"
+              />
 
               {/* Settings Tab */}
-              <li className="items-center">
-                <Link
-                  className={
-                    "text-xs uppercase py-3 font-bold block " +
-                    (window.location.href.indexOf("/admin/settings") !== -1
-                      ? "text-blue-500 hover:text-blue-600"
-                      : "text-gray-800 hover:text-gray-600")
-                  }
-                  to="/admin/settings"
-                >
-                  <i
-                    className={
-                      "fas fa-tools mr-2 text-sm " +
-                      (window.location.href.indexOf("/admin/settings") !== -1
-                        ? "opacity-75"
-                        : "text-gray-400")
-                    }
-                  ></i>{" "}
-                  Settings
-                </Link>
-              </li>
+              <Tab
+                title="Settings"
+                path="/admin/settings"
+                icon="fas fa-tools"
+              />
 
             </ul>
 
             <hr className="my-4 md:min-w-full" />
 
             <ul className="md:flex-col md:min-w-full flex flex-col list-none md:mb-4">
-              <li className="items-center">
-                <Link
-                  className="text-gray-800 hover:text-gray-600 text-xs uppercase py-3 font-bold block"
-                  to="/profile"
-                >
-                  <i className="fas fa-user-circle text-gray-500 mr-2 text-sm"></i>{" "}
-                  Profile Page
-                </Link>
-              </li>
 
-              <li className="items-center">
-                <Link
-                  className="text-gray-800 hover:text-gray-600 text-xs uppercase py-3 font-bold block"
-                  to="/auth/logout"
-                >
-                  <i className="fas fa-clipboard-list text-gray-400 mr-2 text-sm"></i>{" "}
-                  Logout
-                </Link>
-              </li>
+              {/* Current user Profile Page */}
+              <Tab
+                title="User Profile"
+                path="/admin/profile"
+                icon="fas fa-user-circle"
+              />
+
+              {/* User Logout */}
+              <Tab
+                title="Logout"
+                path="/auth/logout"
+                icon="fas fa-sign-out-alt"
+              />
+
             </ul>
           </div>
         </div>

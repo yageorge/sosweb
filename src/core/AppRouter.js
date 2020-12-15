@@ -3,6 +3,7 @@ import React, { useEffect, useState, useContext } from 'react';
 import Landing from "../views/landing/Landing";
 import Auth from "../views/auth/Auth"
 import Admin from "../views/admin/Admin";
+import Logout from "../views/auth/logout/Logout";
 
 import { AppContext } from "../services/context/AppContext"
 
@@ -34,21 +35,32 @@ function AppRouter() {
                 <ProtectedRoute
                     exact path="/"
                     renderCondition={true}
-                    component={Landing} />
+                    component={Landing}
+                />
+
+
+                {/* Load Auth when not authorized, redirect to /admin otherwise */}
+                <ProtectedRoute
+                    path="/auth/logout"
+                    renderCondition={true}
+                    component={Logout}
+                />
 
                 {/* Load Auth when not authorized, redirect to /admin otherwise */}
                 <ProtectedRoute
                     path="/auth"
                     renderCondition={!auth}
                     component={Auth}
-                    redirectTo="/admin" />
+                    redirectTo="/admin"
+                />
 
                 {/* Load Admin when authorized, redirect to /auth otherwise */}
                 <ProtectedRoute
                     path="/admin"
                     renderCondition={auth}
                     component={Admin}
-                    redirectTo="/auth" />
+                    redirectTo="/auth"
+                />
 
             </Switch>
         </BrowserRouter>

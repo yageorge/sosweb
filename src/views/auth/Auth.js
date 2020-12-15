@@ -28,9 +28,22 @@ export default function Auth() {
 
           {/* Rendering Login or Signup UI */}
           <Switch>
-            <Route exact path="/auth/login" component={Login} />
-            <Route exact path="/auth/signup" component={SignUp} />
-            <Redirect from="/auth" to="/auth/login" />
+            <Route
+
+              exact path="/auth/login"
+              component={Login}
+            />
+
+            <Route
+              exact path="/auth/signup"
+              component={SignUp}
+            />
+
+            <Redirect
+              from="/auth"
+              to="/auth/login"
+            />
+
           </Switch>
 
           {/* Common Footer */}
