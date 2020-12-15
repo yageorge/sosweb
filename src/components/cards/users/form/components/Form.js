@@ -8,6 +8,48 @@ export default function Forum(props) {
 
   const user = props.user
 
+  // Rendering Create elements (Email + passwords)
+  const renderCreateElements = () => {
+
+    return <>
+
+      {/* User Email Input */}
+      <UserInput
+        inputId="email"
+        inputName="Email"
+        inputType="email"
+        defaultValue={user ? user.email : ""}
+        maxLength="64"
+        onChange={props.onChange}
+      />
+
+      {/* Password Input */}
+      <UserInput
+        inputId="password"
+        inputName="Password"
+        inputType="password"
+        defaultValue={user ? user.email : ""}
+        minLength="8"
+        maxLength="64"
+        onChange={props.onChange}
+      />
+
+      {/* Password Confirmation Input */}
+      <UserInput
+        inputId="passwordConfirmation"
+        inputName="Confirm Password"
+        inputType="password"
+        defaultValue={user ? user.email : ""}
+        minLength="8"
+        maxLength="64"
+        onChange={props.onChange}
+      />
+
+    </>
+
+  }
+
+
   // Rendering table
   return (
     <div className="flex-auto px-4 lg:px-10 py-10 pt-0">
@@ -33,37 +75,14 @@ export default function Forum(props) {
           onChange={props.onChange}
         />
 
-        {/* User Email Input */}
-        <UserInput
-          inputId="email"
-          inputName="Email"
-          inputType="email"
-          defaultValue={user ? user.email : ""}
-          maxLength="64"
-          onChange={props.onChange}
-        />
-
-        {/* Password Input */}
-        <UserInput
-          inputId="password"
-          inputName="Password"
-          inputType="password"
-          defaultValue={user ? user.email : ""}
-          minLength="8"
-          maxLength="64"
-          onChange={props.onChange}
-        />
-
-        {/* Password Confirmation Input */}
-        <UserInput
-          inputId="passwordConfirmation"
-          inputName="Confirm Password"
-          inputType="password"
-          defaultValue={user ? user.email : ""}
-          minLength="8"
-          maxLength="64"
-          onChange={props.onChange}
-        />
+        {/*
+          Only show on Create : Email + Passwords
+          If user is not available in props 
+          */}
+        {!user ?
+          renderCreateElements()
+          : null
+        }
 
         {/* User Select Department */}
         <SelectDepartment

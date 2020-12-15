@@ -6,14 +6,17 @@ import AlertModal from "../../../../services/alert/AlertModal";
 
 export default function SelectDepartment(props) {
 
+    const [showSelect, setShowSelect] = useState(false)
+    const [selectDefaultValue, setSelectDefaultValue] = useState([]);
     const [selectDepartments, setSelectDepartments] = useState([]);
+
 
     // Fetching all current company's departments + Loading Select Values
     const getDepartments = async () => {
         try {
 
             const response = await Api.departments.getDepartments();
-            loadSelectValues(response.data);
+            await loadSelectValues(response.data);
 
         } catch (e) {
             AlertModal(
@@ -27,11 +30,48 @@ export default function SelectDepartment(props) {
         const options = departments.map(department => ({
 
             //Adding departmentId as "name" as another Select value, to be accepted by onChange event.target.value syntax in Create.js
-            "name": "departmentId",
+            // used department_id to match Laravel's foregin key syntax
+            "name": "department_id",
             "value": department.id,
             "label": department.name.toUpperCase()
+
         }))
+
+        //
+        await loadSelectDefaultValue(options)
+
+        // Set Loaded select options data into the Select data selectDepartments
         setSelectDepartments(options)
+
+        // Display Select dropdown once data is loaded
+        setShowSelect(true)
+
+    }
+
+    // Loading Select default value
+    const loadSelectDefaultValue = async (options) => {
+
+        // No defaultValue => Create mode
+        if (!props.defaultValue) {
+            // Choose first Select option as default
+            setSelectDefaultValue(options[0])
+
+            // Modify default User Department info with onChange call
+            props.onChange({ target: options[0] })
+        } else {
+            // DefaultValue exist => Edit mode
+
+            // Get defaultDepartment value from options
+            let defaultOption = options.filter((option) => option.value === props.defaultValue)
+
+            // Set defaultOption as default value in Select
+            setSelectDefaultValue(defaultOption)
+
+            // Modify default User Department info with onChange call
+            props.onChange({ target: defaultOption })
+
+        }
+
     }
 
     useEffect(() => {
@@ -48,14 +88,16 @@ export default function SelectDepartment(props) {
                 Departments
             </label>
 
-            {/* Dropdown departments select option */}
-            <Select
-                className="text-gray-900"
-                options={selectDepartments}
-
-                // wrapping event with a target object, to be accepted by onChange event.target.value syntax in Create.js
-                onChange={event => props.onChange({ target: event })}
-            />
+            {/* Dropdown departments select option - Only show when all select data are loaded */}
+            {showSelect ?
+                <Select
+                    className="text-gray-900"
+                    options={selectDepartments}
+                    defaultValue={selectDefaultValue}
+                    // wrapping event with a target object, to be accepted by onChange event.target.value syntax in Create.js
+                    onChange={event => props.onChange({ target: event })}
+                />
+                : null}
         </div>
     );
 

@@ -15,7 +15,6 @@ export default function Create() {
 
   // Saving User input in user state
   const onChange = (event) => {
-    console.log('Create / onchange event name/value: ', event.target.name + " / " + event.target.value)
     user[event.target.name] = event.target.value
     setUser(user)
     setShowAlert(false)
@@ -30,10 +29,9 @@ export default function Create() {
   const create = async (event) => {
     //Avoid form submission / refresh
     event.preventDefault()
-
+    console.log('Create / user: ', user)
     try {
 
-      // UNDONE - postman created succ user , but error here check /////////////////////
       const response = await Api.users.addUser(user);
 
       if (!response.data['error']) {

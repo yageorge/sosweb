@@ -34,8 +34,7 @@ export default function Edit() {
 
     } catch (e) {
       setShowForm(false)
-      // setAlert(e)
-      console.log('catch (error)', e)
+      setAlert(e)
       setShowAlert(true)
     }
   }
@@ -62,7 +61,6 @@ export default function Edit() {
     event.preventDefault()
 
     try {
-
       const response = await Api.users.updateUser(user, user.id);
 
       if (!response.data['error']) {
