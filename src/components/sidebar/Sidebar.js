@@ -25,7 +25,7 @@ export default function Sidebar() {
           {/* Link to Home + Name / on md size */}
           <Link
             className="md:block text-left md:pb-2 text-gray-700 mr-0 inline-block whitespace-no-wrap text-sm uppercase font-bold p-4 px-0"
-            to="/"
+            to="/admin"
           >
             Skill Optimizer Home
           </Link>

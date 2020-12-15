@@ -39,11 +39,12 @@ function AppRouter() {
                 />
 
 
-                {/* Load Auth when not authorized, redirect to /admin otherwise */}
+                {/* Load Loagout when authorized, redirect to / otherwise */}
                 <ProtectedRoute
                     path="/auth/logout"
-                    renderCondition={true}
+                    renderCondition={auth}
                     component={Logout}
+                    redirectTo="/"
                 />
 
                 {/* Load Auth when not authorized, redirect to /admin otherwise */}
