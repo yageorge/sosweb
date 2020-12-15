@@ -4,7 +4,6 @@ import { Switch, Route, Redirect } from "react-router-dom";
 import background from "../../assets/img/auth_bg.png";
 import Navbar from "../../components/navbars/AuthNavbar.js";
 import Footer from "../../components/footers/Footer";
-import Alert from "../../services/alert/Alert";
 
 import Login from "./login/Login";
 import SignUp from "./signup/SignUp";

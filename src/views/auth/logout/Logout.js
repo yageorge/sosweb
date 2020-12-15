@@ -5,7 +5,6 @@ import { useCookies } from "react-cookie";
 import { AppContext } from "../../../services/context/AppContext"
 import Api from "../../../services/api/Api";
 
-import AlertModal from "../../../services/alert/AlertModal";
 
 export default function Logout() {
 

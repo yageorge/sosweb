@@ -7,6 +7,8 @@ import Logout from "../views/auth/logout/Logout";
 
 import { AppContext } from "../services/context/AppContext"
 
+import Panel from "../components/panels/Panel";
+
 import {
     BrowserRouter,
     Redirect,
@@ -62,6 +64,8 @@ function AppRouter() {
                     component={Admin}
                     redirectTo="/auth"
                 />
+                {/* Testing: */}
+                <Route exact path="/Panel" component={Panel} />
 
             </Switch>
         </BrowserRouter>

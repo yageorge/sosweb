@@ -113,7 +113,7 @@ export default function Sidebar() {
               {/* Current user Profile Page */}
               <Tab
                 title="User Profile"
-                path="/admin/profile"
+                path="/admin/panel"
                 icon="fas fa-user-circle"
               />
 

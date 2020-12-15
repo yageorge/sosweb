@@ -33,7 +33,7 @@ export default function CheckBox(props) {
 
 
     const handleIsPaidChange = () => {
-        const newIsAdmin = isAdmin == 0 ? 1 : 0
+        const newIsAdmin = isAdmin === 0 ? 1 : 0
         setIsAdmin(newIsAdmin)
         props.onChange({ target: { name: "isAdmin", value: newIsAdmin } })
     }
