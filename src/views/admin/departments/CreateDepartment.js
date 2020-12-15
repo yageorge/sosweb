@@ -1,0 +1,15 @@
+import React from "react";
+
+import Create from "../../../components/cards/departments/form/Create";
+
+export default function CreateDepartment() {
+  return (
+    <>
+      <div className="flex flex-wrap mt-4">
+        <div className="w-full mb-12 px-4">
+          <Create />
+        </div>
+      </div>
+    </>
+  );
+}
