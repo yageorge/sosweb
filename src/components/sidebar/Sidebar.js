@@ -61,12 +61,7 @@ export default function Sidebar() {
               </div>
             </div>
 
-            {/* Heading */}
-            <h6 className="md:min-w-full text-gray-600 text-xs uppercase font-bold block pt-1 pb-4 no-underline">
-              Admin Panel
-            </h6>
-            {/* Navigation */}
-
+            {/* Unordered List */}
             <ul className="md:flex-col md:min-w-full flex flex-col list-none">
 
               {/* Dashboard Tab */}
@@ -76,12 +71,24 @@ export default function Sidebar() {
                 icon="fas fa-tv"
               />
 
+              {/* Line break */}
+              <hr className="my-4 md:min-w-full" />
+
+              {/* Categories Tab */}
+              <Tab
+                title="Categories"
+                path="/admin/categories"
+                icon="fas fa-layer-group"
+              />
+
               {/* Courses/trainings Tab */}
               <Tab
                 title="Courses/Trainings"
                 path="/admin/courses"
                 icon="fas fa-graduation-cap"
               />
+
+              <hr className="my-4 md:min-w-full" />
 
               {/* Departments Tab */}
               <Tab
@@ -104,11 +111,8 @@ export default function Sidebar() {
                 icon="fas fa-tools"
               />
 
-            </ul>
-
-            <hr className="my-4 md:min-w-full" />
-
-            <ul className="md:flex-col md:min-w-full flex flex-col list-none md:mb-4">
+              {/* Line break */}
+              <hr className="my-4 md:min-w-full" />
 
               {/* Current user Profile Page */}
               <Tab
@@ -125,6 +129,7 @@ export default function Sidebar() {
               />
 
             </ul>
+
           </div>
         </div>
       </nav>

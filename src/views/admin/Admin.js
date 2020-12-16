@@ -11,7 +11,17 @@ import Footer from "../../components/footers/Footer";
 // views
 
 import Dashboard from "./dashboard/Dashboard";
-import Courses from "./courses/Courses"
+
+import IndexCategories from "./categories/IndexCategories"
+import CreateCategory from "./categories/CreateCategory"
+import EditCategory from "./categories/EditCategory"
+
+import IndexCourses from "./courses/IndexCourses"
+import CreateCourse from "./courses/CreateCourse"
+import EditCourse from "./courses/EditCourse"
+import EditLectures from "./courses/EditLectures"
+
+
 import IndexDepartments from "./departments/IndexDepartments"
 import CreateDepartment from "./departments/CreateDepartment"
 import EditDepartment from "./departments/EditDepartment"
@@ -34,7 +44,17 @@ export default function Admin() {
 
           <Switch>
             <Route exact path="/admin/dashboard" component={Dashboard} />
-            <Route exact path="/admin/courses" component={Courses} />
+
+            {/* Categories Routes */}
+            <Route exact path="/admin/categories" component={IndexCategories} />
+            <Route exact path="/admin/category/create" component={CreateCategory} />
+            <Route exact path="/admin/category/:id/edit" component={EditCategory} />
+
+            {/* Courses Routes */}
+            <Route exact path="/admin/courses" component={IndexCourses} />
+            <Route exact path="/admin/course/create" component={CreateCourse} />
+            <Route exact path="/admin/course/:id/edit" component={EditCourse} />
+            <Route exact path="/admin/course/:id/lectures" component={EditLectures} />
 
             {/* Departments Routes */}
             <Route exact path="/admin/departments" component={IndexDepartments} />

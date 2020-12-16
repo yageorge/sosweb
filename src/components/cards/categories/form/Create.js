@@ -9,33 +9,34 @@ import Form from "./components/Form";
 export default function Create() {
 
   const history = useHistory();
-  const [user, setUser] = useState({})
+  const [category, setCategory] = useState({})
   const [alert, setAlert] = useState('')
   const [showAlert, setShowAlert] = useState(false)
 
-  // Saving User input in user state
+  // Saving User input in category state
   const onChange = (event) => {
-    user[event.target.name] = event.target.value
-    setUser(user)
+    category[event.target.name] = event.target.value
+    setCategory(category)
     setShowAlert(false)
   }
 
   // Back Button onClick
   const onClick = () => {
-    history.push("/admin/users")
+    history.push("/admin/categories")
   }
 
-  // Creating new User
+  // Creating new Deparment
   const create = async (event) => {
     //Avoid form submission / refresh
     event.preventDefault()
+
     try {
 
-      const response = await Api.users.addUser(user);
+      const response = await Api.categories.addCategory(category);
 
       if (!response.data['error']) {
-        // If no errors updating, return to users
-        history.push('/admin/users');
+        // If no errors updating, return to categories
+        history.push('/admin/categories');
 
       } else {
         setAlert(response.data['error'])
@@ -43,9 +44,8 @@ export default function Create() {
       }
 
     } catch (e) {
-      console.log('catch error create user: ', e)
-      // setAlert(e)
-      // setShowAlert(true)
+      setAlert(e)
+      setShowAlert(true)
     }
   }
 
@@ -57,7 +57,7 @@ export default function Create() {
 
       {/* Creating Table header including a back button */}
       <TableHeader
-        title="Create New User"
+        title="Create New Category"
         buttonIcon="fas fa-arrow-circle-left text-green-500 "
         onClick={onClick} />
 

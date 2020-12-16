@@ -1026,6 +1026,12 @@ video {
   background-color: rgba(72, 187, 120, var(--bg-opacity));
 }
 
+.bg-amber-500 {
+  --bg-opacity: 1;
+   background-color: #FFBF00;
+   background-color: rgba(255, 191, 0, var(--bg-opacity));
+}
+
 .bg-teal-200 {
   --bg-opacity: 1;
   background-color: #b2f5ea;

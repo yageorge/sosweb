@@ -20,20 +20,27 @@ export default function TableBody() {
         <thead>
             <tr>
 
-                <Header title="Firt Name" />
+                {/* Manage Lectures Button */}
+                <Header title="" />
 
-                <Header title="Last Name" />
+                <Header title="Title" />
 
-                <Header title="Email" />
+                <Header title="Description" />
 
-                <Header title="Department" />
+                <Header title="Lectures TTL" />
 
-                <Header title="Admin" />
+                <Header title="Minutes TTL" />
+
+                <Header title="Category" />
 
                 <Header title="Added" />
 
+                <Header title="Updated" />
+
+                {/* Edit Button */}
                 <Header title="" />
 
+                {/* Delete Button */}
                 <Header title="" />
 
             </tr>
