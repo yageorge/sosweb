@@ -20,6 +20,7 @@ export default function UserInput(props) {
                 defaultValue={props.defaultValue}
                 minLength={props.minLength}
                 maxLength={props.maxLength}
+                max={props.max}
                 onChange={props.onChange}
             />
         </div>

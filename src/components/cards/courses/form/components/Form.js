@@ -23,6 +23,7 @@ export default function Forum(props) {
           onChange={props.onChange}
         />
 
+        {/* Description Input */}
         <TextArea
           inputId="description"
           inputName="Description"
@@ -31,6 +32,16 @@ export default function Forum(props) {
           onChange={props.onChange}
           rows={2}
           cols={2}
+        />
+
+        {/* Points Input */}
+        <UserInput
+          inputId="points"
+          inputName="Points"
+          inputType="number"
+          defaultValue={course ? course.points : ""}
+          max="999"
+          onChange={props.onChange}
         />
 
         {/* User Select Category */}

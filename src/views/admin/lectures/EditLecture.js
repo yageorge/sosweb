@@ -1,8 +1,8 @@
 import React from "react";
 
-import Edit from "../../../components/cards/courses/form/Edit";
+import Edit from "../../../components/cards/lectures/form/Edit";
 
-export default function EditCourse() {
+export default function EditLecture() {
   return (
     <>
       <div className="flex flex-wrap mt-4">

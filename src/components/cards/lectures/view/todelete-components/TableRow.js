@@ -8,27 +8,27 @@ import AlertModal from '../../../../../services/alert/AlertModal';
 import Api from "../../../../../services/api/Api";
 
 
-// Rendering 1 course row
+// Rendering 1 lecture row
 export default function Row(props) {
 
     const history = useHistory();
-    const course = props.course
+    const lecture = props.lecture
 
     // On delete press - Show Alert:
     const onDelete = () => {
         AlertConfirmation(
             "Are you sure?",
             "Do you want to delete:",
-            course.firstName,
-            () => deleteCourse(course.id)
+            lecture.firstName,
+            () => deleteLecture(lecture.id)
         )
     }
 
-    // Deleting Course
-    const deleteCourse = async (id) => {
+    // Deleting Lecture
+    const deleteLecture = async (id) => {
         try {
 
-            const response = await Api.courses.deleteCourse(id);
+            const response = await Api.lectures.deleteLecture(id);
 
             // If no error occurred:
             if (!response.data['error']) {
@@ -36,7 +36,7 @@ export default function Row(props) {
                 window.location.reload();
             } else {
 
-                // Inform course of an error
+                // Inform lecture of an error
                 const errorMsg = response.data['error']
                 AlertModal(
                     "An error has occured: " + errorMsg
@@ -71,38 +71,31 @@ export default function Row(props) {
                 <button
                     className="bg-teal-500 text-white font-bold uppercase text-xs px-2 py-2 ml-2 mt-2 rounded shadow hover:shadow-md outline-none focus:outline-none ease-linear transition-all duration-150"
                     type="button"
-                    onClick={() => {
-                        history.push({
-                            pathname: `/admin/course/${course.id}/lectures`,
-                            state: {
-                                courseTitle: course.title, //passing course title in state params
-                            },
-                        })
-                    }}
+                    onClick={() => { history.push(`/admin/lecture/${lecture.id}/lectures`) }}
                 >
                     Lectures
                 </button>
             </td>
 
-            <Cell value={course.title} />
+            <Cell value={lecture.title} />
 
-            <Cell value={course.description} />
+            <Cell value={lecture.description} />
 
-            <Cell value={course.totalLectures} />
+            <Cell value={lecture.totalLectures} />
 
-            <Cell value={course.totalMinutes} />
+            <Cell value={lecture.totalMinutes} />
 
-            <Cell value={course.points} />
+            <Cell value={lecture.points} />
 
-            <Cell value={course.categoryName} />
+            <Cell value={lecture.categoryName} />
 
-            <Cell value={moment(course.created_at).format("DD MMM YYYY - hh:mm a")} />
+            <Cell value={moment(lecture.created_at).format("DD MMM YYYY - hh:mm a")} />
 
-            <Cell value={moment(course.updated_at).format("DD MMM YYYY - hh:mm a")} />
+            <Cell value={moment(lecture.updated_at).format("DD MMM YYYY - hh:mm a")} />
 
             {/* Edit button */}
             <td>
-                <Link to={`/admin/course/${course.id}/edit`}>
+                <Link to={`/admin/lecture/${lecture.id}/edit`}>
                     <i className="far fa-edit text-green-500 text-md"></i>
                 </Link>
             </td>

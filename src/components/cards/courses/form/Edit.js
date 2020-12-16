@@ -61,6 +61,7 @@ export default function Edit() {
     event.preventDefault()
 
     try {
+      console.log('course: ', course)
       const response = await Api.courses.updateCourse(course, course.id);
 
       if (!response.data['error']) {
@@ -74,8 +75,9 @@ export default function Edit() {
       }
 
     } catch (e) {
-      setAlert(e)
-      setShowAlert(true)
+      console.log('Catch error courses/ Edit: ', e)
+      // setAlert(e)
+      // setShowAlert(true)
     }
   }
 

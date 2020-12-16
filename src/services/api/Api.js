@@ -4,6 +4,7 @@ import Departments from "./Departments";
 import Users from "./User";
 import Categories from "./Categories";
 import Courses from "./Courses";
+import Lectures from "./Lectures";
 
 axios.defaults.baseURL = 'http://127.0.0.1:8000/api'
 axios.defaults.withCredentials = true
@@ -33,4 +34,6 @@ export default {
     categories: { ...Categories },
 
     courses: { ...Courses },
+
+    lectures: { ...Lectures },
 }

@@ -19,7 +19,8 @@ import EditCategory from "./categories/EditCategory"
 import IndexCourses from "./courses/IndexCourses"
 import CreateCourse from "./courses/CreateCourse"
 import EditCourse from "./courses/EditCourse"
-import EditLectures from "./courses/EditLectures"
+
+import IndexLectures from "./lectures/IndexLectures"
 
 
 import IndexDepartments from "./departments/IndexDepartments"
@@ -54,7 +55,9 @@ export default function Admin() {
             <Route exact path="/admin/courses" component={IndexCourses} />
             <Route exact path="/admin/course/create" component={CreateCourse} />
             <Route exact path="/admin/course/:id/edit" component={EditCourse} />
-            <Route exact path="/admin/course/:id/lectures" component={EditLectures} />
+
+            {/* Courses / Lectures Routes */}
+            <Route exact path="/admin/course/:courseId/lectures" component={IndexLectures} />
 
             {/* Departments Routes */}
             <Route exact path="/admin/departments" component={IndexDepartments} />

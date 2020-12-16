@@ -30,7 +30,6 @@ export default function Create() {
     //Avoid form submission / refresh
     event.preventDefault()
     try {
-
       const response = await Api.courses.addCourse(course);
 
       if (!response.data['error']) {

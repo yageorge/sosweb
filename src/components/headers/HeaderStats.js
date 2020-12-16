@@ -39,6 +39,14 @@ export default function HeaderStats() {
               </div>
               <div className="w-full lg:w-6/12 xl:w-3/12 px-4">
                 <CardStats
+                  statSubtitle="TTL KPI Score"
+                  statTitle="178"
+                  statIconName="fas fa-clipboard-check"
+                  statIconColor="bg-pink-500"
+                />
+              </div>
+              <div className="w-full lg:w-6/12 xl:w-3/12 px-4">
+                <CardStats
                   statSubtitle="Completed Courses"
                   statTitle="24"
                   statIconName="fas fa-percent"
