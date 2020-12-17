@@ -1,7 +1,6 @@
-import { useHistory } from "react-router-dom";
-import { useLocation } from 'react-router-dom';
-import TableHeader from "../../common/TableHeader"
+import { useHistory, useLocation } from "react-router-dom";
 
+import TableHeader from "../../common/TableHeader"
 import Panel from "./components/Panel"
 
 export default function Lectures(props) {
@@ -10,8 +9,9 @@ export default function Lectures(props) {
   const location = useLocation();
 
   // Retreiving courseTitle from history.push / state
-
   const courseTitle = location.state.courseTitle
+
+  const courseId = props.courseId
   const lectures = props.lectures
   const lecturesCount = lectures.length
 
@@ -19,7 +19,12 @@ export default function Lectures(props) {
   // Redirect to Create new Lecture
   const onClick = (e) => {
     e.preventDefault()
-    // history.push("/admin/lecture/create")
+    history.push({
+      pathname: `/admin/course/${courseId}/lecture/create`,
+      state: {
+        courseTitle: courseTitle, //passing course title in state params
+      },
+    })
   }
 
   return (
@@ -37,7 +42,13 @@ export default function Lectures(props) {
         {/* Render Table with all lectures */}
         {lectures ?
           <div className="block w-full overflow-x-auto">
-            <Panel items={lectures} />
+
+            <Panel
+              courseId={courseId}
+              lectures={lectures}
+              refresh={props.refresh}
+            />
+
           </div> : null
         }
 

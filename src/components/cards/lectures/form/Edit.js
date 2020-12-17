@@ -8,23 +8,26 @@ import Form from "./components/Form";
 
 export default function Edit() {
 
+  //Receiving course + lecture id param
+  const { courseId } = useParams();
+  const { lectureId } = useParams();
+
   const history = useHistory();
-  const [department, setDepartment] = useState({})
+  const [lecture, setLecture] = useState({})
   const [showForm, setShowForm] = useState(false)
   const [alert, setAlert] = useState('')
   const [showAlert, setShowAlert] = useState(false)
 
-  //Receiving department id param to edit
-  const { id } = useParams();
 
-  // Get department to edit
-  const getDepartment = async () => {
+
+  // Get lecture to edit
+  const getLecture = async () => {
     try {
 
-      const response = await Api.departments.editDepartment(id);
+      const response = await Api.lectures.editLecture(lectureId);
 
       if (!response.data['error']) {
-        setDepartment(response.data)
+        setLecture(response.data)
         setShowForm(true)
       } else {
         setShowForm(false)
@@ -40,13 +43,13 @@ export default function Edit() {
   }
 
   useEffect(() => {
-    getDepartment();
+    getLecture();
   }, [])
 
-  // Capturing user input - Deparment data
+  // Capturing lecture input - Lecture data
   const onChange = (event) => {
-    department[event.target.name] = event.target.value
-    setDepartment(department)
+    lecture[event.target.name] = event.target.value
+    setLecture(lecture)
     setShowAlert(false)
   }
 
@@ -55,19 +58,18 @@ export default function Edit() {
     history.goBack();
   }
 
-  // Update Deparment
+  // Update Lecture
   const update = async (event) => {
     //Avoid form submission / refresh
     event.preventDefault()
 
     try {
-
-      const response = await Api.departments.updateDepartment(department, department.id);
+      const response = await Api.lectures.updateLecture(lecture, lecture.id);
 
       if (!response.data['error']) {
 
-        // If no errors updating, return to departments
-        history.push('/admin/departments');
+        // If no errors updating, return to lectures
+        history.goBack();
 
       } else {
         setAlert(response.data['error'])
@@ -75,8 +77,9 @@ export default function Edit() {
       }
 
     } catch (e) {
-      setAlert(e)
-      setShowAlert(true)
+      console.log('Catch error lectures/ Edit: ', e)
+      // setAlert(e)
+      // setShowAlert(true)
     }
   }
 
@@ -88,17 +91,17 @@ export default function Edit() {
 
       {/* Creating Table header including a back button */}
       <TableHeader
-        title="Edit Department"
+        title="Edit Lecture"
         buttonIcon="fas fa-arrow-circle-left text-green-500 "
         onClick={onClick} />
 
-      {/* Only show Edit form when getDepartment is complete */}
+      {/* Only show Edit form when getLecture is complete */}
       {showForm ?
         <Form
           action="Edit"
           onChange={onChange}
           submitFunction={update}
-          department={department} />
+          lecture={lecture} />
         : null}
 
       {/* Alert handling */}

@@ -21,8 +21,7 @@ export default function TextArea(props) {
         defaultValue={props.defaultValue}
         maxLength={props.maxLength}
         onChange={props.onChange}
-        rows={props.row}
-        cols={props.cols}
+        rows={props.rows}
       />
 
     </div>

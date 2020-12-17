@@ -22,7 +22,7 @@ export default function Create() {
 
   // Back Button onClick
   const onClick = () => {
-    history.push("/admin/departments")
+    history.goBack();
   }
 
   // Creating new Deparment

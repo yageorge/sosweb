@@ -5,6 +5,9 @@ import Auth from "../views/auth/Auth"
 import Admin from "../views/admin/Admin";
 import Logout from "../views/auth/logout/Logout";
 
+// To Delete
+import Test from "../views/admin/Test"
+
 import { AppContext } from "../services/context/AppContext"
 
 import {
@@ -62,6 +65,10 @@ function AppRouter() {
           component={Admin}
           redirectTo="/auth"
         />
+
+
+        {/* Test Page to Delete */}
+        <Route exact path="/test" component={Test} />
 
       </Switch>
     </BrowserRouter>

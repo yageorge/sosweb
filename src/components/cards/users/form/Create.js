@@ -22,7 +22,7 @@ export default function Create() {
 
   // Back Button onClick
   const onClick = () => {
-    history.push("/admin/users")
+    history.goBack();
   }
 
   // Creating new User

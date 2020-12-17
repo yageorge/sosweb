@@ -52,7 +52,7 @@ export default function Edit() {
 
   // Back Button onClick
   const onClick = () => {
-    history.push("/admin/users")
+    history.goBack();
   }
 
   // Update User

@@ -13,7 +13,7 @@ export default function HeaderStats() {
           <div>
             {/* Card stats */}
             <div className="flex flex-wrap">
-              <div className="w-full lg:w-6/12 xl:w-3/12 px-4">
+              <div className="w-full lg:w-6/12 xl:w-3/12 px-4 m-2">
                 <CardStats
                   statSubtitle="Users"
                   statTitle="277"
@@ -21,7 +21,7 @@ export default function HeaderStats() {
                   statIconColor="bg-red-500"
                 />
               </div>
-              <div className="w-full lg:w-6/12 xl:w-3/12 px-4">
+              <div className="w-full lg:w-6/12 xl:w-3/12 px-4 m-2">
                 <CardStats
                   statSubtitle="Courses"
                   statTitle="36"
@@ -29,23 +29,23 @@ export default function HeaderStats() {
                   statIconColor="bg-green-500"
                 />
               </div>
-              <div className="w-full lg:w-6/12 xl:w-3/12 px-4">
+              <div className="w-full lg:w-6/12 xl:w-3/12 px-4 m-2">
                 <CardStats
-                  statSubtitle="Enlistments"
+                  statSubtitle="Enrollments"
                   statTitle="78"
                   statIconName="fas fa-clipboard-check"
                   statIconColor="bg-pink-500"
                 />
               </div>
-              <div className="w-full lg:w-6/12 xl:w-3/12 px-4">
+              <div className="w-full lg:w-6/12 xl:w-3/12 px-4 m-2">
                 <CardStats
-                  statSubtitle="TTL KPI Score"
+                  statSubtitle="KPI Points"
                   statTitle="178"
                   statIconName="fas fa-clipboard-check"
                   statIconColor="bg-pink-500"
                 />
               </div>
-              <div className="w-full lg:w-6/12 xl:w-3/12 px-4">
+              <div className="w-full lg:w-6/12 xl:w-3/12 px-4 m-2">
                 <CardStats
                   statSubtitle="Completed Courses"
                   statTitle="24"

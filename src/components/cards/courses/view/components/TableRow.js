@@ -14,6 +14,16 @@ export default function Row(props) {
     const history = useHistory();
     const course = props.course
 
+    // Manage Lectures Button
+    const manageLectures = async (courseId) => {
+        history.push({
+            pathname: `/admin/course/${courseId}/lectures`,
+            state: {
+                courseTitle: course.title, //passing course title in state params
+            },
+        })
+    }
+
     // On delete press - Show Alert:
     const onDelete = () => {
         AlertConfirmation(
@@ -69,16 +79,9 @@ export default function Row(props) {
             {/* Manage Lectures button */}
             <td>
                 <button
-                    className="bg-teal-500 text-white font-bold uppercase text-xs px-2 py-2 ml-2 mt-2 rounded shadow hover:shadow-md outline-none focus:outline-none ease-linear transition-all duration-150"
+                    className="bg-red-500 text-white font-bold text-xs px-2 py-2 ml-2 mt-2 rounded shadow hover:shadow-md outline-none focus:outline-none ease-linear transition-all duration-150"
                     type="button"
-                    onClick={() => {
-                        history.push({
-                            pathname: `/admin/course/${course.id}/lectures`,
-                            state: {
-                                courseTitle: course.title, //passing course title in state params
-                            },
-                        })
-                    }}
+                    onClick={() => manageLectures(course.id)}
                 >
                     Lectures
                 </button>

@@ -52,7 +52,7 @@ export default function Edit() {
 
   // Back Button onClick
   const onClick = () => {
-    history.push("/admin/courses")
+    history.goBack();
   }
 
   // Update Course
@@ -61,7 +61,6 @@ export default function Edit() {
     event.preventDefault()
 
     try {
-      console.log('course: ', course)
       const response = await Api.courses.updateCourse(course, course.id);
 
       if (!response.data['error']) {

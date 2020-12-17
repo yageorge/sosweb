@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import { useHistory } from "react-router-dom";
+import { useHistory, useParams, useLocation } from "react-router-dom";
 
 import Api from "../../../../services/api/Api";
 import Alert from "../../../../services/alert/Alert";
@@ -9,14 +9,22 @@ import Form from "./components/Form";
 export default function Create() {
 
   const history = useHistory();
-  const [course, setCourse] = useState({})
+  const location = useLocation();
+
+  const [lecture, setLecture] = useState({})
   const [alert, setAlert] = useState('')
   const [showAlert, setShowAlert] = useState(false)
 
-  // Saving Course input in course state
+  //Receiving course id param
+  const { courseId } = useParams();
+
+  // Retreiving courseTitle from history.push / state
+  const courseTitle = location.state.courseTitle
+
+  // Saving Lecture input in lecture state
   const onChange = (event) => {
-    course[event.target.name] = event.target.value
-    setCourse(course)
+    lecture[event.target.name] = event.target.value
+    setLecture(lecture)
     setShowAlert(false)
   }
 
@@ -25,16 +33,19 @@ export default function Create() {
     history.goBack();
   }
 
-  // Creating new Course
+  // Creating new Lecture
   const create = async (event) => {
     //Avoid form submission / refresh
     event.preventDefault()
     try {
-      const response = await Api.courses.addCourse(course);
+      // Adding course_id in params
+      lecture["course_id"] = courseId
+
+      const response = await Api.lectures.addLecture(lecture);
 
       if (!response.data['error']) {
-        // If no errors updating, return to courses
-        history.push('/admin/courses');
+        // If no errors , return back to lectures
+        history.goBack();
 
       } else {
         setAlert(response.data['error'])
@@ -42,7 +53,7 @@ export default function Create() {
       }
 
     } catch (e) {
-      console.log('catch error create course: ', e)
+      console.log('catch error create lecture: ', e)
       // setAlert(e)
       // setShowAlert(true)
     }
@@ -56,7 +67,7 @@ export default function Create() {
 
       {/* Creating Table header including a back button */}
       <TableHeader
-        title="Create New Course"
+        title={courseTitle.toUpperCase() + ": New Lecture"}
         buttonIcon="fas fa-arrow-circle-left text-green-500 "
         onClick={onClick} />
 
