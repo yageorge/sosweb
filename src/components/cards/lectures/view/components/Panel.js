@@ -74,10 +74,10 @@ export default function Panel(props) {
 
 
                 {/* Edit button */}
-                <div className="mr-2">
+                <div className="mr-4">
                   <td>
                     <Link to={`/admin/course/${props.courseId}/lecture/${lecture.id}/edit/`}>
-                      <i className="far fa-edit text-green-500 text-md"></i>
+                      <i className="far fa-edit text-green-500 text-2xl"></i>
                     </Link>
                   </td>
                 </div>
@@ -87,7 +87,7 @@ export default function Panel(props) {
                   <td>
                     <button
                       onClick={() => onDelete(lecture.id, lecture.title)}>
-                      <i className="fas fa-trash text-red-500 text-md"></i>
+                      <i className="fas fa-trash text-red-500 text-md text-2xl"></i>
                     </button>
                   </td>
                 </div>

@@ -9,7 +9,7 @@ const renderDepartments = (departments) => {
     return (
 
       <tr>
-        <td>
+        <td className="p-8">
           Loading departments ...
         </td>
       </tr>
@@ -21,7 +21,7 @@ const renderDepartments = (departments) => {
     return (
 
       <tr>
-        <td>
+        <td className="p-8">
           No Departments yet.
         </td>
       </tr>

@@ -9,7 +9,7 @@ const renderCategories = (categories) => {
     return (
 
       <tr>
-        <td>
+        <td className="p-8">
           Loading categories ...
         </td>
       </tr>
@@ -21,7 +21,7 @@ const renderCategories = (categories) => {
     return (
 
       <tr>
-        <td>
+        <td className="p-8">
           No Categories yet.
         </td>
       </tr>

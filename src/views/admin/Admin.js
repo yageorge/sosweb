@@ -5,7 +5,6 @@ import { Switch, Route, Redirect } from "react-router-dom";
 
 import AdminNavbar from "../../components/navbars/AdminNavbar";
 import Sidebar from "../../components/sidebar/Sidebar";
-import HeaderStats from "../../components/headers/HeaderStats";
 import Footer from "../../components/footers/Footer";
 
 // views
@@ -39,47 +38,51 @@ export default function Admin() {
   return (
     <>
       <Sidebar />
-      <div className="relative md:ml-64 bg-gray-200">
+      <div className="relative md:ml-58 bg-gray-400">
+
+        {/* Admin Navigation Bar Header*/}
         <AdminNavbar />
-        {/* Header */}
-        <HeaderStats />
-        <div className="px-4 md:px-10 mx-auto w-full -m-24">
 
-          <Switch>
-            <Route exact path="/admin/dashboard" component={Dashboard} />
+        <div className="relative bg-blue-600 pt-40 pb-32 pt-12">
 
-            {/* Categories Routes */}
-            <Route exact path="/admin/categories" component={IndexCategories} />
-            <Route exact path="/admin/category/create" component={CreateCategory} />
-            <Route exact path="/admin/category/:id/edit" component={EditCategory} />
+          <div className="px-4 mx-auto">
 
-            {/* Courses Routes */}
-            <Route exact path="/admin/courses" component={IndexCourses} />
-            <Route exact path="/admin/course/create" component={CreateCourse} />
-            <Route exact path="/admin/course/:id/edit" component={EditCourse} />
+            <Switch>
+              <Route exact path="/admin/dashboard" component={Dashboard} />
 
-            {/* Courses / Lectures Routes */}
-            <Route exact path="/admin/course/:courseId/lectures" component={IndexLectures} />
-            <Route exact path="/admin/course/:courseId/lecture/create" component={CreateLecture} />
-            <Route exact path="/admin/course/:courseId/lecture/:lectureId/edit/" component={EditLecture} />
+              {/* Categories Routes */}
+              <Route exact path="/admin/categories" component={IndexCategories} />
+              <Route exact path="/admin/category/create" component={CreateCategory} />
+              <Route exact path="/admin/category/:id/edit" component={EditCategory} />
 
-            {/* Departments Routes */}
-            <Route exact path="/admin/departments" component={IndexDepartments} />
-            <Route exact path="/admin/department/create" component={CreateDepartment} />
-            <Route exact path="/admin/department/:id/edit" component={EditDepartment} />
+              {/* Courses Routes */}
+              <Route exact path="/admin/courses" component={IndexCourses} />
+              <Route exact path="/admin/course/create" component={CreateCourse} />
+              <Route exact path="/admin/course/:id/edit" component={EditCourse} />
 
-            {/* Users Routes */}
-            <Route exact path="/admin/users" component={IndexUsers} />
-            <Route exact path="/admin/user/create" component={CreateUser} />
-            <Route exact path="/admin/user/:id/edit" component={EditUser} />
+              {/* Courses / Lectures Routes */}
+              <Route exact path="/admin/course/:courseId/lectures" component={IndexLectures} />
+              <Route exact path="/admin/course/:courseId/lecture/create" component={CreateLecture} />
+              <Route exact path="/admin/course/:courseId/lecture/:lectureId/edit/" component={EditLecture} />
 
-            {/* Redirect * to dashboard */}
-            <Redirect from="/admin" to="/admin/dashboard" />
+              {/* Departments Routes */}
+              <Route exact path="/admin/departments" component={IndexDepartments} />
+              <Route exact path="/admin/department/create" component={CreateDepartment} />
+              <Route exact path="/admin/department/:id/edit" component={EditDepartment} />
 
-          </Switch>
+              {/* Users Routes */}
+              <Route exact path="/admin/users" component={IndexUsers} />
+              <Route exact path="/admin/user/create" component={CreateUser} />
+              <Route exact path="/admin/user/:id/edit" component={EditUser} />
 
-          {/* Common Footer */}
-          <Footer />
+              {/* Redirect * to dashboard */}
+              <Redirect from="/admin" to="/admin/dashboard" />
+
+            </Switch>
+
+            {/* Common Footer */}
+            <Footer />
+          </div>
         </div>
       </div>
     </>

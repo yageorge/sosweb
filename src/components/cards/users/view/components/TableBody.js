@@ -9,7 +9,7 @@ const renderUsers = (users) => {
     return (
 
       <tr>
-        <td>
+        <td className="p-8">
           Loading users ...
         </td>
       </tr>
@@ -21,7 +21,7 @@ const renderUsers = (users) => {
     return (
 
       <tr>
-        <td>
+        <td className="p-8">
           No Users yet.
         </td>
       </tr>

@@ -8,7 +8,7 @@ export default function Footer(props) {
       < footer className={
         (props.absolute
           ? "absolute "
-          : "block ") + "w-full bottom-0 bg-gray-800 pb-6"
+          : "block ") + "w-full bottom-auto bg-gray-800 pb-6"
       }>
 
         <div className="container mx-auto px-4">

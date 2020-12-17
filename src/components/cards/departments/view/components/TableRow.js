@@ -63,6 +63,19 @@ export default function Row(props) {
     return (<>
 
         <tr>
+
+            {/* Manage Courses button */}
+            <td>
+                <button
+                    className="bg-red-500 text-white font-bold text-xs px-2 py-2 ml-2 mt-2 rounded shadow hover:shadow-md outline-none focus:outline-none ease-linear transition-all duration-150"
+                    type="button"
+                // onClick={() => manageLectures(course.id)}
+                >
+                    Courses
+                </button>
+            </td>
+
+
             <Cell value={department.name} />
 
             <Cell value={moment(department.created_at).format("DD MMM YYYY - hh:mm a")} />

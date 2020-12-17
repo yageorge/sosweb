@@ -9,7 +9,7 @@ const renderCourses = (courses) => {
     return (
 
       <tr>
-        <td>
+        <td className="p-8">
           Loading courses ...
         </td>
       </tr>
@@ -21,7 +21,7 @@ const renderCourses = (courses) => {
     return (
 
       <tr>
-        <td>
+        <td className="p-8">
           No Courses yet.
         </td>
       </tr>
