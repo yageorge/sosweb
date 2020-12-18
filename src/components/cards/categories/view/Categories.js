@@ -22,7 +22,7 @@ export default function Categories(props) {
         {/* Table header + Create category button */}
         <TableHeader
           title="Categories"
-          buttonIcon="fas fa-plus-circle text-amber-500 "
+          buttonIcon="fas fa-plus-circle text-amber-500"
           onClick={onClick} />
 
         {/* Render Table with all categories */}

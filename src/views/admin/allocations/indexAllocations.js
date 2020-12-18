@@ -7,7 +7,6 @@ import Allocations from "../../../components/cards/allocations/view/Allocations"
 export default function IndexAllocations() {
 
     const [departments, setDepartments] = useState(null);
-    const [courses, setCourses] = useState(null);
 
     const getDepartments = async () => {
         try {
@@ -20,20 +19,8 @@ export default function IndexAllocations() {
         }
     }
 
-    const getCourses = async () => {
-        try {
-
-            const response = await Api.courses.getCourses();
-            setCourses(response.data);
-
-        } catch (e) {
-            alert('Failed to get Courses: ', e);
-        }
-    }
-
     const getData = async () => {
         await getDepartments()
-        await getCourses()
     }
 
     useEffect(() => {
@@ -44,7 +31,7 @@ export default function IndexAllocations() {
         <>
             <div className="flex flex-wrap mt-4">
                 <div className="w-full mb-12 px-4">
-                    <Allocations departments={departments} courses={courses} />
+                    <Allocations departments={departments} />
                 </div>
             </div>
         </>

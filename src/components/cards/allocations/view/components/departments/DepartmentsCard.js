@@ -4,7 +4,20 @@ import React from 'react';
 export default function DepartmentsCard(props) {
   const departments = props.departments
 
-  const [openTab, setOpenTab] = React.useState(1);
+  const [openTab, setOpenTab] = React.useState('');
+
+  // Fetching 1 depatment's courses
+  const onButtonClick = async (event, departmentId) => {
+    event.preventDefault();
+
+    // Setting departmentId as current selected Tab
+    setOpenTab(departmentId);
+
+    // Function run to get allocations of selected Department
+    props.getAllocations(departmentId)
+
+  }
+
 
   const renderDepartments = () => {
 
@@ -22,9 +35,8 @@ export default function DepartmentsCard(props) {
                   ? "text-white bg-blue-600"
                   : "text-blue-600 bg-white")
               }
-              onClick={e => {
-                e.preventDefault();
-                setOpenTab(department.id);
+              onClick={event => {
+                onButtonClick(event, department.id)
               }}
               data-toggle="tab"
               href="#link1"
@@ -41,8 +53,17 @@ export default function DepartmentsCard(props) {
 
   return (
 
-    <div className="flex flex-col w-1/4 rounded-lg bg-blue-200 m-4 p-4">
-      {renderDepartments()}
+    <div className="flex flex-col w-1/4 divide-y divide-blue-500">
+
+      <p className="rounded-t-lg bg-blue-200 mx-4 p-4 text-center text-md font-bold text-blue-600">
+        Departments
+      </p>
+
+      <hr className="mx-4" />
+
+      <div className="rounded-b-lg bg-blue-200 mx-4 mb-4 p-4">
+        {renderDepartments()}
+      </div>
     </div>
 
   );

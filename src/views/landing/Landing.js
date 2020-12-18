@@ -50,14 +50,14 @@ export default function Landing() {
               y="0"
             >
               <polygon
-                className="text-gray-300 fill-current"
+                className="text-red-900 fill-current"
                 points="2560 0 2560 100 0 100"
               ></polygon>
             </svg>
           </div>
         </div>
 
-        <section className="pb-20 bg-gray-300 -mt-24">
+        <section className="pb-20 bg-gray-300">
           <div className="container mx-auto px-4">
             <div className="flex flex-wrap">
               <div className="flex flex-wrap items-center mt-32">

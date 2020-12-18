@@ -39,12 +39,12 @@ export default function Admin() {
   return (
     <>
       <Sidebar />
-      <div className="relative md:ml-58 bg-gray-400">
+      <div className="relative md:ml-52 bg-gray-400">
 
         {/* Admin Navigation Bar Header*/}
         <AdminNavbar />
 
-        <div className="relative bg-blue-600 pt-40 pb-32 pt-12">
+        <div className="relative bg-blue-600 pt-24 pb-32">
 
           <div className="px-4 mx-auto">
 
