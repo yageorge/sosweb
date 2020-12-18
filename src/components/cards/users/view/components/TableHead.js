@@ -26,6 +26,8 @@ export default function TableBody() {
 
                 <Header title="Email" />
 
+                <Header title="Target" />
+
                 <Header title="Department" />
 
                 <Header title="Admin" />

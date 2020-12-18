@@ -25,6 +25,7 @@ export default function CoursesCard(props) {
     return (
 
       <ul
+        className="grid grid-cols-2 gap-4"
         role="tablist"
       >
 
@@ -53,7 +54,7 @@ export default function CoursesCard(props) {
   // Rendering table
   return (
 
-    <div className="flex flex-col w-1/4 divide-y divide-blue-500">
+    <div className="flex flex-col w-2/4 divide-y divide-blue-500">
 
       <p className="rounded-t-lg bg-blue-200 mx-4 p-4 text-center text-md font-bold text-blue-600">
         {props.title}

@@ -70,6 +70,8 @@ export default function Row(props) {
 
             <Cell value={user.email} />
 
+            <Cell value={user.pointsTarget} />
+
             <Cell value={user.departmentName} />
 
             <Cell value={user.isAdmin ? "Admin" : ""} />
