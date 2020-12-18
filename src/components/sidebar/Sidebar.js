@@ -88,6 +88,13 @@ export default function Sidebar() {
                 icon="fas fa-graduation-cap"
               />
 
+              {/* Allocations Tab */}
+              <Tab
+                title="Allocations"
+                path="/admin/allocations"
+                icon="fab fa-connectdevelop"
+              />
+
               <hr className="my-4 md:min-w-full" />
 
               {/* Departments Tab */}

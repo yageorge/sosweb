@@ -11,6 +11,14 @@ import Footer from "../../components/footers/Footer";
 
 import Dashboard from "./dashboard/Dashboard";
 
+import IndexDepartments from "./departments/IndexDepartments"
+import CreateDepartment from "./departments/CreateDepartment"
+import EditDepartment from "./departments/EditDepartment"
+
+import IndexUsers from "./users/IndexUsers"
+import CreateUser from "./users/CreateUser"
+import EditUser from "./users/EditUser"
+
 import IndexCategories from "./categories/IndexCategories"
 import CreateCategory from "./categories/CreateCategory"
 import EditCategory from "./categories/EditCategory"
@@ -23,15 +31,8 @@ import IndexLectures from "./lectures/IndexLectures"
 import CreateLecture from "./lectures/CreateLecture"
 import EditLecture from "./lectures/EditLecture"
 
+import IndexAllocations from "./allocations/indexAllocations"
 
-
-import IndexDepartments from "./departments/IndexDepartments"
-import CreateDepartment from "./departments/CreateDepartment"
-import EditDepartment from "./departments/EditDepartment"
-
-import IndexUsers from "./users/IndexUsers"
-import CreateUser from "./users/CreateUser"
-import EditUser from "./users/EditUser"
 
 export default function Admin() {
 
@@ -50,6 +51,16 @@ export default function Admin() {
             <Switch>
               <Route exact path="/admin/dashboard" component={Dashboard} />
 
+              {/* Departments Routes */}
+              <Route exact path="/admin/departments" component={IndexDepartments} />
+              <Route exact path="/admin/department/create" component={CreateDepartment} />
+              <Route exact path="/admin/department/:id/edit" component={EditDepartment} />
+
+              {/* Users Routes */}
+              <Route exact path="/admin/users" component={IndexUsers} />
+              <Route exact path="/admin/user/create" component={CreateUser} />
+              <Route exact path="/admin/user/:id/edit" component={EditUser} />
+
               {/* Categories Routes */}
               <Route exact path="/admin/categories" component={IndexCategories} />
               <Route exact path="/admin/category/create" component={CreateCategory} />
@@ -65,15 +76,8 @@ export default function Admin() {
               <Route exact path="/admin/course/:courseId/lecture/create" component={CreateLecture} />
               <Route exact path="/admin/course/:courseId/lecture/:lectureId/edit/" component={EditLecture} />
 
-              {/* Departments Routes */}
-              <Route exact path="/admin/departments" component={IndexDepartments} />
-              <Route exact path="/admin/department/create" component={CreateDepartment} />
-              <Route exact path="/admin/department/:id/edit" component={EditDepartment} />
-
-              {/* Users Routes */}
-              <Route exact path="/admin/users" component={IndexUsers} />
-              <Route exact path="/admin/user/create" component={CreateUser} />
-              <Route exact path="/admin/user/:id/edit" component={EditUser} />
+              {/* Allocations Routes */}
+              <Route exact path="/admin/allocations" component={IndexAllocations} />
 
               {/* Redirect * to dashboard */}
               <Redirect from="/admin" to="/admin/dashboard" />

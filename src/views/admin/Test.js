@@ -1,20 +1,24 @@
 import React from "react";
 
 export default function test() {
+  const [openTab, setOpenTab] = React.useState(1);
+  return (
 
-    return (
-        <>
-            <p className="whitespace-pre-wrap bg-gray-300 my-2 overflow-x-auto">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-               
-                    Omnis quidem itaque beatae, rem tenetur quia iure,
+    <div className="flex flex-wrap">
+      <div className="w-full">
+        <div className="grid grid-cols-3 gap-4">
+          <div >11</div>
+          <div >2</div>
+          <div>3</div>
+          <div className="col-span-2">4</div>
+          <div >5</div>
+          <div >6</div>
+          <div>7</div>
+        </div>
+      </div>
+    </div>
 
-                    eum natus enim maxime
-
-                    laudantium quibusdam illo nihil,
-
-                    reprehenderit saepe quam aliquid odio accusamus.
-            </p>
-        </>
-    );
+  );
 }
+
+
