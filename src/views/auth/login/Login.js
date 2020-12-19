@@ -1,10 +1,10 @@
-import React, { useContext, useState } from "react";
-import { Link, useHistory } from "react-router-dom";
-import { useCookies } from "react-cookie";
+import React, { useContext, useState } from "react"
+import { Link, useHistory } from "react-router-dom"
+import { useCookies } from "react-cookie"
 
 import { AppContext } from "../../../services/context/AppContext"
-import Api from "../../../services/api/Api";
-import Alert from "../../../services/alert/Alert";
+import Api from "../../../services/api/Api"
+import Alert from "../../../services/alert/Alert"
 
 import UserInput from "../../../components/cards/common/UserInput"
 
@@ -33,11 +33,11 @@ export default function Login() {
 
     // setShowError(false)
     try {
-      const response = await Api.auth.login(credentials);
-      const token = response.data.token;
+      const response = await Api.auth.login(credentials)
+      const token = response.data.token
 
       //Saving token in a cookie + in apis header
-      setCookie("userToken", token, { path: '/' });
+      setCookie("userToken", token, { path: '/' })
       Api.init(token)
 
       //Saving token in AppContext

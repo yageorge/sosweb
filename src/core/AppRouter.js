@@ -1,9 +1,9 @@
-import React, { useEffect, useState, useContext } from 'react';
+import React, { useEffect, useState, useContext } from "react"
 
-import Landing from "../views/landing/Landing";
+import Landing from "../views/landing/Landing"
 import Auth from "../views/auth/Auth"
-import Admin from "../views/admin/Admin";
-import Logout from "../views/auth/logout/Logout";
+import Admin from "../views/admin/Admin"
+import Logout from "../views/auth/logout/Logout"
 
 // To Delete
 import Test from "../views/admin/Test"
@@ -15,7 +15,7 @@ import {
   Redirect,
   Route,
   Switch
-} from "react-router-dom";
+} from "react-router-dom"
 
 function AppRouter() {
   //Loading AppContext to get cookie state

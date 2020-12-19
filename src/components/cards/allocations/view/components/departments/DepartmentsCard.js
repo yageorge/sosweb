@@ -1,10 +1,11 @@
-import React from 'react';
+import React from "react"
 
 
 export default function DepartmentsCard(props) {
-  const departments = props.departments
 
   const [openTab, setOpenTab] = React.useState('');
+  const departments = props.departments
+
 
   // Fetching 1 depatment's courses
   const onButtonClick = async (event, departmentId) => {

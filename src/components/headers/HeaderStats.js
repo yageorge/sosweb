@@ -1,14 +1,50 @@
-import React from "react";
+import React, { useEffect, useState } from "react"
 
-// components
+import Api from "../../services/api/Api";
 
 import CardStats from "../../components/cards/CardStats.js";
 
 export default function HeaderStats() {
+
+  const [usersCount, setUsersCount] = useState('...');
+  const [coursesCount, setCoursesCount] = useState('...');
+
+
+  const getUsersCount = async () => {
+    try {
+
+      const response = await Api.users.getUsersCount();
+      setUsersCount(response.data);
+
+    } catch (e) {
+      alert('Failed to get Users: ', e);
+    }
+  }
+
+  const getCoursesCount = async () => {
+    try {
+
+      const response = await Api.courses.getCoursesCount();
+      setCoursesCount(response.data);
+
+    } catch (e) {
+      alert('Failed to get Courses: ', e);
+    }
+  }
+
+  const getStatsData = async () => {
+    await getUsersCount()
+    await getCoursesCount()
+  }
+
+  useEffect(() => {
+    getStatsData()
+  }, [])
+
+
   return (
     <>
       {/* Header */}
-
       <div className="px-4 md:px-10 mx-auto w-full">
         <div>
           {/* Card stats */}
@@ -16,7 +52,7 @@ export default function HeaderStats() {
             <div className="w-full lg:w-6/12 xl:w-3/12 px-4 m-2">
               <CardStats
                 statSubtitle="Users"
-                statTitle="277"
+                statTitle={usersCount}
                 statIconName="fas fa-users"
                 statIconColor="bg-red-500"
               />
@@ -24,7 +60,7 @@ export default function HeaderStats() {
             <div className="w-full lg:w-6/12 xl:w-3/12 px-4 m-2">
               <CardStats
                 statSubtitle="Courses"
-                statTitle="36"
+                statTitle={coursesCount}
                 statIconName="fas fa-graduation-cap"
                 statIconColor="bg-green-500"
               />

@@ -1,12 +1,12 @@
-import React from "react";
-import { Switch, Route, Redirect } from "react-router-dom";
+import React from "react"
+import { Switch, Route, Redirect } from "react-router-dom"
 
-import background from "../../assets/img/auth_bg.png";
-import Navbar from "../../components/navbars/AuthNavbar.js";
-import Footer from "../../components/footers/Footer";
+import background from "../../assets/img/auth_bg.png"
+import Navbar from "../../components/navbars/AuthNavbar.js"
+import Footer from "../../components/footers/Footer"
 
-import Login from "./login/Login";
-import SignUp from "./signup/SignUp";
+import Login from "./login/Login"
+import SignUp from "./signup/SignUp"
 
 //TODO move common functions / like states etc etc to this file and pass them in props / check group project
 

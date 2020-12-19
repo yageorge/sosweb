@@ -4,6 +4,9 @@ export default {
     getCourses: () =>
         axios.get(`/courses/`),
 
+    getCoursesCount: () =>
+        axios.get(`/courses/count`),
+
     addCourse: (course) =>
         axios.post(`/courses/`, course),
 

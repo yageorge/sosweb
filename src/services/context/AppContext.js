@@ -1,10 +1,10 @@
-import React, { createContext, useReducer } from "react";
-import { useCookies } from "react-cookie";
+import React, { createContext, useReducer } from "react"
+import { useCookies } from "react-cookie"
 
 let AppContext = createContext({});
 
 const initialState = {
-    cookie: '',
+    cookie: "",
 }
 
 let reducer = (state, action) => {
@@ -21,7 +21,7 @@ let reducer = (state, action) => {
 function AppContextProvider(props) {
 
     const [cookies] = useCookies(["userToken"]);
-    initialState.cookie = Object.keys(cookies).length ? cookies['userToken'] : '';
+    initialState.cookie = Object.keys(cookies).length ? cookies["userToken"] : "";
 
     const fullInitialState = {
         ...initialState,

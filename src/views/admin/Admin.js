@@ -1,15 +1,15 @@
-import React from "react";
-import { Switch, Route, Redirect } from "react-router-dom";
+import React from "react"
+import { Switch, Route, Redirect } from "react-router-dom"
 
 // components
 
-import AdminNavbar from "../../components/navbars/AdminNavbar";
-import Sidebar from "../../components/sidebar/Sidebar";
-import Footer from "../../components/footers/Footer";
+import AdminNavbar from "../../components/navbars/AdminNavbar"
+import Sidebar from "../../components/sidebar/Sidebar"
+import Footer from "../../components/footers/Footer"
 
 // views
 
-import Dashboard from "./dashboard/Dashboard";
+import Dashboard from "./dashboard/Dashboard"
 
 import IndexDepartments from "./departments/IndexDepartments"
 import CreateDepartment from "./departments/CreateDepartment"
