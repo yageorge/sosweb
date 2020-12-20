@@ -58,15 +58,7 @@ export default function Allocations(props) {
       const unAllocatedCourses = response.data
 
       if (unAllocatedCourses && unAllocatedCourses.length !== 0) {
-
-        // TO REMOVE: with user 1 Laravel returns an Object, user 2 returns an array
-        // Had to to this check to make sure unAllocatedCourses is always an array
-        if (typeof unAllocatedCourses === "object") {
-          setUnAllocatedCourses(Object.values(unAllocatedCourses))
-        } else {
-          setUnAllocatedCourses(unAllocatedCourses)
-        }
-
+        setUnAllocatedCourses(unAllocatedCourses)
       }
       else {
         setUnAllocatedCourses(null)
