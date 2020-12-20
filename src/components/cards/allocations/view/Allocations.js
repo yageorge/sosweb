@@ -36,16 +36,17 @@ export default function Allocations(props) {
     try {
 
       const response = await Api.allocations.getAllocations(departmentId);
-
+      console.log("setAllocations(response.data): ", response.data)
       if (response.data && response.data.length !== 0) {
         setAllocations(response.data)
+
       }
       else {
         setAllocations(null)
       }
 
     } catch (e) {
-      alert('Failed to get Allocations: ', e);
+      alert('Failed to get Allocations: ', e.request.response);
     }
   }
 
@@ -54,16 +55,25 @@ export default function Allocations(props) {
     try {
 
       const response = await Api.allocations.getUnAllocated(departmentId);
+      const unAllocatedCourses = response.data
 
-      if (response.data && response.data.length !== 0) {
-        setUnAllocatedCourses(response.data)
+      if (unAllocatedCourses && unAllocatedCourses.length !== 0) {
+
+        // TO REMOVE: with user 1 Laravel returns an Object, user 2 returns an array
+        // Had to to this check to make sure unAllocatedCourses is always an array
+        if (typeof unAllocatedCourses === "object") {
+          setUnAllocatedCourses(Object.values(unAllocatedCourses))
+        } else {
+          setUnAllocatedCourses(unAllocatedCourses)
+        }
+
       }
       else {
         setUnAllocatedCourses(null)
       }
 
     } catch (e) {
-      alert('Failed to get Allocations: ', e);
+      alert('Failed to get Allocations: ', e.request.response);
     }
   }
 

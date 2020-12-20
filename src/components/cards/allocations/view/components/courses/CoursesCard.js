@@ -96,7 +96,7 @@ export default function CoursesCard(props) {
                 </div>
 
 
-                {/* Courses data rendering */}
+                {/* Departments data rendering */}
                 {renderCourses()}
 
               </div>

@@ -37,6 +37,7 @@ export default function DepartmentsCard(props) {
           departments.filter(
             // Filter departments by user Search Input
             department => department.name.toLowerCase().includes(searchInput.toLowerCase()))
+
             .map((department) => (
 
               <li className="mb-2 mt-2 text-center">
