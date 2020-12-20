@@ -62,7 +62,7 @@ export default function Row(props) {
 
     return (<>
 
-        <tr>
+        <tr className="transform hover:bg-gray-700 font-bold">
             <Cell value={category.name} />
 
             <Cell value={moment(category.created_at).format("DD MMM YYYY - hh:mm a")} />
@@ -70,7 +70,7 @@ export default function Row(props) {
             {/* Edit button */}
             <td>
                 <Link to={`/admin/category/${category.id}/edit`}>
-                    <i className="far fa-edit text-green-500 text-md"></i>
+                    <i className="far fa-edit text-green-500 text-md hover:text-green-700 transform hover:scale-150"></i>
                 </Link>
             </td>
 
@@ -78,7 +78,7 @@ export default function Row(props) {
             <td>
                 <button
                     onClick={onDelete}>
-                    <i className="fas fa-trash text-red-500 text-md"></i>
+                    <i className="fas fa-trash text-red-500 text-md hover:text-red-700 transform hover:scale-150"></i>
                 </button>
             </td>
 

@@ -15,14 +15,16 @@ export default function Footer(props) {
           <hr className="mb-6 border-b-1 border-gray-700" />
           <div className="flex flex-wrap items-center md:justify-between justify-center">
             <div className="w-full md:w-4/12 px-4">
-              <div className="text-sm text-gray-600 font-semibold py-1 text-center md:text-left">
+              <div className="text-sm text-gray-500 font-semibold py-1 text-center md:text-left">
                 Copyright © 2021{" "}
+
                 <a
                   href="https://www.linkedin.com/in/georgeyaacoub/"
-                  className="text-white hover:text-gray-400 text-sm font-semibold py-1"
+                  className="text-white hover:text-gray-400 text-sm font-semibold pl-2"
                 >
                   Skill Optimizer
                 </a>
+
               </div>
             </div>
             <div className="w-full md:w-8/12 px-4">

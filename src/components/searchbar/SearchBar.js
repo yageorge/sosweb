@@ -7,7 +7,7 @@ export default function SearchBar(props) {
 
       {/* User search text input */}
       <input
-        className="min-w-0 h-8 p-1 pl-2 placeholder-gray-400 text-gray-700 text-sm"
+        className="min-w-0 h-8 p-1 pl-3 placeholder-gray-400 text-gray-700 text-sm rounded-l-lg"
         type="text"
         id="searchInput"
         name="searchInput"
@@ -19,7 +19,7 @@ export default function SearchBar(props) {
 
       {/* Clear input button */}
       <input
-        className="min-w-0 px-2 text-gray-700 text-sm"
+        className="min-w-0 px-2 text-gray-700 text-xs rounded-r-lg"
         type="reset"
         defaultValue="clear"
         onClick={props.onChange}

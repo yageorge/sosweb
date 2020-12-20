@@ -1,6 +1,8 @@
 import React from 'react';
 
+import LoadingSpinner from "../../../../spinner/LoadingSpinner"
 import Row from "./TableRow";
+
 
 // Rendering all Categories
 const renderCategories = (categories) => {
@@ -10,7 +12,7 @@ const renderCategories = (categories) => {
 
       <tr>
         <td className="p-8">
-          Loading categories ...
+          <LoadingSpinner />
         </td>
       </tr>
 

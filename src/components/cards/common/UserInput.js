@@ -5,13 +5,13 @@ export default function UserInput(props) {
 
         <div className="relative w-full mb-3">
             <label
-                className="block uppercase text-gray-500 text-xs font-bold mb-2"
+                className="block uppercase text-gray-800 text-xs font-bold mb-2"
                 htmlFor={props.inputId}
             >
                 {props.inputName}
             </label>
             <input
-                className="px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:shadow-outline w-full ease-linear transition-all duration-150"
+                className="px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none w-full ease-linear transition-all duration-150"
                 type={props.inputType}
                 required={true}
                 id={props.inputId}

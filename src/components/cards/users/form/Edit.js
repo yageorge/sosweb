@@ -83,7 +83,7 @@ export default function Edit() {
 
     <div
       className=
-      "relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded bg-blue-900 text-white">
+      "relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded bg-gray-800 text-white">
 
       {/* Creating Table header including a back button */}
       <TableHeader

@@ -1,5 +1,6 @@
 import React from 'react';
 
+import LoadingSpinner from "../../../../spinner/LoadingSpinner"
 import Row from "./TableRow";
 
 // Rendering all Users
@@ -9,9 +10,7 @@ const renderUsers = (users) => {
     return (
 
       <tr>
-        <td className="p-8">
-          Loading users ...
-        </td>
+        <LoadingSpinner />
       </tr>
 
     );

@@ -19,14 +19,14 @@ export default function TableHeader(props) {
 
   // Rendering the title + Add Button of a card table
   return (
-    <div className="rounded-t mb-0 px-4 py-3 border-0">
+    <div className="rounded-t mb-0 px-4 py-3 mt-6 border-0">
       <div className="flex flex-wrap items-center">
         <div className="flex flex-row relative px-4 max-w-full flex-grow flex-1">
 
           <h3
             className=
             "font-semibold text-lg text-white flex-grow" >
-            {props.title}
+            {props.title.toUpperCase()}
           </h3>
 
           {renderButton()}

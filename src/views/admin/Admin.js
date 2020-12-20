@@ -2,7 +2,7 @@ import React from "react"
 import { Switch, Route, Redirect } from "react-router-dom"
 
 // components
-
+import background from "../../assets/img/admin-background.png"
 import AdminNavbar from "../../components/navbars/AdminNavbar"
 import Sidebar from "../../components/sidebar/Sidebar"
 import Footer from "../../components/footers/Footer"
@@ -44,7 +44,20 @@ export default function Admin() {
         {/* Admin Navigation Bar Header*/}
         <AdminNavbar />
 
-        <div className="relative bg-blue-600 pt-24 pb-32">
+        <div className="relative pt-24 pb-32">
+
+          <div
+            className="absolute top-0 w-full h-full bg-center bg-cover"
+            style={{
+              backgroundImage: `url(${background})`,
+            }}
+          >
+
+            <span
+              id="blackOverlay"
+              className="w-full h-full absolute opacity-80 bg-black"
+            ></span>
+          </div>
 
           <div className="px-4 mx-auto">
 

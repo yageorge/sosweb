@@ -7,8 +7,8 @@ export default function LoadingSpinner() {
     return (
         <div className="object-center p-6">
             <BeatLoader
-                size={20}
-                color={"#1267bc"}
+                size={16}
+                color={"#320032"}
                 loading={true}
             />
         </div>

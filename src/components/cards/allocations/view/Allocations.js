@@ -115,7 +115,7 @@ export default function Allocations(props) {
 
     <div
       className=
-      "relative min-w-0 break-words w-full mb-6 shadow-lg rounded bg-blue-900 text-white">
+      "relative min-w-0 break-words w-full mb-6 px-6 py-2 shadow-lg rounded bg-gray-800 text-white">
 
       {/* Table header*/}
       <TableHeader
@@ -124,7 +124,7 @@ export default function Allocations(props) {
 
       {/* Body content: Departments + Courses + Allocations*/}
       {props.departments ?
-        <div className="flex flex-row bg-blue-900">
+        <div className="flex flex-row bg-gray-800">
 
           {/* Listing all departments */}
           <DepartmentsCard
