@@ -1,13 +1,15 @@
-import React from 'react';
+import React, { useState } from "react"
 
 import LoadingSpinner from "../../../../../spinner/LoadingSpinner"
+import SearchBar from "../../../../../searchbar/SearchBar"
 
 
 export default function CoursesCard(props) {
 
   const loading = props.loading
   const courses = props.courses
-  const [openTab, setOpenTab] = React.useState(0);
+  const [openTab, setOpenTab] = useState(0)
+  const [searchInput, setSearchInput] = useState('')
 
   const onButtonClick = async (event, courseId) => {
     event.preventDefault();
@@ -18,6 +20,14 @@ export default function CoursesCard(props) {
     // Function run to Allocate or Remove Allocation
     props.onClick(courseId)
 
+    // Clearing user search input
+    setSearchInput('')
+
+  }
+
+  // On user search event
+  const onSearch = (event) => {
+    setSearchInput(event.target.value)
   }
 
   const renderCourses = () => {
@@ -29,25 +39,32 @@ export default function CoursesCard(props) {
         role="tablist"
       >
 
-        {courses.map((course) => (
-          <li className="mb-2 text-center">
-            <a
-              className={
-                "text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal text-blue-600 bg-white"
-              }
-              onClick={event => {
-                onButtonClick(event, course.id)
-              }}
-              data-toggle="tab"
-              href="#link1"
-              role="tablist"
-            >
-              {course.title}
-            </a>
-          </li>
-        ))}
+        {courses.filter(
+          // Filter courses by user Search Input
+          course => course.title.toLowerCase().includes(searchInput.toLowerCase()))
+
+          .map((course) => (
+
+            <li className="mb-2 text-center">
+              <a
+                className={
+                  "text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal text-blue-600 bg-white"
+                }
+                onClick={event => {
+                  onButtonClick(event, course.id)
+                }}
+                data-toggle="tab"
+                href="#link1"
+                role="tablist"
+              >
+                {course.title}
+              </a>
+            </li>
+
+          ))}
 
       </ul>
+
     )
   }
 
@@ -62,18 +79,33 @@ export default function CoursesCard(props) {
 
       <hr className="mx-4" />
 
-      <div className="rounded-b-lg bg-blue-200 mx-4 mb-4 p-4">
+      <div className="rounded-b-lg bg-blue-200 mx-4 mb-4 px-4">
 
-        { // If loading show LoadingSpinner
+        { // If not loading show courses
           !loading ?
             // If Courses available, render courses
             courses ?
-              renderCourses()
+              <div>
+
+                {/* User input search bar */}
+                <div className="mb-6">
+                  <SearchBar
+                    className="flex flex-row relative"
+                    onChange={onSearch}
+                  />
+                </div>
+
+
+                {/* Courses data rendering */}
+                {renderCourses()}
+
+              </div>
               :
               // If Courses not available
               <div className="text-center text-md text-red-600">
                 No courses
             </div>
+            // If loading show LoadingSpinner
             : <LoadingSpinner />
         }
       </div>

@@ -15,7 +15,7 @@ export default function SignUp() {
 
   const { dispatch } = useContext(AppContext);
   const [credentials, setCredentials] = useState({})
-  const [, setCookie,] = useCookies(["userToken"]);
+  const [cookies, setCookie, removeCookie] = useCookies(["userToken"]);
 
   const [alert, setAlert] = useState('')
   const [showAlert, setShowAlert] = useState(false)
@@ -76,6 +76,21 @@ export default function SignUp() {
               <div className="flex-auto px-4 lg:px-10 py-10 pt-0">
                 <form id="signup_form" onSubmit={signUp}>
 
+                  {/* Company Name Input */}
+                  <UserInput
+                    inputId="companyName"
+                    inputName="New Company Name"
+                    inputType="text"
+                    onChange={onChange}
+                  />
+
+                  {/* Department Name Input */}
+                  <UserInput
+                    inputId="departmentName"
+                    inputName="Department Name"
+                    inputType="text"
+                    onChange={onChange}
+                  />
 
                   {/* First Name Input */}
                   <UserInput
@@ -121,22 +136,6 @@ export default function SignUp() {
                     inputType="password"
                     minLength="8"
                     maxLength="64"
-                    onChange={onChange}
-                  />
-
-                  {/* Company Name Input */}
-                  <UserInput
-                    inputId="companyName"
-                    inputName="Company Name"
-                    inputType="text"
-                    onChange={onChange}
-                  />
-
-                  {/* Department Name Input */}
-                  <UserInput
-                    inputId="departmentName"
-                    inputName="Department Name"
-                    inputType="text"
                     onChange={onChange}
                   />
 

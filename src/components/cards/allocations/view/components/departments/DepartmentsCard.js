@@ -1,9 +1,11 @@
-import React from "react"
+import React, { useState } from "react"
 
+import SearchBar from "../../../../../searchbar/SearchBar"
 
 export default function DepartmentsCard(props) {
 
-  const [openTab, setOpenTab] = React.useState('');
+  const [openTab, setOpenTab] = useState('')
+  const [searchInput, setSearchInput] = useState('')
   const departments = props.departments
 
 
@@ -19,6 +21,11 @@ export default function DepartmentsCard(props) {
 
   }
 
+  // On user search event
+  const onSearch = (event) => {
+    setSearchInput(event.target.value)
+  }
+
 
   const renderDepartments = () => {
 
@@ -26,27 +33,32 @@ export default function DepartmentsCard(props) {
       <ul
         role="tablist"
       >
+        {
+          departments.filter(
+            // Filter departments by user Search Input
+            department => department.name.toLowerCase().includes(searchInput.toLowerCase()))
+            .map((department) => (
 
-        {departments.map((department) => (
-          <li className="mb-2 text-center">
-            <a
-              className={
-                "text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal " +
-                (openTab === department.id
-                  ? "text-white bg-blue-600"
-                  : "text-blue-600 bg-white")
-              }
-              onClick={event => {
-                onButtonClick(event, department.id)
-              }}
-              data-toggle="tab"
-              href="#link1"
-              role="tablist"
-            >
-              {department.name}
-            </a>
-          </li>
-        ))}
+              <li className="mb-2 mt-2 text-center">
+                <a
+                  className={
+                    "text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal " +
+                    (openTab === department.id
+                      ? "text-white bg-blue-600"
+                      : "text-blue-600 bg-white")
+                  }
+                  onClick={event => {
+                    onButtonClick(event, department.id)
+                  }}
+                  data-toggle="tab"
+                  href="#link1"
+                  role="tablist"
+                >
+                  {department.name}
+                </a>
+              </li>
+
+            ))}
 
       </ul>
     )
@@ -56,15 +68,22 @@ export default function DepartmentsCard(props) {
 
     <div className="flex flex-col w-1/4 divide-y divide-blue-500">
 
+      {/* Title */}
       <p className="rounded-t-lg bg-blue-200 mx-4 p-4 text-center text-md font-bold text-blue-600">
         Departments
       </p>
 
-      <hr className="mx-4" />
+      {/* User input search bar */}
+      <SearchBar
+        className="flex flex-row relative mx-4"
+        onChange={onSearch}
+      />
 
+      {/* Departments data rendering */}
       <div className="rounded-b-lg bg-blue-200 mx-4 mb-4 p-4">
         {renderDepartments()}
       </div>
+
     </div>
 
   );

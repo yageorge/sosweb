@@ -15,8 +15,9 @@ export default function Login() {
 
   const { dispatch } = useContext(AppContext);
   const [credentials, setCredentials] = useState({})
-  const [, setCookie,] = useCookies(["userToken"]);
+  const [cookies, setCookie, removeCookie] = useCookies(["userToken"]);
 
+  const [isRememberMe, setIsRememberMe] = useState(0);
   const [alert, setAlert] = useState('')
   const [showAlert, setShowAlert] = useState(false)
 
@@ -28,7 +29,7 @@ export default function Login() {
   }
 
   const logIn = async (event) => {
-    //Avoid form submission / refresh
+    // //Avoid form submission / refresh
     event.preventDefault()
 
     // setShowError(false)
@@ -55,6 +56,11 @@ export default function Login() {
     }
   }
 
+  const toggleRememberMe = () => {
+    const newIsRememberMe = isRememberMe === 0 ? 1 : 0
+    setIsRememberMe(newIsRememberMe)
+    onChange({ target: { name: "rememberMe", value: newIsRememberMe } })
+  }
 
   return (
     <>
@@ -99,9 +105,12 @@ export default function Login() {
                   <div>
                     <label className="inline-flex items-center cursor-pointer">
                       <input
-                        id="customCheckLogin"
+                        className="text-gray-800 ml-1 w-5 h-5 ease-linear transition-all duration-150"
+                        id="rememberMe"
+                        name="rememberMe"
                         type="checkbox"
-                        className="form-checkbox text-gray-800 ml-1 w-5 h-5 ease-linear transition-all duration-150"
+                        checked={isRememberMe}
+                        onChange={() => toggleRememberMe()}
                       />
                       <span className="ml-2 text-sm font-semibold text-gray-700">
                         Remember me

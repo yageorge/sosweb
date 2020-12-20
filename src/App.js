@@ -8,7 +8,7 @@ import "./assets/styles/tailwind.css"
 import "@fortawesome/fontawesome-free/css/all.min.css"
 
 function App() {
-  const [cookies, ,] = useCookies()
+  const [cookies, setCookie, removeCookie] = useCookies()
 
   // initialize APIs
   Api.init(cookies['userToken'])

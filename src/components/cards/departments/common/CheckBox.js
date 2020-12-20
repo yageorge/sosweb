@@ -32,7 +32,7 @@ export default function CheckBox(props) {
     }, []);
 
 
-    const handleIsPaidChange = () => {
+    const toggleIsPaid = () => {
         const newIsAdmin = isAdmin === 0 ? 1 : 0
         setIsAdmin(newIsAdmin)
         props.onChange({ target: { name: "isAdmin", value: newIsAdmin } })
@@ -53,7 +53,7 @@ export default function CheckBox(props) {
                 className=''
                 id='isAdminSwitch'
                 checked={isAdmin}
-                onChange={() => handleIsPaidChange()}
+                onChange={() => toggleIsPaid()}
                 readOnly
             />
 

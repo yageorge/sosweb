@@ -121,13 +121,6 @@ export default function Sidebar() {
               {/* Line break */}
               <hr className="my-4 md:min-w-full" />
 
-              {/* Current user Profile Page */}
-              <Tab
-                title="User Profile"
-                path="/admin/panel"
-                icon="fas fa-user-circle"
-              />
-
               {/* User Logout */}
               <Tab
                 title="Logout"

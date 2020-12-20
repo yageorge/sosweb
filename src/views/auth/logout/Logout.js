@@ -11,14 +11,13 @@ export default function Logout() {
   const history = useHistory();
 
   const { dispatch } = useContext(AppContext);
-  const [, , removeCookie] = useCookies(["userToken"]);
-
+  const [cookies, setCookie, removeCookie] = useCookies(["userToken"]);
 
   const logUserOut = async () => {
 
     try {
       await Api.auth.logout();
-
+      console.log('    removeCookie("userToken");')
       // Deleting userToken cookie
       removeCookie("userToken");
 
