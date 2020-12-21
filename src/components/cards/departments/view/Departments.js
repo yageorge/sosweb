@@ -22,7 +22,8 @@ export default function Departments(props) {
         {/* Table header + Create department button */}
         <TableHeader
           title="Departments"
-          buttonIcon="fas fa-plus-circle text-purple-600 hover:text-purple-800 transform hover:scale-125 transition-all ease-in-out duration-700 "
+          titleClassName="text-purple-700"
+          buttonIcon="fas fa-plus-circle text-teal-600 hover:text-amber-600 transform hover:scale-125 transition-all ease-in-out duration-700 "
           onClick={onClick} />
 
         {/* Render Table with all departments */}

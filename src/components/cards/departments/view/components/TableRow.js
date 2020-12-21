@@ -67,7 +67,7 @@ export default function Row(props) {
             {/* Manage Courses button */}
             <td>
                 <button
-                    className="hover:bg-purple-900 transform hover:scale-110 text-white hover:text-white font-bold text-xs px-2 py-2 ml-2 mt-2 rounded transition-all duration-50 ease-in-out duration-700 ring-2 ring-purple-600"
+                    className="hover:bg-teal-900 transform hover:scale-110 text-white hover:text-white font-bold text-xs px-2 py-2 ml-2 mt-2 rounded transition-all duration-50 ease-in-out duration-700 ring-2 ring-teal-600"
                     type="button"
                 // onClick={() => manageLectures(course.id)}
                 >
@@ -83,7 +83,7 @@ export default function Row(props) {
             {/* Edit button */}
             <td>
                 <Link to={`/admin/department/${department.id}/edit`}>
-                    <i className="far fa-edit text-green-500 text-md hover:text-green-700 transform hover:scale-150"></i>
+                    <i className="far fa-edit text-amber-700 text-md hover:text-amber-500 transform hover:scale-150 transition-all ease-in-out duration-700"></i>
                 </Link>
             </td>
 
@@ -91,7 +91,7 @@ export default function Row(props) {
             <td>
                 <button
                     onClick={onDelete}>
-                    <i className="fas fa-trash text-red-500 text-md hover:text-red-700 transform hover:scale-150"></i>
+                    <i className="fas fa-trash text-red-500 text-md hover:text-red-700 transform hover:scale-150 transition-all ease-in-out duration-700"></i>
                 </button>
             </td>
 

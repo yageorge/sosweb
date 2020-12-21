@@ -67,6 +67,7 @@ export default function Sidebar() {
               {/* Dashboard Tab */}
               <Tab
                 title="Dashboard"
+                selectedClassName="bg-indigo-600"
                 path="/admin/dashboard"
                 icon="fas fa-tv"
               />
@@ -77,6 +78,7 @@ export default function Sidebar() {
               {/* Categories Tab */}
               <Tab
                 title="Categories"
+                selectedClassName="bg-red-800"
                 path="/admin/categories"
                 icon="fas fa-layer-group"
               />
@@ -84,6 +86,7 @@ export default function Sidebar() {
               {/* Courses/trainings Tab */}
               <Tab
                 title="Courses/Trainings"
+                selectedClassName="bg-blue-800"
                 path="/admin/courses"
                 icon="fas fa-graduation-cap"
               />
@@ -91,6 +94,7 @@ export default function Sidebar() {
               {/* Allocations Tab */}
               <Tab
                 title="Allocations"
+                selectedClassName="bg-teal-800"
                 path="/admin/allocations"
                 icon="fas fa-link"
               />
@@ -100,6 +104,7 @@ export default function Sidebar() {
               {/* Departments Tab */}
               <Tab
                 title="Departments"
+                selectedClassName="bg-purple-800"
                 path="/admin/departments"
                 icon="fas fa-building"
               />
@@ -107,6 +112,7 @@ export default function Sidebar() {
               {/* Users */}
               <Tab
                 title="Users"
+                selectedClassName="bg-amber-700"
                 path="/admin/users"
                 icon="fas fa-user-tie"
               />

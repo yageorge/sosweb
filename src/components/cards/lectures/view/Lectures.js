@@ -36,6 +36,7 @@ export default function Lectures(props) {
         {/* Table header + Create Lecture button */}
         <TableHeader
           title={courseTitle.toUpperCase() + " - total lectures: " + lecturesCount}
+          titleClassName="text-blue-600"
           buttonIcon="fas fa-plus-circle text-amber-500 "
           onClick={onClick} />
 

@@ -22,7 +22,8 @@ export default function Categories(props) {
         {/* Table header + Create category button */}
         <TableHeader
           title="Categories"
-          buttonIcon="fas fa-plus-circle text-purple-600 hover:text-purple-800 transform hover:scale-125 transition-all ease-in-out duration-700 "
+          titleClassName="text-red-800"
+          buttonIcon="fas fa-plus-circle text-teal-600 hover:text-amber-600 transform hover:scale-125 transition-all ease-in-out duration-700 "
           onClick={onClick} />
 
         {/* Render Table with all categories */}

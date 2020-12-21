@@ -115,11 +115,12 @@ export default function Allocations(props) {
 
     <div
       className=
-      "relative min-w-0 break-words w-full mb-6 px-6 py-2 shadow-lg rounded bg-gray-800 text-white">
+      "relative min-w-0 break-words w-full mb-6 px-2 py-1 shadow-lg rounded bg-gray-800 text-white">
 
       {/* Table header*/}
       <TableHeader
         title="Allocations"
+        titleClassName="text-teal-700"
       />
 
       {/* Body content: Departments + Courses + Allocations*/}

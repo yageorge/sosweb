@@ -9,10 +9,10 @@ export default function Tab(props) {
         <li className="items-center">
             <Link
                 className={
-                    "text-xs uppercase p-2 font-bold block rounded-md hover:bg-gray-500 hover:text-gray-200 transition-all ease-in-out duration-500 " +
+                    "text-xs uppercase p-2 font-bold block rounded-md hover:" + props.selectedClassName + " hover:text-gray-200 transition-all ease-in-out duration-500 " +
                     // if dashboard is selected condition, adjust color to highlight
                     (window.location.href.indexOf(props.path) !== -1
-                        ? "text-purple-900 bg-gray-400"
+                        ? "text-gray-200 " + props.selectedClassName
                         : "text-gray-700")
                 }
                 to={props.path}
@@ -24,7 +24,7 @@ export default function Tab(props) {
                         props.icon + " mr-2 text-sm " +
                         (window.location.href.indexOf(props.path) !== -1
                             ? "opacity-75"
-                            : "text-purple-900")
+                            : "text-teal-900")
                     }
                 ></i>{" "}
 

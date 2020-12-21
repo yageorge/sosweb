@@ -49,7 +49,7 @@ export default function CoursesCard(props) {
 
               <a
                 className={
-                  "text-xs font-bold uppercase px-5 py-3 shadow-lg rounded-xl border-2 border-purple-500 block leading-normal transform hover:scale-105 hover:bg-purple-100 text-purple-900 bg-white"
+                  "text-xs font-bold uppercase px-5 py-3 shadow-lg rounded-xl border-2 border-teal-500 block leading-normal transform hover:scale-105 hover:bg-teal-100 text-teal-900 bg-white"
                 }
                 onClick={event => {
                   onButtonClick(event, course.id)
@@ -75,7 +75,7 @@ export default function CoursesCard(props) {
 
     <div className="flex flex-col w-2/4">
 
-      <p className="rounded-t-lg bg-gray-700 mx-4 p-4 text-center text-md font-bold text-purple-100">
+      <p className="rounded-t-lg bg-gray-700 mx-4 p-4 text-center text-md font-bold text-teal-100">
         {props.title}
       </p>
 

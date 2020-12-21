@@ -25,7 +25,8 @@ export default function TableHeader(props) {
 
           <h3
             className=
-            "font-semibold text-lg text-white flex-grow" >
+            {"flex-grow font-bold text-lg tracking-wider " + props.titleClassName}
+          >
             {props.title.toUpperCase()}
           </h3>
 

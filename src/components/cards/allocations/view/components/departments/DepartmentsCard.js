@@ -45,8 +45,8 @@ export default function DepartmentsCard(props) {
                   className={
                     "text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal transform hover:scale-105 " +
                     (openTab === department.id
-                      ? "text-white bg-purple-900"
-                      : "text-purple-900 bg-white")
+                      ? "text-white bg-teal-900"
+                      : "text-teal-900 bg-white")
                   }
                   onClick={event => {
                     onButtonClick(event, department.id)
@@ -67,10 +67,10 @@ export default function DepartmentsCard(props) {
 
   return (
 
-    <div className="flex flex-col w-1/4 divide-y divide-purple-900">
+    <div className="flex flex-col w-1/4 divide-y divide-teal-900">
 
       {/* Title */}
-      <p className="rounded-t-lg bg-gray-700 mx-4 p-4 text-center text-md font-bold text-purple-100">
+      <p className="rounded-t-lg bg-gray-700 mx-4 p-4 text-center text-md font-bold text-teal-100">
         Departments
       </p>
 
