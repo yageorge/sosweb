@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react"
 
 import Api from "../../services/api/Api";
+import AlertModal from "../../services/alert/AlertModal";
 
 import CardStats from "../../components/cards/CardStats.js";
 
@@ -17,7 +18,7 @@ export default function HeaderStats() {
       setUsersCount(response.data);
 
     } catch (e) {
-      alert('Failed to get Users: ', e);
+      AlertModal('An error has occurred: ' + e.message)
     }
   }
 
@@ -28,7 +29,7 @@ export default function HeaderStats() {
       setCoursesCount(response.data);
 
     } catch (e) {
-      alert('Failed to get Courses: ', e);
+      AlertModal('An error has occurred: ' + e.message)
     }
   }
 

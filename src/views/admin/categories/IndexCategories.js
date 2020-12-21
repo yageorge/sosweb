@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 
 import Api from "../../../services/api/Api";
+import AlertModal from "../../../services/alert/AlertModal";
+
 import Categories from "../../../components/cards/categories/view/Categories";
 
 export default function IndexCategories() {
@@ -14,7 +16,7 @@ export default function IndexCategories() {
       setCategories(response.data);
 
     } catch (e) {
-      alert('Failed to get Categories: ', e);
+      AlertModal('An error has occurred: ' + e.message)
     }
   }
 

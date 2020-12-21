@@ -43,9 +43,7 @@ export default function Row(props) {
             }
 
         } catch (e) {
-            AlertModal(
-                "An exception has occured: " + e
-            )
+            AlertModal('An error has occurred: ' + e.message)
         }
     }
 

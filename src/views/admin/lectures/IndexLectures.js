@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 import Api from "../../../services/api/Api";
+import AlertModal from "../../../services/alert/AlertModal"
+
 import Lectures from "../../../components/cards/lectures/view/Lectures";
 
 export default function IndexLectures() {
@@ -20,7 +22,7 @@ export default function IndexLectures() {
       setLectures(response.data);
 
     } catch (e) {
-      alert('Failed to get Lectures: ', e.request);
+      AlertModal('An error has occurred: ' + e.message)
     }
   }
 

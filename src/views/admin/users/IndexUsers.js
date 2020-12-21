@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 
 import Api from "../../../services/api/Api";
+import AlertModal from "../../../services/alert/AlertModal"
+
 import Users from "../../../components/cards/users/view/Users";
 
 export default function IndexUsers() {
@@ -14,7 +16,7 @@ export default function IndexUsers() {
       setUsers(response.data);
 
     } catch (e) {
-      alert('Failed to get Users: ', e);
+      AlertModal('An error has occurred: ' + e.message)
     }
   }
 

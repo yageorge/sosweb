@@ -4,6 +4,7 @@ import { useCookies } from "react-cookie";
 
 import { AppContext } from "../../../services/context/AppContext"
 import Api from "../../../services/api/Api";
+import AlertModal from "../../../services/alert/AlertModal"
 
 
 export default function Logout() {
@@ -40,7 +41,7 @@ export default function Logout() {
       history.push('/');
 
     } catch (e) {
-      console.log('logout catch error: ', typeof e)
+      AlertModal('An error has occurred: ' + e.message)
     }
   }
 

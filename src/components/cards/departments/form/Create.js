@@ -44,7 +44,7 @@ export default function Create() {
       }
 
     } catch (e) {
-      setAlert(e)
+      setAlert(e.message)
       setShowAlert(true)
     }
   }

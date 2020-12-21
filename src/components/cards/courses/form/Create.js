@@ -42,9 +42,8 @@ export default function Create() {
       }
 
     } catch (e) {
-      console.log('catch error create course: ', e)
-      // setAlert(e)
-      // setShowAlert(true)
+      setAlert(e.message)
+      setShowAlert(true)
     }
   }
 

@@ -34,7 +34,7 @@ export default function Edit() {
 
     } catch (e) {
       setShowForm(false)
-      setAlert(e)
+      setAlert(e.message)
       setShowAlert(true)
     }
   }
@@ -74,7 +74,7 @@ export default function Edit() {
       }
 
     } catch (e) {
-      setAlert(e)
+      setAlert(e.message)
       setShowAlert(true)
     }
   }

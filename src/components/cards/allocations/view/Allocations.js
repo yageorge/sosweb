@@ -36,7 +36,7 @@ export default function Allocations(props) {
     try {
 
       const response = await Api.allocations.getAllocations(departmentId);
-      console.log("setAllocations(response.data): ", response.data)
+      
       if (response.data && response.data.length !== 0) {
         setAllocations(response.data)
 
@@ -46,7 +46,7 @@ export default function Allocations(props) {
       }
 
     } catch (e) {
-      alert('Failed to get Allocations: ', e.request.response);
+      AlertModal('An error has occurred: ' + e.message)
     }
   }
 
@@ -65,7 +65,7 @@ export default function Allocations(props) {
       }
 
     } catch (e) {
-      alert('Failed to get Allocations: ', e.request.response);
+      AlertModal('An error has occurred: ' + e.message)
     }
   }
 
@@ -87,7 +87,7 @@ export default function Allocations(props) {
       if (responseMsg.includes("1062")) {
         AlertModal('Course already added')
       } else {
-        console.log('Error request::: ', e.request.response)
+        AlertModal('An error has occurred: ' + e.message)
       }
 
       setLoading(false)
@@ -106,7 +106,7 @@ export default function Allocations(props) {
       setLoading(false)
 
     } catch (e) {
-      console.log('Error request::: ', e.request.response)
+      AlertModal('An error has occurred: ' + e.message)
       setLoading(false)
     }
   }

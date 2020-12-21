@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 
 import Api from "../../../services/api/Api";
+import AlertModal from "../../../services/alert/AlertModal"
+
 import Departments from "../../../components/cards/departments/view/Departments";
 
 export default function IndexDepartments() {
@@ -14,7 +16,7 @@ export default function IndexDepartments() {
       setDepartments(response.data);
 
     } catch (e) {
-      alert('Failed to get Departments: ', e);
+      AlertModal('An error has occurred: ' + e.message)
     }
   }
 

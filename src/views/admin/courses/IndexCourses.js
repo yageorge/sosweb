@@ -1,7 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react"
 
-import Api from "../../../services/api/Api";
-import Courses from "../../../components/cards/courses/view/Courses";
+import Api from "../../../services/api/Api"
+import AlertModal from "../../../services/alert/AlertModal";
+
+import Courses from "../../../components/cards/courses/view/Courses"
 
 export default function IndexCourses() {
 
@@ -10,11 +12,11 @@ export default function IndexCourses() {
   const getCourses = async () => {
     try {
 
-      const response = await Api.courses.getCourses();
+      const response = await Api.courses.getCourses()
       setCourses(response.data);
 
     } catch (e) {
-      alert('Failed to get Courses: ', e);
+      AlertModal('An error has occurred: ' + e.message)
     }
   }
 

@@ -49,9 +49,7 @@ export default function Panel(props) {
       }
 
     } catch (e) {
-      AlertModal(
-        "An exception has occured: " + e
-      )
+      AlertModal('An error has occurred: ' + e.message)
     }
   }
 
@@ -101,7 +99,6 @@ export default function Panel(props) {
             {/* whitespace not working  */}
             <p className="text-lg text-green-500">
               {lecture.content}
-              {console.log('content: ', lecture.content)}
             </p>
           </AccordionItemPanel>
 

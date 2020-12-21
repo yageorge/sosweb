@@ -37,7 +37,7 @@ export default function Edit() {
 
     } catch (e) {
       setShowForm(false)
-      setAlert(e)
+      setAlert(e.message)
       setShowAlert(true)
     }
   }
@@ -77,9 +77,8 @@ export default function Edit() {
       }
 
     } catch (e) {
-      console.log('Catch error lectures/ Edit: ', e)
-      // setAlert(e)
-      // setShowAlert(true)
+      setAlert(e.message)
+      setShowAlert(true)
     }
   }
 

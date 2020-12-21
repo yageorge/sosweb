@@ -53,9 +53,8 @@ export default function Create() {
       }
 
     } catch (e) {
-      console.log('catch error create lecture: ', e)
-      // setAlert(e)
-      // setShowAlert(true)
+      setAlert(e.message)
+      setShowAlert(true)
     }
   }
 

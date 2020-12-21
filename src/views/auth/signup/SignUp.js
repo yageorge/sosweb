@@ -66,7 +66,6 @@ export default function SignUp() {
       history.push('/admin');
 
     } catch (e) {
-      console.log('Signup Error: ', e)
       setAlert("SignUp failed! Please check the console log for more details :D")
       setShowAlert(true)
     }

@@ -19,9 +19,7 @@ export default function SelectCategory(props) {
             await loadSelectValues(response.data);
 
         } catch (e) {
-            AlertModal(
-                "An error has occured: " + e
-            )
+            AlertModal('An error has occurred: ' + e.message)
         }
     }
 

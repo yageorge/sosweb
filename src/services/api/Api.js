@@ -26,14 +26,6 @@ export default {
         setToken(token)
     },
 
-    // BELOW TO BE REMOVED: use to handle try catch error for all axios requests
-    // console.log('Error Response Data: ', e.response.data)
-    //   console.log('Error Response status: ', e.response.status)
-    //   console.log('Error Response header: ', e.response.header)
-    //   console.log('Error request: ', e.request)
-    //   console.log('Error message: ', e.message)
-    //   console.log('Error config: ', e.config)
-
     auth: { ...Auth },
 
     departments: { ...Departments },
