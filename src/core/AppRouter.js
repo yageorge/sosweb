@@ -22,12 +22,13 @@ function AppRouter() {
   const { state } = useContext(AppContext);
 
   //Setting auth bool init if cookie exist
-  const [auth, setAuth] = useState(state.cookie ? true : false)
+  const [auth, setAuth] = useState(state.userToken ? true : false)
+
 
   useEffect(() => {
     //Listener to reset auth bool when cookie state is modified
-    setAuth(state.cookie ? true : false);
-  }, [state.cookie])
+    setAuth(state.userToken ? true : false);
+  }, [state.userToken])
 
   // return router design
   return (
@@ -86,6 +87,7 @@ const ProtectedRoute = ({
   // if renderCondition true => render Component, otherwise redirect to redirectTo
   return (
     <Route
+      // Load any other props
       {...rest}
       render={() => renderCondition ?
         (<Component />) : (<Redirect to={redirectTo} />)

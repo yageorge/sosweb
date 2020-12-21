@@ -15,7 +15,7 @@ export default function Login() {
 
   const { dispatch } = useContext(AppContext);
   const [credentials, setCredentials] = useState({})
-  const [cookies, setCookie, removeCookie] = useCookies(["userToken"]);
+  const [cookies, setCookie, removeCookie] = useCookies();
 
   const [isRememberMe, setIsRememberMe] = useState(0);
   const [alert, setAlert] = useState('')
@@ -34,17 +34,33 @@ export default function Login() {
 
     // setShowError(false)
     try {
+
       const response = await Api.auth.login(credentials)
       const token = response.data.token
+      const userName = response.data.userName
 
       //Saving token in a cookie + in apis header
       setCookie("userToken", token, { path: '/' })
       Api.init(token)
 
-      //Saving token in AppContext
+      //Saving token in App Context
       dispatch({
-        type: 'setCookie',
-        cookie: token
+        type: 'setUserToken',
+        userToken: token
+      })
+
+      //Saving UserName in Cookies + App Context
+      setCookie("userName", userName, { path: '/' })
+      dispatch({
+        type: 'setUserName',
+        userEmail: userName
+      })
+
+      //Saving UserEmail in Cookies + App Context
+      setCookie("userEmail", credentials["email"], { path: '/' })
+      dispatch({
+        type: 'setUserEmail',
+        userEmail: credentials["email"]
       })
 
       //Redirecting to /admin
