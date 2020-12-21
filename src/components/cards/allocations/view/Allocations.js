@@ -36,7 +36,7 @@ export default function Allocations(props) {
     try {
 
       const response = await Api.allocations.getAllocations(departmentId);
-      
+
       if (response.data && response.data.length !== 0) {
         setAllocations(response.data)
 
@@ -150,7 +150,10 @@ export default function Allocations(props) {
           />
 
         </div>
-        : <LoadingSpinner />
+        :
+        <div className="flex m-16">
+          <LoadingSpinner />
+        </div>
       }
     </div>
 

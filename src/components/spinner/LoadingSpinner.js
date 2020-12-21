@@ -1,13 +1,13 @@
 import React from "react";
-import BeatLoader from "react-spinners/BeatLoader";
+import PuffLoader from "react-spinners/PuffLoader";
 
 
 export default function LoadingSpinner() {
 
     return (
-        <div className="object-center p-6">
-            <BeatLoader
-                size={16}
+        <div className="m-auto">
+            <PuffLoader
+                size={60}
                 color={"#0D9488"}
                 loading={true}
             />

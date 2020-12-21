@@ -7,7 +7,7 @@ export default function SearchBar(props) {
 
       {/* User search text input */}
       <input
-        className="min-w-0 h-8 p-1 pl-3 placeholder-gray-400 text-gray-700 text-sm rounded-l-lg"
+        className="min-w-0 h-8 p-1 pl-3 placeholder-gray-400 text-gray-700 text-sm rounded-l-lg outline-none"
         type="text"
         id="searchInput"
         name="searchInput"

@@ -89,7 +89,7 @@ export default function Edit() {
       {/* Creating Table header including a back button */}
       <TableHeader
         title="Edit Category"
-        buttonIcon="fas fa-arrow-circle-left text-green-500 "
+        buttonIcon="fas fa-arrow-circle-left text-teal-600 hover:text-amber-600 transform hover:scale-125 transition-all ease-in-out duration-700 "
         onClick={onClick} />
 
       {/* Only show Edit form when getCategory is complete */}

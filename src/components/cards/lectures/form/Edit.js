@@ -86,12 +86,12 @@ export default function Edit() {
 
     <div
       className=
-      "relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded bg-blue-900 text-white">
+      "relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded bg-gray-800 text-white">
 
       {/* Creating Table header including a back button */}
       <TableHeader
         title="Edit Lecture"
-        buttonIcon="fas fa-arrow-circle-left text-green-500 "
+        buttonIcon="fas fa-arrow-circle-left text-teal-600 hover:text-amber-600 transform hover:scale-125 transition-all ease-in-out duration-700 "
         onClick={onClick} />
 
       {/* Only show Edit form when getLecture is complete */}

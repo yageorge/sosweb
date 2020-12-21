@@ -1,20 +1,9 @@
 import React from 'react';
 
-import LoadingSpinner from "../../../../spinner/LoadingSpinner"
 import Row from "./TableRow";
 
 // Rendering all Users
 const renderUsers = (users) => {
-
-  if (!users) {
-    return (
-
-      <tr>
-        <LoadingSpinner />
-      </tr>
-
-    );
-  }
 
   if (users.length === 0) {
     return (

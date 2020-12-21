@@ -1,5 +1,7 @@
 import { useHistory, useLocation } from "react-router-dom";
 
+import LoadingSpinner from "../../../spinner/LoadingSpinner"
+
 import TableHeader from "../../common/TableHeader"
 import Panel from "./components/Panel"
 
@@ -13,7 +15,7 @@ export default function Lectures(props) {
 
   const courseId = props.courseId
   const lectures = props.lectures
-  const lecturesCount = lectures.length
+  const lecturesCount = lectures ? lectures.length : 0
 
 
   // Redirect to Create new Lecture
@@ -31,13 +33,13 @@ export default function Lectures(props) {
     <>
       <div
         className=
-        "relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded bg-blue-900 text-white">
+        "relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded bg-gray-800 text-white">
 
         {/* Table header + Create Lecture button */}
         <TableHeader
           title={courseTitle.toUpperCase() + " - total lectures: " + lecturesCount}
-          titleClassName="text-blue-600"
-          buttonIcon="fas fa-plus-circle text-amber-500 "
+          titleClassName="text-blue-500"
+          buttonIcon="fas fa-plus-circle text-teal-600 hover:text-amber-600 transform hover:scale-125 transition-all ease-in-out duration-700 "
           onClick={onClick} />
 
         {/* Render Table with all lectures */}
@@ -50,7 +52,11 @@ export default function Lectures(props) {
               refresh={props.refresh}
             />
 
-          </div> : null
+          </div>
+          :
+          <div className="flex m-16">
+            <LoadingSpinner />
+          </div>
         }
 
       </div>

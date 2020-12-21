@@ -1,22 +1,9 @@
 import React from 'react';
 
-import LoadingSpinner from "../../../../spinner/LoadingSpinner"
 import Row from "./TableRow";
 
 // Rendering all Courses
 const renderCourses = (courses) => {
-
-  if (!courses) {
-    return (
-
-      <tr>
-        <td className="p-8">
-          <LoadingSpinner />
-        </td>
-      </tr>
-
-    );
-  }
 
   if (courses.length === 0) {
     return (

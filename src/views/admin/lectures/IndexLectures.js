@@ -31,15 +31,18 @@ export default function IndexLectures() {
   }, [refresh]);
 
   return (
-    <>
-      { lectures ?
-        <div className="flex flex-wrap mt-4">
-          <div className="w-full mb-12 px-4">
-            <Lectures courseId={courseId} lectures={lectures} refresh={setRefresh} />
-          </div>
-        </div>
-        : null
-      }
-    </>
+
+    <div className="flex flex-wrap mt-4">
+      <div className="w-full mb-12 px-4">
+
+        <Lectures
+          courseId={courseId}
+          lectures={lectures}
+          refresh={setRefresh}
+        />
+
+      </div>
+    </div>
+
   );
 }

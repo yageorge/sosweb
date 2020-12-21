@@ -1,9 +1,9 @@
-import React from 'react';
-import { Link } from "react-router-dom";
+import React from "react"
+import { Link } from "react-router-dom"
 
-import Api from "../../../../../services/api/Api";
-import AlertModal from '../../../../../services/alert/AlertModal';
-import AlertConfirmation from '../../../../../services/alert/AlertConfirmation';
+import Api from "../../../../../services/api/Api"
+import AlertModal from "../../../../../services/alert/AlertModal"
+import AlertConfirmation from "../../../../../services/alert/AlertConfirmation"
 
 import {
   Accordion,
@@ -11,11 +11,13 @@ import {
   AccordionItemHeading,
   AccordionItemButton,
   AccordionItemPanel,
-} from 'react-accessible-accordion';
+  AccordionItemState,
+} from "react-accessible-accordion"
 
-import './panel.css';
+import "./panel.css"
 
 export default function Panel(props) {
+
 
   // On delete press - Show Alert:
   const onDelete = (lectureId, lectureTitle) => {
@@ -35,38 +37,47 @@ export default function Panel(props) {
       const response = await Api.lectures.deleteLecture(lectureId);
 
       // If no error occurred:
-      if (!response.data['error']) {
+      if (!response.data["error"]) {
 
         // Run API refresh at parent file. indexLectures
         props.refresh()
       } else {
 
         // Inform course of an error
-        const errorMsg = response.data['error']
+        const errorMsg = response.data["error"]
         AlertModal(
           "An error has occured: " + errorMsg
         )
       }
 
     } catch (e) {
-      AlertModal('An error has occurred: ' + e.message)
+      AlertModal("An error has occurred: " + e.message)
     }
   }
 
 
   return (
 
-    <Accordion allowMultipleExpanded={false}>
+    <Accordion allowMultipleExpanded={true} allowZeroExpanded={true}>
       {props.lectures.map((lecture) => (
 
         <AccordionItem key={lecture.id}>
 
           <AccordionItemHeading>
-            <AccordionItemButton>
 
-              <div className="flex flex-row relative max-w-full flex-grow ">
+            <AccordionItemButton className="h-16 bg-gray-700 p-4 h-20 outline-none">
 
-                <div className="flex-grow">
+              <AccordionItemState>
+                {({ expanded }) => (expanded ?
+                  <i className="fas fa-chevron-circle-down text-teal-300 text-lg transform transition-all ease-in-out duration-700"></i>
+                  :
+                  <i className="fas fa-chevron-circle-right text-teal-600 text-xs transform transition-all ease-in-out duration-700"></i>
+                )}
+              </AccordionItemState>
+
+              <div className="flex flex-row relative max-w-full flex-grow">
+
+                <div className="flex-grow text-md font-bold text-teal-600">
                   {lecture.title}
                 </div>
 
@@ -75,7 +86,7 @@ export default function Panel(props) {
                 <div className="mr-4">
                   <td>
                     <Link to={`/admin/course/${props.courseId}/lecture/${lecture.id}/edit/`}>
-                      <i className="far fa-edit text-green-500 text-2xl"></i>
+                      <i className="far fa-edit text-amber-700 text-xl hover:text-amber-500 transform hover:scale-150 transition-all ease-in-out duration-700"></i>
                     </Link>
                   </td>
                 </div>
@@ -85,19 +96,21 @@ export default function Panel(props) {
                   <td>
                     <button
                       onClick={() => onDelete(lecture.id, lecture.title)}>
-                      <i className="fas fa-trash text-red-500 text-md text-2xl"></i>
+                      <i className="fas fa-trash text-red-500 text-xl hover:text-red-700 transform hover:scale-150 transition-all ease-in-out duration-700"></i>
                     </button>
                   </td>
                 </div>
 
               </div>
+
             </AccordionItemButton>
+
           </AccordionItemHeading>
 
           <AccordionItemPanel>
 
             {/* whitespace not working  */}
-            <p className="text-lg text-green-500">
+            <p className="text-lg text-gray-200">
               {lecture.content}
             </p>
           </AccordionItemPanel>
