@@ -5,23 +5,11 @@ import Row from "./TableRow";
 // Rendering all Departments
 const renderDepartments = (departments) => {
 
-  if (!departments) {
-    return (
-
-      <tr>
-        <td>
-          Loading departments ...
-        </td>
-      </tr>
-
-    );
-  }
-
   if (departments.length === 0) {
     return (
 
       <tr>
-        <td>
+        <td className="p-8">
           No Departments yet.
         </td>
       </tr>

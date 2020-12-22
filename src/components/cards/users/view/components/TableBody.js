@@ -5,23 +5,11 @@ import Row from "./TableRow";
 // Rendering all Users
 const renderUsers = (users) => {
 
-  if (!users) {
-    return (
-
-      <tr>
-        <td>
-          Loading users ...
-        </td>
-      </tr>
-
-    );
-  }
-
   if (users.length === 0) {
     return (
 
       <tr>
-        <td>
+        <td className="p-8">
           No Users yet.
         </td>
       </tr>

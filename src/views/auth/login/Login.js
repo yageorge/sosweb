@@ -1,10 +1,10 @@
-import React, { useContext, useState } from "react";
-import { Link, useHistory } from "react-router-dom";
-import { useCookies } from "react-cookie";
+import React, { useContext, useState } from "react"
+import { Link, useHistory } from "react-router-dom"
+import { useCookies } from "react-cookie"
 
 import { AppContext } from "../../../services/context/AppContext"
-import Api from "../../../services/api/Api";
-import Alert from "../../../services/alert/Alert";
+import Api from "../../../services/api/Api"
+import Alert from "../../../services/alert/Alert"
 
 import UserInput from "../../../components/cards/common/UserInput"
 
@@ -15,8 +15,9 @@ export default function Login() {
 
   const { dispatch } = useContext(AppContext);
   const [credentials, setCredentials] = useState({})
-  const [, setCookie,] = useCookies(["userToken"]);
+  const [cookies, setCookie, removeCookie] = useCookies();
 
+  const [isRememberMe, setIsRememberMe] = useState(0);
   const [alert, setAlert] = useState('')
   const [showAlert, setShowAlert] = useState(false)
 
@@ -28,22 +29,38 @@ export default function Login() {
   }
 
   const logIn = async (event) => {
-    //Avoid form submission / refresh
+    // //Avoid form submission / refresh
     event.preventDefault()
 
     // setShowError(false)
     try {
-      const response = await Api.auth.login(credentials);
-      const token = response.data.token;
+
+      const response = await Api.auth.login(credentials)
+      const token = response.data.token
+      const userName = response.data.userName
 
       //Saving token in a cookie + in apis header
-      setCookie("userToken", token, { path: '/' });
+      setCookie("userToken", token, { path: '/' })
       Api.init(token)
 
-      //Saving token in AppContext
+      //Saving token in App Context
       dispatch({
-        type: 'setCookie',
-        cookie: token
+        type: 'setUserToken',
+        userToken: token
+      })
+
+      //Saving UserName in Cookies + App Context
+      setCookie("userName", userName, { path: '/' })
+      dispatch({
+        type: 'setUserName',
+        userEmail: userName
+      })
+
+      //Saving UserEmail in Cookies + App Context
+      setCookie("userEmail", credentials["email"], { path: '/' })
+      dispatch({
+        type: 'setUserEmail',
+        userEmail: credentials["email"]
       })
 
       //Redirecting to /admin
@@ -55,6 +72,11 @@ export default function Login() {
     }
   }
 
+  const toggleRememberMe = () => {
+    const newIsRememberMe = isRememberMe === 0 ? 1 : 0
+    setIsRememberMe(newIsRememberMe)
+    onChange({ target: { name: "rememberMe", value: newIsRememberMe } })
+  }
 
   return (
     <>
@@ -64,7 +86,7 @@ export default function Login() {
             <div className="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-gray-300 border-0">
               <div className="rounded-t mb-0 px-6 py-6">
                 <div className="text-center mb-3">
-                  <h6 className="text-gray-600 text-md font-bold">
+                  <h6 className="text-gray-800 text-md font-bold">
                     Sign in
                   </h6>
                 </div>
@@ -99,11 +121,14 @@ export default function Login() {
                   <div>
                     <label className="inline-flex items-center cursor-pointer">
                       <input
-                        id="customCheckLogin"
+                        className="ml-1 w-5 h-5"
+                        id="rememberMe"
+                        name="rememberMe"
                         type="checkbox"
-                        className="form-checkbox text-gray-800 ml-1 w-5 h-5 ease-linear transition-all duration-150"
+                        checked={isRememberMe}
+                        onChange={() => toggleRememberMe()}
                       />
-                      <span className="ml-2 text-sm font-semibold text-gray-700">
+                      <span className="ml-2 text-sm font-semibold text-gray-800">
                         Remember me
                       </span>
                     </label>
@@ -112,7 +137,7 @@ export default function Login() {
                   {/* Sign in button */}
                   <div className="text-center mt-6">
                     <button
-                      className="bg-gray-900 text-white active:bg-gray-700 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 w-full ease-linear transition-all duration-150"
+                      className="bg-gray-900 text-white text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg focus:outline-none mr-1 mb-1 w-full transition ease-linear transition-all duration-200 hover:bg-gray-700"
                       type="submit"
                       form="login_form" >
                       Sign In
@@ -130,7 +155,7 @@ export default function Login() {
 
             {/* Forgot Password + Create New Account */}
             <div className="flex flex-wrap mt-6 relative">
-              <div className="w-1/2">
+              <div className="w-1/2 transform hover:scale-105 transition-all ease-in-out duration-400">
                 <a
                   href="#pablo"
                   onClick={(e) => e.preventDefault()}
@@ -141,7 +166,7 @@ export default function Login() {
               </div>
 
               {/* New Account link */}
-              <div className="w-1/2 text-right">
+              <div className="w-1/2 text-right transform hover:scale-105 transition-all ease-in-out duration-400">
                 <Link to="/auth/signup" className="text-gray-300">
                   <small>Create new account</small>
                 </Link>

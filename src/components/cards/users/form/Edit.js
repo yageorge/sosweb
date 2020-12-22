@@ -34,7 +34,7 @@ export default function Edit() {
 
     } catch (e) {
       setShowForm(false)
-      setAlert(e)
+      setAlert(e.message)
       setShowAlert(true)
     }
   }
@@ -52,7 +52,7 @@ export default function Edit() {
 
   // Back Button onClick
   const onClick = () => {
-    history.push("/admin/users")
+    history.goBack();
   }
 
   // Update User
@@ -74,7 +74,7 @@ export default function Edit() {
       }
 
     } catch (e) {
-      setAlert(e)
+      setAlert(e.message)
       setShowAlert(true)
     }
   }
@@ -83,12 +83,12 @@ export default function Edit() {
 
     <div
       className=
-      "relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded bg-blue-900 text-white">
+      "relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded bg-gray-800 text-white">
 
       {/* Creating Table header including a back button */}
       <TableHeader
         title="Edit User"
-        buttonIcon="fas fa-arrow-circle-left text-green-500 "
+        buttonIcon="fas fa-arrow-circle-left text-teal-600 hover:text-amber-600 transform hover:scale-125 transition-all ease-in-out duration-700 "
         onClick={onClick} />
 
       {/* Only show Edit form when getUser is complete */}

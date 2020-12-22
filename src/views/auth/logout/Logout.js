@@ -4,36 +4,44 @@ import { useCookies } from "react-cookie";
 
 import { AppContext } from "../../../services/context/AppContext"
 import Api from "../../../services/api/Api";
+import AlertModal from "../../../services/alert/AlertModal"
 
-import AlertModal from "../../../services/alert/AlertModal";
 
 export default function Logout() {
 
   const history = useHistory();
 
   const { dispatch } = useContext(AppContext);
-  const [, , removeCookie] = useCookies(["userToken"]);
-
+  const [cookies, setCookie, removeCookie] = useCookies();
 
   const logUserOut = async () => {
 
     try {
       await Api.auth.logout();
-
-      // Deleting userToken cookie
+      // Deleting user cookies
       removeCookie("userToken");
+      removeCookie("userName");
+      removeCookie("userEmail");
 
-      //Removing token from AppContext
+      //Removing user state context from AppContext
       dispatch({
-        type: 'setCookie',
-        cookie: ''
+        type: 'setUserToken',
+        userToken: ''
+      })
+      dispatch({
+        type: 'setUserName',
+        userName: ''
+      })
+      dispatch({
+        type: 'setUserEmail',
+        userEmail: ''
       })
 
       //Redirecting to Landing Page
       history.push('/');
 
     } catch (e) {
-      console.log('logout catch error: ', typeof e)
+      AlertModal('An error has occurred: ' + e.message)
     }
   }
 

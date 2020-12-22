@@ -22,14 +22,13 @@ export default function Create() {
 
   // Back Button onClick
   const onClick = () => {
-    history.push("/admin/users")
+    history.goBack();
   }
 
   // Creating new User
   const create = async (event) => {
     //Avoid form submission / refresh
     event.preventDefault()
-    console.log('Create / user: ', user)
     try {
 
       const response = await Api.users.addUser(user);
@@ -44,9 +43,8 @@ export default function Create() {
       }
 
     } catch (e) {
-      console.log('catch error create user: ', e)
-      // setAlert(e)
-      // setShowAlert(true)
+      setAlert(e.message)
+      setShowAlert(true)
     }
   }
 
@@ -54,12 +52,12 @@ export default function Create() {
 
     <div
       className=
-      "relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded bg-blue-900 text-white">
+      "relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded bg-gray-800 text-white">
 
       {/* Creating Table header including a back button */}
       <TableHeader
         title="Create New User"
-        buttonIcon="fas fa-arrow-circle-left text-green-500 "
+        buttonIcon="fas fa-arrow-circle-left text-teal-600 hover:text-amber-600 transform hover:scale-125 transition-all ease-in-out duration-700 "
         onClick={onClick} />
 
       {/* Rendering form */}

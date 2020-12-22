@@ -75,6 +75,16 @@ export default function Forum(props) {
           onChange={props.onChange}
         />
 
+        {/* Points Target Input */}
+        <UserInput
+          inputId="pointsTarget"
+          inputName="Target Points"
+          inputType="number"
+          defaultValue={user ? user.pointsTarget : ""}
+          max="999"
+          onChange={props.onChange}
+        />
+
         {/*
           Only show on Create : Email + Passwords
           If user is not available in props 

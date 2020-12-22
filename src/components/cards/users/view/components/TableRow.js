@@ -43,9 +43,7 @@ export default function Row(props) {
             }
 
         } catch (e) {
-            AlertModal(
-                "An exception has occured: " + e
-            )
+            AlertModal('An error has occurred: ' + e.message)
         }
     }
 
@@ -63,12 +61,14 @@ export default function Row(props) {
 
     return (<>
 
-        <tr>
+        <tr className="transform hover:bg-gray-700 font-bold">
             <Cell value={user.firstName} />
 
             <Cell value={user.lastName} />
 
             <Cell value={user.email} />
+
+            <Cell value={user.pointsTarget} />
 
             <Cell value={user.departmentName} />
 
@@ -79,7 +79,7 @@ export default function Row(props) {
             {/* Edit button */}
             <td>
                 <Link to={`/admin/user/${user.id}/edit`}>
-                    <i className="far fa-edit text-green-500 text-md"></i>
+                    <i className="far fa-edit text-amber-700 text-md hover:text-amber-500 transform hover:scale-150 transition-all ease-in-out duration-700"></i>
                 </Link>
             </td>
 
@@ -87,7 +87,7 @@ export default function Row(props) {
             <td>
                 <button
                     onClick={onDelete}>
-                    <i className="fas fa-trash text-red-500 text-md"></i>
+                    <i className="fas fa-trash text-red-500 text-md hover:text-red-700 transform hover:scale-150 transition-all ease-in-out duration-700"></i>
                 </button>
             </td>
 

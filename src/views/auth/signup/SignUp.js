@@ -15,7 +15,7 @@ export default function SignUp() {
 
   const { dispatch } = useContext(AppContext);
   const [credentials, setCredentials] = useState({})
-  const [, setCookie,] = useCookies(["userToken"]);
+  const [cookies, setCookie, removeCookie] = useCookies();
 
   const [alert, setAlert] = useState('')
   const [showAlert, setShowAlert] = useState(false)
@@ -35,22 +35,37 @@ export default function SignUp() {
     try {
       const response = await Api.auth.signup(credentials);
       const token = response.data.token;
+      const userName = response.data.userName
 
       //Saving token in a cookie + in apis header
       setCookie("userToken", token, { path: '/' });
       Api.init(token)
 
-      //Saving token in AppContext
+      //Saving token in App Context
       dispatch({
-        type: 'setCookie',
-        cookie: token
+        type: 'setUserToken',
+        userToken: token
       })
+
+      //Saving UserName in Cookies + App Context
+      setCookie("userName", userName, { path: '/' })
+      dispatch({
+        type: 'setUserName',
+        userEmail: userName
+      })
+
+      //Saving UserEmail in Cookies + App Context
+      setCookie("userEmail", credentials["email"], { path: '/' })
+      dispatch({
+        type: 'setUserEmail',
+        userEmail: credentials["email"]
+      })
+
 
       //Redirecting to /admin
       history.push('/admin');
 
     } catch (e) {
-      console.log('Signup Error: ', e)
       setAlert("SignUp failed! Please check the console log for more details :D")
       setShowAlert(true)
     }
@@ -76,6 +91,21 @@ export default function SignUp() {
               <div className="flex-auto px-4 lg:px-10 py-10 pt-0">
                 <form id="signup_form" onSubmit={signUp}>
 
+                  {/* Company Name Input */}
+                  <UserInput
+                    inputId="companyName"
+                    inputName="New Company Name"
+                    inputType="text"
+                    onChange={onChange}
+                  />
+
+                  {/* Department Name Input */}
+                  <UserInput
+                    inputId="departmentName"
+                    inputName="Department Name"
+                    inputType="text"
+                    onChange={onChange}
+                  />
 
                   {/* First Name Input */}
                   <UserInput
@@ -124,25 +154,9 @@ export default function SignUp() {
                     onChange={onChange}
                   />
 
-                  {/* Company Name Input */}
-                  <UserInput
-                    inputId="companyName"
-                    inputName="Company Name"
-                    inputType="text"
-                    onChange={onChange}
-                  />
-
-                  {/* Department Name Input */}
-                  <UserInput
-                    inputId="departmentName"
-                    inputName="Department Name"
-                    inputType="text"
-                    onChange={onChange}
-                  />
-
                   <div className="text-center mt-6">
                     <button
-                      className="bg-gray-900 text-white active:bg-gray-700 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 w-full ease-linear transition-all duration-150"
+                      className="bg-gray-900 text-white active:bg-gray-700 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 w-full transition ease-linear transition-all duration-200 hover:bg-gray-700"
                       type="submit"
                       form="signup_form"
                     >

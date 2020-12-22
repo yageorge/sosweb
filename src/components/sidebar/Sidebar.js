@@ -10,12 +10,12 @@ export default function Sidebar() {
     <>
 
       {/* md for medium regular screens */}
-      <nav className="md:left-0 md:block md:fixed md:top-0 md:bottom-0 md:overflow-y-auto md:flex-row md:flex-no-wrap md:overflow-hidden shadow-xl bg-white flex flex-wrap items-center justify-between relative md:w-64 z-10 py-4 px-6">
+      <nav className="md:left-0 md:block md:fixed md:top-0 md:bottom-0 md:overflow-y-auto md:flex-row md:flex-no-wrap md:overflow-hidden shadow-xl bg-gray-900 flex flex-wrap items-center justify-between relative md:w-58 z-10 py-4 px-6">
         <div className="md:flex-col md:items-stretch md:min-h-full md:flex-no-wrap px-0 flex flex-wrap items-center justify-between w-full mx-auto">
 
           {/* Drawer Button To appear on small screens */}
           <button
-            className="cursor-pointer text-black opacity-50 md:hidden px-3 py-1 text-xl leading-none bg-transparent rounded border border-solid border-transparent"
+            className="cursor-pointer text-white opacity-50 md:hidden px-3 py-1 text-xl leading-none bg-transparent rounded border border-solid border-transparent"
             type="button"
             onClick={() => setCollapseShow("bg-white m-2 py-3 px-6")}
           >
@@ -24,10 +24,10 @@ export default function Sidebar() {
 
           {/* Link to Home + Name / on md size */}
           <Link
-            className="md:block text-left md:pb-2 text-gray-700 mr-0 inline-block whitespace-no-wrap text-sm uppercase font-bold p-4 px-0"
+            className="md:block text-left md:pb-2 text-gray-200 mr-0 inline-block whitespace-no-wrap text-sm uppercase font-bold p-4 px-0"
             to="/admin"
           >
-            Skill Optimizer Home
+            Skill Optimizer
           </Link>
 
           {/* Collapse */}
@@ -43,7 +43,7 @@ export default function Sidebar() {
               <div className="flex flex-wrap">
                 <div className="w-6/12">
                   <Link
-                    className="md:block text-left md:pb-2 text-gray-700 mr-0 inline-block whitespace-no-wrap text-sm uppercase font-bold p-4 px-0"
+                    className="md:block text-left md:pb-2 text-gray-200 mr-0 inline-block whitespace-no-wrap text-sm uppercase font-bold p-4 px-0"
                     to="/"
                   >
                     Skill Optimizer
@@ -61,31 +61,50 @@ export default function Sidebar() {
               </div>
             </div>
 
-            {/* Heading */}
-            <h6 className="md:min-w-full text-gray-600 text-xs uppercase font-bold block pt-1 pb-4 no-underline">
-              Admin Panel
-            </h6>
-            {/* Navigation */}
-
+            {/* Unordered List */}
             <ul className="md:flex-col md:min-w-full flex flex-col list-none">
 
               {/* Dashboard Tab */}
               <Tab
                 title="Dashboard"
+                selectedClassName="bg-indigo-600"
                 path="/admin/dashboard"
                 icon="fas fa-tv"
+              />
+
+              {/* Line break */}
+              <hr className="my-4 md:min-w-full" />
+
+              {/* Categories Tab */}
+              <Tab
+                title="Categories"
+                selectedClassName="bg-red-800"
+                path="/admin/categories"
+                icon="fas fa-layer-group"
               />
 
               {/* Courses/trainings Tab */}
               <Tab
                 title="Courses/Trainings"
+                selectedClassName="bg-blue-800"
                 path="/admin/courses"
                 icon="fas fa-graduation-cap"
               />
 
+              {/* Allocations Tab */}
+              <Tab
+                title="Allocations"
+                selectedClassName="bg-teal-800"
+                path="/admin/allocations"
+                icon="fas fa-link"
+              />
+
+              <hr className="my-4 md:min-w-full" />
+
               {/* Departments Tab */}
               <Tab
                 title="Departments"
+                selectedClassName="bg-purple-800"
                 path="/admin/departments"
                 icon="fas fa-building"
               />
@@ -93,29 +112,13 @@ export default function Sidebar() {
               {/* Users */}
               <Tab
                 title="Users"
+                selectedClassName="bg-amber-700"
                 path="/admin/users"
                 icon="fas fa-user-tie"
               />
 
-              {/* Settings Tab */}
-              <Tab
-                title="Settings"
-                path="/admin/settings"
-                icon="fas fa-tools"
-              />
-
-            </ul>
-
-            <hr className="my-4 md:min-w-full" />
-
-            <ul className="md:flex-col md:min-w-full flex flex-col list-none md:mb-4">
-
-              {/* Current user Profile Page */}
-              <Tab
-                title="User Profile"
-                path="/admin/profile"
-                icon="fas fa-user-circle"
-              />
+              {/* Line break */}
+              <hr className="my-4 md:min-w-full" />
 
               {/* User Logout */}
               <Tab
@@ -125,6 +128,7 @@ export default function Sidebar() {
               />
 
             </ul>
+
           </div>
         </div>
       </nav>

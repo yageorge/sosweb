@@ -4,6 +4,9 @@ export default {
     getUsers: () =>
         axios.get(`/users/`),
 
+    getUsersCount: () =>
+        axios.get(`/users/count`),
+
     addUser: (user) =>
         axios.post(`/users/`, user),
 

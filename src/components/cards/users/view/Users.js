@@ -1,5 +1,7 @@
 import { useHistory } from "react-router-dom";
 
+import LoadingSpinner from "../../../spinner/LoadingSpinner"
+
 import TableHeader from "../../common/TableHeader"
 import Table from "./components/Table"
 
@@ -17,18 +19,29 @@ export default function Users(props) {
     <>
       <div
         className=
-        "relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded bg-blue-900 text-white">
+        "relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded bg-gray-800 text-white">
 
         {/* Table header + Create User button */}
         <TableHeader
           title="Users"
-          buttonIcon="fas fa-plus-circle text-amber-500 "
+          titleClassName="text-amber-600"
+          buttonIcon="fas fa-plus-circle text-teal-600 hover:text-amber-600 transform hover:scale-125 transition-all ease-in-out duration-700 "
           onClick={onClick} />
 
-        {/* Render Table with all users */}
-        <div className="block w-full overflow-x-auto">
-          <Table data={props.users} />
-        </div>
+        {
+          props.users ?
+            <>
+              {/* Render Table with all users */}
+              <div className="block w-full overflow-x-auto pb-4 px-4">
+                <Table data={props.users} />
+              </div>
+            </>
+
+            :
+            <div className="flex m-16">
+              <LoadingSpinner />
+            </div>
+        }
 
       </div>
     </>
