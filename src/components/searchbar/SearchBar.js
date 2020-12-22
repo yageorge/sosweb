@@ -3,7 +3,7 @@ import React from "react";
 export default function SearchBar(props) {
 
   return (
-    <form className={props.className}>
+    <form className={props.className} autocomplete="off">
 
       {/* User search text input */}
       <input
