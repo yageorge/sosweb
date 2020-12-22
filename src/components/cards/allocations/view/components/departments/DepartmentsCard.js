@@ -43,7 +43,7 @@ export default function DepartmentsCard(props) {
               <li className="mb-2 mt-2 text-center">
                 <a
                   className={
-                    "text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal transform hover:scale-105 " +
+                    "text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal transform hover:scale-105 transition-all ease-in-out duration-700 " +
                     (openTab === department.id
                       ? "text-white bg-teal-900"
                       : "text-teal-900 bg-white")
@@ -70,7 +70,7 @@ export default function DepartmentsCard(props) {
     <div className="flex flex-col w-1/4 divide-y divide-teal-900">
 
       {/* Title */}
-      <p className="rounded-t-lg bg-gray-700 mx-4 p-4 text-center text-md font-bold text-teal-100">
+      <p className="rounded-t-lg bg-gray-700 mx-4 p-4 text-center text-md font-bold text-amber-400">
         Departments
       </p>
 

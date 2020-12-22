@@ -49,7 +49,7 @@ export default function CoursesCard(props) {
 
               <a
                 className={
-                  "text-xs font-bold uppercase px-5 py-3 shadow-lg rounded-xl border-2 border-teal-500 block leading-normal transform hover:scale-105 hover:bg-teal-100 text-teal-900 bg-white"
+                  "text-xs font-bold uppercase px-5 py-3 shadow-lg rounded-xl block leading-normal text-teal-900 bg-white transform hover:scale-105 hover:bg-teal-800 hover:text-gray-100 transition-all ease-in-out duration-700"
                 }
                 onClick={event => {
                   onButtonClick(event, course.id)
@@ -75,7 +75,7 @@ export default function CoursesCard(props) {
 
     <div className="flex flex-col w-2/4">
 
-      <p className="rounded-t-lg bg-gray-700 mx-4 p-4 text-center text-md font-bold text-teal-100">
+      <p className="rounded-t-lg bg-gray-700 mx-4 p-4 text-center text-md font-bold text-amber-400">
         {props.title}
       </p>
 
@@ -107,7 +107,10 @@ export default function CoursesCard(props) {
                 No courses
             </div>
             // If loading show LoadingSpinner
-            : <LoadingSpinner />
+            :
+            <div className="flex m-16">
+              <LoadingSpinner />
+            </div>
         }
       </div>
     </div>
