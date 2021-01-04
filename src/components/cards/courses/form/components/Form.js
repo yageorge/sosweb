@@ -20,6 +20,7 @@ export default function Forum(props) {
           inputType="text"
           defaultValue={course ? course.title : ""}
           maxLength="64"
+          required={true}
           onChange={props.onChange}
         />
 
@@ -41,6 +42,7 @@ export default function Forum(props) {
           inputType="number"
           defaultValue={course ? course.points : ""}
           max="999"
+          required={true}
           onChange={props.onChange}
         />
 

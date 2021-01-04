@@ -20,6 +20,7 @@ export default function Forum(props) {
         inputType="email"
         defaultValue={user ? user.email : ""}
         maxLength="64"
+        required={true}
         onChange={props.onChange}
       />
 
@@ -31,6 +32,7 @@ export default function Forum(props) {
         defaultValue={user ? user.email : ""}
         minLength="8"
         maxLength="64"
+        required={true}
         onChange={props.onChange}
       />
 
@@ -42,6 +44,7 @@ export default function Forum(props) {
         defaultValue={user ? user.email : ""}
         minLength="8"
         maxLength="64"
+        required={true}
         onChange={props.onChange}
       />
 
@@ -62,6 +65,7 @@ export default function Forum(props) {
           inputType="text"
           defaultValue={user ? user.firstName : ""}
           maxLength="64"
+          required={true}
           onChange={props.onChange}
         />
 
@@ -72,6 +76,7 @@ export default function Forum(props) {
           inputType="text"
           defaultValue={user ? user.lastName : ""}
           maxLength="64"
+          required={true}
           onChange={props.onChange}
         />
 
@@ -82,6 +87,7 @@ export default function Forum(props) {
           inputType="number"
           defaultValue={user ? user.pointsTarget : ""}
           max="999"
+          required={true}
           onChange={props.onChange}
         />
 

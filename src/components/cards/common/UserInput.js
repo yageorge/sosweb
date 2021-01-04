@@ -13,7 +13,7 @@ export default function UserInput(props) {
             <input
                 className="px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none w-full ease-linear transition-all duration-150"
                 type={props.inputType}
-                required={true}
+                required={props.required}
                 id={props.inputId}
                 name={props.inputId}
                 placeholder={props.inputName}

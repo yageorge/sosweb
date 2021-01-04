@@ -18,6 +18,7 @@ export default function Forum(props) {
           inputType="text"
           defaultValue={department ? department.name : ""}
           maxLength="64"
+          required={true}
           onChange={props.onChange}
         />
 

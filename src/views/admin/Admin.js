@@ -61,6 +61,17 @@ export default function Admin() {
 
           <div className="px-4 mx-auto">
 
+            {/*
+            TODO LIST
+             ------------------- THIS IS A TODO LIST -------------------------
+            - add url images to COURSE
+            - add FILES Images/PDF anytype to a LECTURE or COURSE as material
+            - add colorValue hex to cateogries
+            - add lectures details in expansion panel header
+            - add pointsTarget to users
+            */}
+
+
             <Switch>
               <Route exact path="/admin/dashboard" component={Dashboard} />
 
