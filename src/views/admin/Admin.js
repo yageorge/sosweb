@@ -63,12 +63,12 @@ export default function Admin() {
 
             {/*
             TODO LIST
-             ------------------- THIS IS A TODO LIST -------------------------
+            ------------------- THIS IS A TODO LIST -------------------------
             - add url images to COURSE
             - add FILES Images/PDF anytype to a LECTURE or COURSE as material
-            - add colorValue hex to cateogries
-            - add lectures details in expansion panel header
+            - add colorValue hex to categories
             - add pointsTarget to users
+            - clean code all - espacially Login/Signup / dashboard sidebar etc etc
             */}
 
 

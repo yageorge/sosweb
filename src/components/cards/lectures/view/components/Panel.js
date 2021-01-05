@@ -75,12 +75,13 @@ export default function Panel(props) {
                 )}
               </AccordionItemState>
 
+              {/* Expansion panel title */}
               <div className="flex flex-row relative max-w-full flex-grow">
 
+                {/* Lecture Title + Duration */}
                 <div className="flex-grow text-md font-bold text-teal-600">
-                  {lecture.title}
+                  {`${lecture.title}  -  (${lecture.duration} min)`}
                 </div>
-
 
                 {/* Edit button */}
                 <div className="mr-4">
@@ -110,9 +111,21 @@ export default function Panel(props) {
           <AccordionItemPanel>
 
             {/* whitespace not working  */}
-            <p className="text-lg text-gray-200">
+            <p className="text-lg text-gray-200 whitespace-pre-line">
               {lecture.content}
             </p>
+
+            {/* whitespace not working  */}
+            {lecture.urlVideo ?
+              <a
+                className="text-sm text-gray-200 font-bold tracking-wider mt-8 inline-block"
+                href={lecture.urlVideo}
+                target="_blank"
+              >
+                {`Video Link: ${lecture.urlVideo}`}
+              </a>
+              : null
+            }
           </AccordionItemPanel>
 
         </AccordionItem>
