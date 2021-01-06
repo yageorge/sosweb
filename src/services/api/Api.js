@@ -12,6 +12,7 @@ axios.defaults.withCredentials = true
 
 //Adding Token to Header
 const setToken = (token = null) => {
+    console.log('token in api.js:', token)
     axios.defaults.headers = {
         'Accept': 'application/json',
         'Content-Type': 'application/json',

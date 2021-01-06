@@ -1,28 +1,16 @@
-import React, { useContext, useState } from "react"
-import { useHistory } from "react-router-dom"
-import { useCookies } from "react-cookie"
-import firebase from 'firebase';
-import 'firebase/auth';
+import React, { useContext, useState } from "react";
+import { useHistory } from "react-router-dom";
+import { useCookies } from "react-cookie";
 
-import firebaseConfig from '../../../services/FireBaseConfig'
 import { AppContext } from "../../../services/context/AppContext"
-import Api from "../../../services/api/Api"
-import Alert from "../../../services/alert/Alert"
+import Api from "../../../services/api/Api";
+import Alert from "../../../services/alert/Alert";
 import LoadingSpinner from "../../../components/spinner/LoadingSpinner"
 
 import UserInput from "../../../components/cards/common/UserInput"
 
 
-export default function SignUp() {
-
-  //Initialiaze Firebase Auth - if not alreadt initialized
-  if (!firebase.apps.length) {
-    firebase.initializeApp(firebaseConfig);
-  }
-  else {
-    firebase.app(); // if already initialized
-  }
-
+export default function SignUporg() {
 
   const history = useHistory();
 
@@ -47,51 +35,38 @@ export default function SignUp() {
     setIsLoading(true)
     // setShowError(false)
     try {
+      const response = await Api.auth.signup(credentials);
+      const token = response.data.token;
+      const userName = response.data.userName
 
-      // Firebase Registration
-      firebase.auth()
-        .createUserWithEmailAndPassword(credentials.email, credentials.password)
-        .then((value) => {
+      //Saving token in a cookie + in apis header
+      setCookie("userToken", token, { path: '/' });
+      Api.init(token)
 
-          // Get User Token
-          return value.user.getIdToken()
-        })
-        .then((Firebasetoken) => {
-          console.log({ ...credentials, Firebasetoken })
+      //Saving token in App Context
+      dispatch({
+        type: 'setUserToken',
+        userToken: token
+      })
 
-          // const response = await Api.auth.signup({ ...credentials, Firebasetoken })
-          // const token = response.data.token
-          // const userName = response.data.userName
+      //Saving UserName in Cookies + App Context
+      setCookie("userName", userName, { path: '/' })
+      dispatch({
+        type: 'setUserName',
+        userEmail: userName
+      })
 
-          // //Saving token in a cookie + in apis header
-          // setCookie("userToken", token, { path: '/' })
-          // Api.init(token)
-
-          // //Saving token in App Context
-          // dispatch({
-          //   type: 'setUserToken',
-          //   userToken: token
-          // })
-
-          // //Saving UserName in Cookies + App Context
-          // setCookie("userName", userName, { path: '/' })
-          // dispatch({
-          //   type: 'setUserName',
-          //   userEmail: userName
-          // })
-
-          // //Saving UserEmail in Cookies + App Context
-          // setCookie("userEmail", credentials["email"], { path: '/' })
-          // dispatch({
-          //   type: 'setUserEmail',
-          //   userEmail: credentials["email"]
-          // })
+      //Saving UserEmail in Cookies + App Context
+      setCookie("userEmail", credentials["email"], { path: '/' })
+      dispatch({
+        type: 'setUserEmail',
+        userEmail: credentials["email"]
+      })
 
 
-          // //Redirecting to /admin
-          // history.push('/admin')
+      //Redirecting to /admin
+      history.push('/admin');
 
-        })
     } catch (e) {
       setAlert("SignUp failed! Please check the console log for more details :D")
       setIsLoading(false)

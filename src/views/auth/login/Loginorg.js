@@ -1,10 +1,7 @@
 import React, { useContext, useState } from "react"
 import { Link, useHistory } from "react-router-dom"
 import { useCookies } from "react-cookie"
-import firebase from 'firebase';
-import 'firebase/auth';
 
-import firebaseConfig from '../../../services/FireBaseConfig'
 import { AppContext } from "../../../services/context/AppContext"
 import Api from "../../../services/api/Api"
 import Alert from "../../../services/alert/Alert"
@@ -14,15 +11,6 @@ import UserInput from "../../../components/cards/common/UserInput"
 
 
 export default function Login() {
-
-  //Initialiaze Firebase Auth - if not alreadt initialized
-  if (!firebase.apps.length) {
-    firebase.initializeApp(firebaseConfig);
-  }
-  else {
-    firebase.app(); // if already initialized
-  }
-
 
   const history = useHistory()
 
@@ -46,51 +34,39 @@ export default function Login() {
     // //Avoid form submission / refresh
     event.preventDefault()
     setIsLoading(true)
-
+    // setShowError(false)
     try {
 
-      // Firebase Login with Email Password
-      firebase.auth()
-        .signInWithEmailAndPassword(credentials.email, credentials.password)
-        .then((value) => {
-          // Get FireBase Token
-          return value.user.getIdToken()
+      const response = await Api.auth.login(credentials)
+      const token = response.data.token
+      const userName = response.data.userName
 
-        })
-        .then(async (firebaseToken) => {
-          // Laravel Login with FireBase only Token
-          const response = await Api.auth.login(firebaseToken)
+      //Saving token in a cookie + in apis header
+      setCookie("userToken", token, { path: '/' })
+      Api.init(token)
 
-          const token = response.data.token
-          const userName = response.data.userName
+      //Saving token in App Context
+      dispatch({
+        type: 'setUserToken',
+        userToken: token
+      })
 
-          //Saving token in a cookie + in apis header
-          setCookie("userToken", token, { path: '/' })
-          Api.init(token)
+      //Saving UserName in Cookies + App Context
+      setCookie("userName", userName, { path: '/' })
+      dispatch({
+        type: 'setUserName',
+        userEmail: userName
+      })
 
-          //Saving token in App Context
-          dispatch({
-            type: 'setUserToken',
-            userToken: token
-          })
+      //Saving UserEmail in Cookies + App Context
+      setCookie("userEmail", credentials["email"], { path: '/' })
+      dispatch({
+        type: 'setUserEmail',
+        userEmail: credentials["email"]
+      })
 
-          //Saving UserName in Cookies + App Context
-          setCookie("userName", userName, { path: '/' })
-          dispatch({
-            type: 'setUserName',
-            userEmail: userName
-          })
-
-          //Saving UserEmail in Cookies + App Context
-          setCookie("userEmail", credentials["email"], { path: '/' })
-          dispatch({
-            type: 'setUserEmail',
-            userEmail: credentials["email"]
-          })
-
-          //Redirecting to /admin
-          history.push('/admin');
-        })
+      //Redirecting to /admin
+      history.push('/admin');
 
     } catch (e) {
       setAlert("Login failed! The email or password you've entered doesn't match any account.")
