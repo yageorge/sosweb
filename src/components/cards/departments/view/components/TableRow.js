@@ -76,7 +76,7 @@ export default function Row(props) {
 
             <Cell value={department.name} />
 
-            <Cell value={moment(department.created_at).format("DD MMM YYYY - hh:mm a")} />
+            <Cell value={moment(department.created_at).format("DD MMM YYYY")} />
 
             {/* Edit button */}
             <td>

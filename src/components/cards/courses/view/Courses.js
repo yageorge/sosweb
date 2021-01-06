@@ -23,7 +23,7 @@ export default function Courses(props) {
 
         {/* Table header + Create Course button */}
         <TableHeader
-          title="Courses"
+          title="Courses / Training Modules"
           titleClassName="text-blue-600"
           buttonIcon="fas fa-plus-circle text-teal-600 hover:text-amber-600 transform hover:scale-125 transition-all ease-in-out duration-700 "
           onClick={onClick} />

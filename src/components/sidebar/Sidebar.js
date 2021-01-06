@@ -10,7 +10,7 @@ export default function Sidebar() {
     <>
 
       {/* md for medium regular screens */}
-      <nav className="md:left-0 md:block md:fixed md:top-0 md:bottom-0 md:overflow-y-auto md:flex-row md:flex-no-wrap md:overflow-hidden shadow-xl bg-gray-900 flex flex-wrap items-center justify-between relative md:w-58 z-10 py-4 px-6">
+      <nav className="md:left-0 md:block md:fixed md:top-0 md:bottom-0 md:overflow-y-auto md:flex-row md:flex-no-wrap md:overflow-hidden shadow-xl bg-gray-900 flex flex-wrap items-center justify-between relative md:w-52 z-10 py-4 px-6">
         <div className="md:flex-col md:items-stretch md:min-h-full md:flex-no-wrap px-0 flex flex-wrap items-center justify-between w-full mx-auto">
 
           {/* Drawer Button To appear on small screens */}
@@ -83,9 +83,9 @@ export default function Sidebar() {
                 icon="fas fa-layer-group"
               />
 
-              {/* Courses/trainings Tab */}
+              {/* Modules Tab */}
               <Tab
-                title="Courses/Trainings"
+                title="Modules"
                 selectedClassName="bg-blue-800"
                 path="/admin/courses"
                 icon="fas fa-graduation-cap"

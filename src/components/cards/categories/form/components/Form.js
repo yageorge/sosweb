@@ -1,6 +1,7 @@
 import React from 'react';
 
 import UserInput from "../../../common/UserInput"
+import ColorPicker from "../../../../ColorPicker"
 
 export default function Forum(props) {
 
@@ -19,6 +20,12 @@ export default function Forum(props) {
           defaultValue={category ? category.name : ""}
           maxLength="64"
           required={true}
+          onChange={props.onChange}
+        />
+
+        {/* Color Picker */}
+        <ColorPicker
+          initColor={category ? category.colorVal : "03a9f4"}
           onChange={props.onChange}
         />
 

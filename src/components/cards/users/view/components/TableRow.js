@@ -51,7 +51,7 @@ export default function Row(props) {
     function Cell(props) {
 
         return (
-            <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 uppercase text-xs whitespace-no-wrap p-4">
+            <td className="border-t-0 px-6 text-center border-l-0 border-r-0 uppercase text-xs whitespace-no-wrap p-4">
                 {props.value}
             </td>
         );
@@ -74,7 +74,7 @@ export default function Row(props) {
 
             <Cell value={user.isAdmin ? "Admin" : ""} />
 
-            <Cell value={moment(user.created_at).format("DD MMM YYYY - hh:mm a")} />
+            <Cell value={moment(user.created_at).format("DD MMM YYYY")} />
 
             {/* Edit button */}
             <td>

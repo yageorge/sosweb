@@ -24,7 +24,7 @@ export default function TableBody() {
 
                 <Header title="Name" />
 
-                <Header title="Added" />
+                <Header title="Created" />
 
                 <Header title="" />
 
