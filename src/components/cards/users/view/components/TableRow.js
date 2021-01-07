@@ -1,6 +1,9 @@
 import React from 'react';
 import { Link } from "react-router-dom";
 import moment from "moment";
+import firebase from 'firebase';
+import 'firebase/auth';
+
 
 import AlertConfirmation from '../../../../../services/alert/AlertConfirmation';
 import AlertModal from '../../../../../services/alert/AlertModal';
@@ -26,8 +29,13 @@ export default function Row(props) {
     // Deleting User
     const deleteUser = async (id) => {
         try {
+            // Firebase user deletion
+            // Need Admin SDK or cloud functions to delete a user by uid (instead of current user)
+            // const user = firebase.auth().deleteUser('CLlrWvpSYoUMtNqOr3TNbjtNU8w2')
 
+            // Laravel user deletion
             const response = await Api.users.deleteUser(id);
+            console.log('response', response)
 
             // If no error occurred:
             if (!response.data['error']) {
@@ -84,12 +92,13 @@ export default function Row(props) {
             </td>
 
             {/* Delete button */}
-            <td>
+            {/* Disabled, need Firebase Admin SDK or cloud functions to delete a firebase user by uid */}
+            {/* <td>
                 <button
                     onClick={onDelete}>
                     <i className="fas fa-trash text-red-500 text-md hover:text-red-700 transform hover:scale-150 transition-all ease-in-out duration-700"></i>
                 </button>
-            </td>
+            </td> */}
 
         </tr>
     </>

@@ -1,5 +1,7 @@
 import React, { useState } from "react"
 import { useHistory } from "react-router-dom";
+import firebase from 'firebase';
+import 'firebase/auth';
 
 import Api from "../../../../services/api/Api";
 import Alert from "../../../../services/alert/Alert";
@@ -30,9 +32,16 @@ export default function Create() {
     //Avoid form submission / refresh
     event.preventDefault()
     try {
+      // Firebase Registration
+      const UserCredentials = await firebase.auth()
+        .createUserWithEmailAndPassword(user.email, user.password)
 
-      const response = await Api.users.addUser(user);
+      const firebaseToken = await UserCredentials.user.getIdToken()
 
+      // Laravel create User with user data + Firebase token
+      const response = await Api.users.addUser({ ...user, firebaseToken });
+
+      // Navigation
       if (!response.data['error']) {
         // If no errors updating, return to users
         history.push('/admin/users');
