@@ -89,15 +89,6 @@ export default function Row(props) {
             Lectures
           </button>
 
-          {/* TODO here or inside lectures / add images/files to a lecture */}
-          <button
-            className="hover:bg-teal-900 transform hover:scale-110 text-white hover:text-white font-bold text-xs px-2 py-2 ml-2 mt-2 rounded transition-all duration-50 ease-in-out duration-700 ring-2 ring-teal-600"
-            type="button"
-          // onClick={() => manageLectures(course.id)}
-          >
-            TODO/uploadImgs
-          </button>
-
         </td>
 
         <Cell value={course.title} />

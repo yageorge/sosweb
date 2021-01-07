@@ -1,5 +1,6 @@
 import React from 'react';
 
+import FilePicker from "../../../../files/FilePicker";
 import UserInput from "../../../common/UserInput"
 import TextArea from "../../../common/TextArea"
 import SelectCategory from "../../../categories/common/SelectCategory"
@@ -50,6 +51,12 @@ export default function Forum(props) {
         <SelectCategory
           defaultValue={course ? course.category_id : ""}
           onChange={props.onChange}
+        />
+
+        {/* Upload Image */}
+        <FilePicker
+          defaultValue={course ? course.urlImage : ""}
+          onFilePick={props.onFilePick}
         />
 
         {/* Submit form Button */}

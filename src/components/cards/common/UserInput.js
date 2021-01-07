@@ -5,7 +5,7 @@ export default function UserInput(props) {
 
         <div className="relative w-full mb-3">
             <label
-                className="block uppercase text-gray-800 text-xs font-bold mb-2"
+                className="block uppercase text-gray-500 text-xs font-bold mb-2"
                 htmlFor={props.inputId}
             >
                 {props.inputName}

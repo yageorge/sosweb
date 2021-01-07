@@ -47,9 +47,10 @@ export default function CoursesCard(props) {
 
             <li className="text-center">
 
+              {/* Course title + image */}
               <a
                 className={
-                  "text-xs font-bold uppercase px-5 py-3 shadow-lg rounded-xl block leading-normal text-teal-900 bg-white transform hover:scale-105 hover:bg-teal-800 hover:text-gray-100 transition-all ease-in-out duration-700"
+                  "text-xs font-bold uppercase px-5 py-3 shadow-lg rounded-xl block leading-normal text-teal-900 bg-white transform hover:scale-105 transition-all ease-in-out duration-700"
                 }
                 onClick={event => {
                   onButtonClick(event, course.id)
@@ -59,7 +60,17 @@ export default function CoursesCard(props) {
                 role="tablist"
               >
                 {course.title}
+
+                {course.urlImage !== '' ?
+                  <img
+                    className="pt-2"
+                    src={course.urlImage}
+                  />
+                  : null
+                }
               </a>
+
+
 
             </li>
 
@@ -91,7 +102,7 @@ export default function CoursesCard(props) {
                 {/* User input search bar */}
                 <div className="mb-6">
                   <SearchBar
-                    className="flex flex-row relative"
+                    className="flex flex-row relative justify-center"
                     onChange={onSearch}
                   />
                 </div>

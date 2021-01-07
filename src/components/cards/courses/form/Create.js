@@ -1,5 +1,8 @@
 import React, { useState } from "react"
 import { useHistory } from "react-router-dom";
+import moment from "moment";
+import firebase from 'firebase';
+import 'firebase/storage';
 
 import Api from "../../../../services/api/Api";
 import Alert from "../../../../services/alert/Alert";
@@ -12,11 +15,18 @@ export default function Create() {
   const [course, setCourse] = useState({})
   const [alert, setAlert] = useState('')
   const [showAlert, setShowAlert] = useState(false)
+  const [imageFile, setImageFile] = useState({})
 
   // Saving Course input in course state
   const onChange = (event) => {
     course[event.target.name] = event.target.value
     setCourse(course)
+    setShowAlert(false)
+  }
+
+  // Saving Image file input in imageFile state
+  const onImagePick = (imageFile) => {
+    setImageFile(imageFile)
     setShowAlert(false)
   }
 
@@ -30,6 +40,22 @@ export default function Create() {
     //Avoid form submission / refresh
     event.preventDefault()
     try {
+      // Upload Image to Cloud storage + get link
+      const storageRef = firebase.storage().ref();
+      // Prepare datetime combination to include in file name
+      const currentDateTime = moment().format("DDMMYYYYhhmmss_");
+      // Prepare path
+      const path = 'images/courses/' + currentDateTime + imageFile.fileName;
+      // Prepare image Ref with Firebase Storage
+      const imageRef = storageRef.child(path);
+      // Uploading image
+      await imageRef.put(imageFile.file);
+      // Get downloadURL
+      const downloadURL = await imageRef.getDownloadURL();
+      // Include image url in course
+      course['urlImage'] = downloadURL
+
+      // Api create course
       const response = await Api.courses.addCourse(course);
 
       if (!response.data['error']) {
@@ -57,17 +83,21 @@ export default function Create() {
       <TableHeader
         title="Create New Course"
         buttonIcon="fas fa-arrow-circle-left text-teal-600 hover:text-amber-600 transform hover:scale-125 transition-all ease-in-out duration-700 "
-        onClick={onClick} />
+        onClick={onClick}
+      />
 
       {/* Rendering form */}
       <Form
         action="Create"
         onChange={onChange}
-        submitFunction={create} />
+        onFilePick={onImagePick}
+        submitFunction={create}
+      />
 
       {/* Rendering conditional Alert Message */}
       {showAlert ?
-        <Alert alert={alert} />
+        <Alert alert={alert}
+        />
         : null}
 
     </div>
