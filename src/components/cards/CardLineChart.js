@@ -1,7 +1,7 @@
 import React from "react";
 import Chart from "chart.js";
 
-export default function CardLineChart() {
+export default function CardLineChart(props) {
   React.useEffect(() => {
     var config = {
       type: "line",
@@ -14,13 +14,18 @@ export default function CardLineChart() {
           "May",
           "June",
           "July",
+          "August",
+          "September",
+          "October",
+          "November",
+          "December",
         ],
         datasets: [
           {
             label: new Date().getFullYear(),
             backgroundColor: "#4c51bf",
             borderColor: "#4c51bf",
-            data: [65, 78, 66, 44, 56, 67, 75],
+            data: props.data2021,
             fill: false,
           },
           {
@@ -28,7 +33,7 @@ export default function CardLineChart() {
             fill: false,
             backgroundColor: "#fff",
             borderColor: "#fff",
-            data: [40, 68, 86, 74, 56, 60, 87],
+            data: props.data2020,
           },
         ],
       },
@@ -103,9 +108,13 @@ export default function CardLineChart() {
         },
       },
     };
+
     var ctx = document.getElementById("line-chart").getContext("2d");
+
     window.myLine = new Chart(ctx, config);
+
   }, []);
+
   return (
     <>
       <div className="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded bg-gray-800">
@@ -115,7 +124,7 @@ export default function CardLineChart() {
               <h6 className="uppercase text-gray-200 mb-1 text-xs font-semibold">
                 Overview
               </h6>
-              <h2 className="text-white text-xl font-semibold">Courses Enrollments</h2>
+              <h2 className="text-white text-xl font-semibold">{props.title}</h2>
             </div>
           </div>
         </div>
