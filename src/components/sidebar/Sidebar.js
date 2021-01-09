@@ -3,6 +3,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 import Tab from "./elements/Tab"
+import soslogo from "../../assets/img/sos_logo.png"
 
 export default function Sidebar() {
   const [collapseShow, setCollapseShow] = React.useState("hidden");
@@ -125,6 +126,11 @@ export default function Sidebar() {
                 title="Logout"
                 path="/auth/logout"
                 icon="fas fa-sign-out-alt"
+              />
+
+              <img
+                src={soslogo}
+                className="h-24 w-24 mt-36 ml-6"
               />
 
             </ul>

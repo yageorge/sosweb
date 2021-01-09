@@ -64,11 +64,9 @@ export default function Admin() {
             {/*
             TODO LIST
             ------------------- THIS IS A TODO LIST -------------------------
-            ---------- UPDATE DASHBOARD FIGURES TO REAL FIGURES
             - change right side scroller bar to something better + in courses/Trainings
-            - add url images to COURSE (Better to wait and upload an image to cloud storage then add url)
-            - add FILES Images/PDF anytype to a LECTURE or COURSE as material
             - clean code all - espacially Login/Signup / dashboard sidebar etc etc
+            ---------- UPDATE DASHBOARD CHART TO REAL FIGURES
             */}
 
 

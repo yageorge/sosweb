@@ -82,7 +82,7 @@ export default function SignUp() {
 
 
     } catch (e) {
-      setAlert("SignUp failed! Please check the console log for more details :D")
+      setAlert("SignUp failed! Please try again")
       setIsLoading(false)
       setShowAlert(true)
     }

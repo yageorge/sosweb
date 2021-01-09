@@ -1,6 +1,7 @@
 import React from "react";
 
 import background from "../../assets/img/landing-background.png"
+import soslogo from "../../assets/img/sos_logo.png"
 import so1 from "../../assets/img/landing-so1.png"
 import Navbar from "../../components/navbars/AuthNavbar";
 import Footer from "../../components/footers/Footer";
@@ -23,26 +24,16 @@ export default function Landing() {
               id="blackOverlay"
               className="w-full h-full absolute opacity-75 bg-black"
             ></span>
-
-            {/* Below effect of cutting right high left low, worked, but not adaptive to screen size, need a bit of adjustment */}
-            {/* <svg
-              preserveAspectRatio="none"
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="16 0 330 95" // polygon position + sizes
-              className="absolute left-0 w-full block h-95-px -top-94-px"
-            >
-              <polygon
-                points="-10,95 583,95 583,70" // polygon position + sizes
-                className="text-blue-400 fill-current"
-              ></polygon>
-            </svg> */}
-
           </div>
 
           <div className="container relative mx-auto">
             <div className="items-center flex flex-wrap">
               <div className="w-full lg:w-6/12 px-4 ml-auto mr-auto text-center">
                 <div className="pr-12">
+                  <img
+                    src={soslogo}
+                    className="h-24 w-24"
+                  />
                   <h1 className="text-white font-semibold text-5xl">
                     Your In-House digital learning platform.
                   </h1>
