@@ -73,7 +73,7 @@ export default function Row(props) {
             {user.urlImage ?
                 <td>
                     <img
-                        className='inline object-cover w-8 h-8 m-3 rounded-full'
+                        className='inline object-cover w-8 h-8 m-3 rounded-full transform hover:scale-150 transition-all ease-in-out duration-700'
                         alt=''
                         src={user.urlImage}
                     />
