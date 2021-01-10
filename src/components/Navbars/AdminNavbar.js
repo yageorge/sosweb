@@ -15,7 +15,7 @@ export default function Navbar() {
 
         <div className="flex flex-row absolute inset-y-0 right-0 text-right m-4">
 
-          <div className="text-indigo-300 text-xs hidden lg:inline-block font-semibold mr-4">
+          <div className="text-indigo-300 text-sm hidden lg:inline-block font-semibold mr-4">
             {userEmail}
           </div>
 

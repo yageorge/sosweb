@@ -12,6 +12,7 @@ export default function HeaderStats() {
   const [enrollments, setEnrollments] = useState('...');
   const [completions, setCompletions] = useState('...');
   const [completionsPoints, setCompletionsPoints] = useState('...');
+  const [modulesMinutes, setModulesMinutes] = useState('...');
 
   const getDashboardData = async () => {
     try {
@@ -28,6 +29,7 @@ export default function HeaderStats() {
 
       // Enrollments / Completions / Completions Points Count
       Api.courses.getEnrollments().then(function (response) {
+        setModulesMinutes(response.data.totalModulesMinutes)
         setEnrollments(response.data.totalEnrollments)
         setCompletions(response.data.totalCompletions)
         setCompletionsPoints(response.data.totalCompletionsPoints)
@@ -90,6 +92,14 @@ export default function HeaderStats() {
                 statTitle={completions}
                 statIconName="fas fa-check-double"
                 statIconColor="bg-blue-500"
+              />
+            </div>
+            <div className="w-full lg:w-6/12 xl:w-3/12 px-4 m-2">
+              <CardStats
+                statSubtitle="Modules Minutes"
+                statTitle={modulesMinutes}
+                statIconName="fas fa-clock"
+                statIconColor="bg-indigo-700"
               />
             </div>
           </div>

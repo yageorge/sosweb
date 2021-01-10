@@ -174,19 +174,9 @@ export default function Login() {
               : null}
 
             {/* Forgot Password + Create New Account */}
-            <div className="flex flex-wrap mt-6 relative">
-              <div className="w-1/2 transform hover:scale-105 transition-all ease-in-out duration-400">
-                <a
-                  href="#pablo"
-                  onClick={(e) => e.preventDefault()}
-                  className="text-gray-300"
-                >
-                  <small>TODO: Forgot password?</small>
-                </a>
-              </div>
-
+            <div className="mt-6 relative">
               {/* New Account link */}
-              <div className="w-1/2 text-right transform hover:scale-105 transition-all ease-in-out duration-400">
+              <div className="text-right transform hover:scale-105 transition-all ease-in-out duration-400">
                 <Link to="/auth/signup" className="text-gray-300">
                   <small>Create new account</small>
                 </Link>

@@ -18,7 +18,7 @@ export default function Sidebar() {
           <button
             className="cursor-pointer text-white opacity-50 md:hidden px-3 py-1 text-xl leading-none bg-transparent rounded border border-solid border-transparent"
             type="button"
-            onClick={() => setCollapseShow("bg-white m-2 py-3 px-6")}
+            onClick={() => setCollapseShow("bg-gray-900 m-2 py-3 px-6")}
           >
             <i className="fas fa-bars"></i>
           </button>
@@ -50,10 +50,12 @@ export default function Sidebar() {
                     Skill Optimizer
                   </Link>
                 </div>
+
+                {/* Close dropdown sidebar button - in small screen size */}
                 <div className="w-6/12 flex justify-end">
                   <button
                     type="button"
-                    className="cursor-pointer text-black opacity-50 md:hidden px-3 py-1 text-xl leading-none bg-transparent rounded border border-solid border-transparent"
+                    className="cursor-pointer text-gray-300 opacity-50 md:hidden px-3 py-1 text-xl leading-none bg-transparent rounded border border-solid border-transparent"
                     onClick={() => setCollapseShow("hidden")}
                   >
                     <i className="fas fa-times"></i>
@@ -124,13 +126,14 @@ export default function Sidebar() {
               {/* User Logout */}
               <Tab
                 title="Logout"
+                selectedClassName="bg-gray-600"
                 path="/auth/logout"
                 icon="fas fa-sign-out-alt"
               />
 
               <img
+                className="h-24 w-24 mt-36 ml-6 transform hover:scale-110 transition-all ease-in-out duration-500"
                 src={soslogo}
-                className="h-24 w-24 mt-36 ml-6"
               />
 
             </ul>

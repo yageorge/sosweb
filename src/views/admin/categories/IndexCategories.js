@@ -27,7 +27,7 @@ export default function IndexCategories() {
   return (
     <>
       <div className="flex flex-wrap mt-4">
-        <div className="w-full mb-32 px-4">
+        <div className="w-full mb-44 px-4">
           <Categories categories={categories} />
         </div>
       </div>

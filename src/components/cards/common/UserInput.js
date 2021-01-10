@@ -11,7 +11,9 @@ export default function UserInput(props) {
                 {props.inputName}
             </label>
             <input
-                className="px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none w-full ease-linear transition-all duration-150"
+                className="px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow
+                            focus:outline-none focus:ring focus:ring-teal-600 
+                            w-full ease-linear transition-all duration-150"
                 type={props.inputType}
                 required={props.required}
                 id={props.inputId}
@@ -21,6 +23,7 @@ export default function UserInput(props) {
                 minLength={props.minLength}
                 maxLength={props.maxLength}
                 max={props.max}
+                autocomplete="off"
                 onChange={props.onChange}
             />
         </div>

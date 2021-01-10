@@ -62,18 +62,6 @@ export default function Row(props) {
 
         <tr className="transform hover:bg-gray-700 font-bold">
 
-            {/* Manage Courses button */}
-            <td>
-                <button
-                    className="hover:bg-teal-900 transform hover:scale-110 text-white hover:text-white font-bold text-xs px-2 py-2 ml-2 mt-2 rounded transition-all duration-50 ease-in-out duration-700 ring-2 ring-teal-600"
-                    type="button"
-                // onClick={() => manageLectures(course.id)}
-                >
-                    TO REMOVE - Courses
-                </button>
-            </td>
-
-
             <Cell value={department.name} />
 
             <Cell value={moment(department.created_at).format("DD MMM YYYY")} />

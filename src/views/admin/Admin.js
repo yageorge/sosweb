@@ -106,10 +106,12 @@ export default function Admin() {
 
             </Switch>
 
-            {/* Common Footer */}
-            <Footer />
+
           </div>
+
         </div>
+        {/* Common Footer */}
+        <Footer absolute />
       </div>
     </>
   );
