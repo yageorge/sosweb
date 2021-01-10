@@ -9,7 +9,7 @@ import Form from "./components/Form";
 export default function Edit() {
 
   //Receiving course + lecture id param
-  const { courseId } = useParams();
+  // const { courseId } = useParams();
   const { lectureId } = useParams();
 
   const history = useHistory();

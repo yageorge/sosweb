@@ -20,6 +20,8 @@ export default function TableBody() {
         <thead>
             <tr>
 
+                <Header />
+
                 <Header title="First Name" />
 
                 <Header title="Last Name" />

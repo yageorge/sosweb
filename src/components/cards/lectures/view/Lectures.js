@@ -10,7 +10,7 @@ export default function Lectures(props) {
   const history = useHistory();
   const location = useLocation();
 
-  // Retreiving courseTitle from history.push / state
+  // Retrieving courseTitle from history.push / state
   const courseTitle = location.state.courseTitle
 
   const courseId = props.courseId
@@ -40,7 +40,8 @@ export default function Lectures(props) {
           title={courseTitle.toUpperCase() + " - total lectures: " + lecturesCount}
           titleClassName="text-blue-500"
           buttonIcon="fas fa-plus-circle text-teal-600 hover:text-amber-600 transform hover:scale-125 transition-all ease-in-out duration-700 "
-          onClick={onClick} />
+          onClick={onClick}
+        />
 
         {/* Render Table with all lectures */}
         {lectures ?

@@ -1,7 +1,6 @@
 import React from "react";
 
 import background from "../../assets/img/landing-background.png"
-import soslogo from "../../assets/img/sos_logo.png"
 import so1 from "../../assets/img/landing-so1.png"
 import Navbar from "../../components/navbars/AuthNavbar";
 import Footer from "../../components/footers/Footer";

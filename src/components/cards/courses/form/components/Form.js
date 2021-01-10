@@ -55,6 +55,7 @@ export default function Forum(props) {
 
         {/* Upload Image */}
         <FilePicker
+          title="Upload course image"
           defaultValue={course ? course.urlImage : ""}
           onFilePick={props.onFilePick}
         />

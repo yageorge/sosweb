@@ -121,6 +121,7 @@ export default function Panel(props) {
                 className="text-sm text-gray-200 font-bold tracking-wider mt-8 inline-block"
                 href={lecture.urlVideo}
                 target="_blank"
+                rel="noreferrer"
               >
                 {`Video Link: ${lecture.urlVideo}`}
               </a>

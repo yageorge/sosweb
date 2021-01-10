@@ -22,12 +22,12 @@ export default function TableBody() {
         <thead>
             <tr>
 
-                {/* Manage Lectures Button */}
-                <Header title="" />
+                {/* Course image */}
+                <Header title="" padding="px-8" />
 
-                <Header title="Title" padding="px-6" />
+                <Header title="Title" padding="px-4" />
 
-                <Header title="Description" padding="px-6" />
+                <Header title="Description" padding="px-4" />
 
                 <Header title="Lectures" padding="px-2" />
 
@@ -35,11 +35,15 @@ export default function TableBody() {
 
                 <Header title="Points" padding="px-2" />
 
-                <Header title="Category" padding="px-6" />
+                <Header title="Category" padding="px-4" />
 
-                <Header title="Created" padding="px-6" />
+                <Header title="Created" padding="px-4" />
 
-                <Header title="Updated" padding="px-6" />
+                <Header title="Updated" padding="px-4" />
+
+
+                {/* Manage Lectures Button */}
+                <Header title="" padding="px-12" />
 
                 {/* Edit Button */}
                 <Header title="" padding="px-6" />

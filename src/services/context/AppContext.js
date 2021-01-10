@@ -25,6 +25,8 @@ let reducer = (state, action) => {
         case "setUserEmail": {
             return { ...state, userEmail: action.userEmail }
         }
+        default:
+            break;
     }
 
     return state;

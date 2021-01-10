@@ -11,7 +11,7 @@ export default function Sidebar() {
     <>
 
       {/* md for medium regular screens */}
-      <nav className="md:left-0 md:block md:fixed md:top-0 md:bottom-0 md:overflow-y-auto md:flex-row md:flex-no-wrap md:overflow-hidden shadow-xl bg-gray-900 flex flex-wrap items-center justify-between relative md:w-52 z-10 py-4 px-6">
+      <nav className="md:left-0 md:block md:fixed md:top-0 md:bottom-0 md:overflow-y-auto md:flex-row md:flex-no-wrap md:overflow-hidden shadow-xl bg-gray-900 flex flex-wrap items-center justify-between relative md:w-46 z-10 py-4 px-6">
         <div className="md:flex-col md:items-stretch md:min-h-full md:flex-no-wrap px-0 flex flex-wrap items-center justify-between w-full mx-auto">
 
           {/* Drawer Button To appear on small screens */}
@@ -132,7 +132,7 @@ export default function Sidebar() {
               />
 
               <img
-                className="h-24 w-24 mt-36 ml-6 transform hover:scale-110 transition-all ease-in-out duration-500"
+                className="h-24 w-24 mt-36 ml-2 transform hover:scale-110 transition-all ease-in-out duration-500"
                 src={soslogo}
               />
 

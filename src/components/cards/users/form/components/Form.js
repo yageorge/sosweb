@@ -1,5 +1,6 @@
 import React from 'react';
 
+import FilePicker from "../../../../files/FilePicker";
 import UserInput from "../../../common/UserInput"
 import SelectDepartment from "../../../departments/common/SelectDepartment"
 import CheckBox from "../../../departments/common/CheckBox"
@@ -110,6 +111,14 @@ export default function Forum(props) {
         <CheckBox
           defaultValue={user ? user.isAdmin : 0}
           onChange={props.onChange}
+        />
+
+
+        {/* Upload Image */}
+        <FilePicker
+          title="Upload user picture"
+          defaultValue={user ? user.urlImage : ""}
+          onFilePick={props.onFilePick}
         />
 
         {/* Submit form Button */}

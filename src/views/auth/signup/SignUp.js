@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react"
 import { useHistory } from "react-router-dom"
 import { useCookies } from "react-cookie"
-import firebase from 'firebase';
+import firebase from 'firebase/app';
 import 'firebase/auth';
 
 import { AppContext } from "../../../services/context/AppContext"

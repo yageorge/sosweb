@@ -1,17 +1,15 @@
-import React, { useState } from "react"
-import { useHistory } from "react-router-dom";
-import moment from "moment";
-import firebase from 'firebase';
-import 'firebase/storage';
+import React, { useState } from 'react'
+import { useHistory } from 'react-router-dom'
 
-import Api from "../../../../services/api/Api";
-import Alert from "../../../../services/alert/Alert";
-import TableHeader from "../../common/TableHeader"
-import Form from "./components/Form";
+import Api from '../../../../services/api/Api'
+import { cloudImageUpload } from '../../../../services/CloudImage'
+import Alert from '../../../../services/alert/Alert'
+import TableHeader from '../../common/TableHeader'
+import Form from './components/Form'
 
 export default function Create() {
 
-  const history = useHistory();
+  const history = useHistory()
   const [course, setCourse] = useState({})
   const [alert, setAlert] = useState('')
   const [showAlert, setShowAlert] = useState(false)
@@ -32,7 +30,7 @@ export default function Create() {
 
   // Back Button onClick
   const onClick = () => {
-    history.goBack();
+    history.goBack()
   }
 
   // Creating new Course
@@ -40,27 +38,17 @@ export default function Create() {
     //Avoid form submission / refresh
     event.preventDefault()
     try {
-      // Upload Image to Cloud storage + get link
-      const storageRef = firebase.storage().ref();
-      // Prepare datetime combination to include in file name
-      const currentDateTime = moment().format("DDMMYYYYhhmmss_");
-      // Prepare path
-      const path = 'images/courses/' + currentDateTime + imageFile.fileName;
-      // Prepare image Ref with Firebase Storage
-      const imageRef = storageRef.child(path);
-      // Uploading image
-      await imageRef.put(imageFile.file);
-      // Get downloadURL
-      const downloadURL = await imageRef.getDownloadURL();
+      // upload image to Cloud Storage + get downloadURL
+      const downloadURL = await cloudImageUpload('images/courses/', imageFile)
       // Include image url in course
       course['urlImage'] = downloadURL
 
       // Api create course
-      const response = await Api.courses.addCourse(course);
-
+      const response = await Api.courses.addCourse(course)
+      console.log('response:', response.body)
       if (!response.data['error']) {
         // If no errors updating, return to courses
-        history.push('/admin/courses');
+        history.push('/admin/courses')
 
       } else {
         setAlert(response.data['error'])
@@ -77,18 +65,18 @@ export default function Create() {
 
     <div
       className=
-      "relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded bg-gray-800 text-white">
+      'relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded bg-gray-800 text-white'>
 
       {/* Creating Table header including a back button */}
       <TableHeader
-        title="Create New Course"
-        buttonIcon="fas fa-arrow-circle-left text-teal-600 hover:text-amber-600 transform hover:scale-125 transition-all ease-in-out duration-700 "
+        title='Create New Course'
+        buttonIcon='fas fa-arrow-circle-left text-teal-600 hover:text-amber-600 transform hover:scale-125 transition-all ease-in-out duration-700 '
         onClick={onClick}
       />
 
       {/* Rendering form */}
       <Form
-        action="Create"
+        action='Create'
         onChange={onChange}
         onFilePick={onImagePick}
         submitFunction={create}
@@ -101,5 +89,5 @@ export default function Create() {
         : null}
 
     </div>
-  );
+  )
 }

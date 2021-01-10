@@ -1,12 +1,13 @@
-import React, { useState } from "react"
-import { useHistory } from "react-router-dom";
-import firebase from 'firebase';
-import 'firebase/auth';
+import React, { useState } from 'react'
+import { useHistory } from 'react-router-dom'
+import firebase from 'firebase/app'
+import 'firebase/auth'
 
-import Api from "../../../../services/api/Api";
-import Alert from "../../../../services/alert/Alert";
-import TableHeader from "../../common/TableHeader"
-import Form from "./components/Form";
+import Api from '../../../../services/api/Api'
+import { cloudImageUpload } from '../../../../services/CloudImage'
+import Alert from '../../../../services/alert/Alert'
+import TableHeader from '../../common/TableHeader'
+import Form from './components/Form';
 
 export default function Create() {
 
@@ -14,11 +15,18 @@ export default function Create() {
   const [user, setUser] = useState({})
   const [alert, setAlert] = useState('')
   const [showAlert, setShowAlert] = useState(false)
+  const [imageFile, setImageFile] = useState({})
 
   // Saving User input in user state
   const onChange = (event) => {
     user[event.target.name] = event.target.value
     setUser(user)
+    setShowAlert(false)
+  }
+
+  // Saving Image file input in imageFile state
+  const onImagePick = (imageFile) => {
+    setImageFile(imageFile)
     setShowAlert(false)
   }
 
@@ -37,6 +45,12 @@ export default function Create() {
         .createUserWithEmailAndPassword(user.email, user.password)
 
       const firebaseToken = await UserCredentials.user.getIdToken()
+
+      // upload image to Cloud Storage + get downloadURL
+      const downloadURL = await cloudImageUpload('images/users/', imageFile)
+
+      // Include image url in course
+      user['urlImage'] = downloadURL
 
       // Laravel create User with user data + Firebase token
       const response = await Api.users.addUser({ ...user, firebaseToken });
@@ -61,23 +75,28 @@ export default function Create() {
 
     <div
       className=
-      "relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded bg-gray-800 text-white">
+      'relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded bg-gray-800 text-white'>
 
       {/* Creating Table header including a back button */}
       <TableHeader
-        title="Create New User"
-        buttonIcon="fas fa-arrow-circle-left text-teal-600 hover:text-amber-600 transform hover:scale-125 transition-all ease-in-out duration-700 "
-        onClick={onClick} />
+        title='Create New User'
+        buttonIcon='fas fa-arrow-circle-left text-teal-600 hover:text-amber-600 transform hover:scale-125 transition-all ease-in-out duration-700 '
+        onClick={onClick}
+      />
 
       {/* Rendering form */}
       <Form
-        action="Create"
+        action='Create'
         onChange={onChange}
-        submitFunction={create} />
+        onFilePick={onImagePick}
+        submitFunction={create}
+      />
 
       {/* Rendering conditional Alert Message */}
       {showAlert ?
-        <Alert alert={alert} />
+        <Alert
+          alert={alert}
+        />
         : null}
 
     </div>

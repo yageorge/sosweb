@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import UserInput from "../../../common/UserInput"
 import TextArea from "../../../common/TextArea"

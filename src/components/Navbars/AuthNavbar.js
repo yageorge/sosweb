@@ -16,6 +16,7 @@ export default function Navbar() {
             >
               <img
                 className="h-28 w-28 transform hover:scale-110 transition-all ease-in-out duration-500"
+                alt=''
                 src={soslogo}
               />
             </Link>
@@ -34,6 +35,7 @@ export default function Navbar() {
                 <a
                   className="px-3 py-2 flex items-center transform hover:scale-110 transition-all ease-in-out duration-400"
                   href="https://www.facebook.com/george.yaacoub/"
+                  rel="noreferrer"
                   target="_blank"
                 >
                   <i className="text-gray-200 fab fa-facebook text-lg leading-lg " />
@@ -45,6 +47,7 @@ export default function Navbar() {
                 <a
                   className="px-3 py-2 flex items-center transform hover:scale-110 transition-all ease-in-out duration-400"
                   href="https://twitter.com/"
+                  rel="noreferrer"
                   target="_blank"
                 >
                   <i className="text-gray-200 fab fa-twitter text-lg leading-lg " />
