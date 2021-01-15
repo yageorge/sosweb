@@ -15,8 +15,8 @@ export default function Dashboard() {
           {/* Courses Enrollments */}
           <CardLineChart
             title="Courses Completions"
-            data2021={[18, 34, 17, 15, 37, 19, 29, 15, 19, 34, 55, 48]}
-            data2020={[9, 14, 7, 25, 27, 14, 35, 20, 14, 29, 45, 39]}
+            data2021={[8, 12, 17, 15, 17, 9, 16, 4, 19, 7, 18, 22]}
+            data2020={[13, 19, 7, 19, 7, 14, 23, 12, 27, 17, 26, 17]}
           />
         </div>
       </div>

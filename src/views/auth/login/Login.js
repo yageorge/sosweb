@@ -80,7 +80,7 @@ export default function Login() {
 
 
     } catch (e) {
-      setAlert("Login failed! The email or password you've entered doesn't match any account.")
+      setAlert("Login failed! The email or password does not match any account.")
       setIsLoading(false)
       setShowAlert(true)
     }

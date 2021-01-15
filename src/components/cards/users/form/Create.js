@@ -88,8 +88,8 @@ export default function Create() {
       <Form
         action='Create'
         onChange={onChange}
-        onFilePick={onImagePick}
         submitFunction={create}
+        onFilePick={onImagePick}
       />
 
       {/* Rendering conditional Alert Message */}

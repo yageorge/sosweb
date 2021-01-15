@@ -36,7 +36,7 @@ function AppRouter() {
 
   //Setting auth bool init if cookie exist
   const [auth, setAuth] = useState(state.userToken ? true : false)
-
+  console.log('user token:', state.userToken)
 
   useEffect(() => {
     //Listener to reset auth bool when cookie state is modified

@@ -51,7 +51,7 @@ export default function Forum(props) {
           inputName="Content"
           defaultValue={lecture ? lecture.content : ""}
           onChange={props.onChange}
-          rows={26}
+          rows={16}
         />
 
         {/* Submit form Button */}

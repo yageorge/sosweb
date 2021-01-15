@@ -27,7 +27,7 @@ export default function IndexDepartments() {
   return (
     <>
       <div className="flex flex-wrap mt-4">
-        <div className="w-full mb-44 px-4">
+        <div className="w-full px-4">
           <Departments departments={departments} />
         </div>
       </div>

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react"
 import { useHistory, useParams } from "react-router-dom";
 
 import Api from "../../../../services/api/Api";
+import { cloudImageUpload } from '../../../../services/CloudImage'
 import Alert from "../../../../services/alert/Alert";
 import TableHeader from "../../common/TableHeader"
 import Form from "./components/Form";
@@ -13,6 +14,7 @@ export default function Edit() {
   const [showForm, setShowForm] = useState(false)
   const [alert, setAlert] = useState('')
   const [showAlert, setShowAlert] = useState(false)
+  const [imageFile, setImageFile] = useState({})
 
   //Receiving course id param to edit
   const { id } = useParams();
@@ -50,6 +52,12 @@ export default function Edit() {
     setShowAlert(false)
   }
 
+  // Saving Image file input in imageFile state
+  const onImagePick = (imageFile) => {
+    setImageFile(imageFile)
+    setShowAlert(false)
+  }
+
   // Back Button onClick
   const onClick = () => {
     history.goBack();
@@ -61,6 +69,11 @@ export default function Edit() {
     event.preventDefault()
 
     try {
+      // upload image to Cloud Storage + get downloadURL
+      const downloadURL = await cloudImageUpload('images/courses/', imageFile)
+      // Include image url in course
+      course['urlImage'] = downloadURL
+
       const response = await Api.courses.updateCourse(course, course.id);
 
       if (!response.data['error']) {
@@ -96,6 +109,7 @@ export default function Edit() {
         <Form
           action="Edit"
           onChange={onChange}
+          onFilePick={onImagePick}
           submitFunction={update}
           course={course} />
         : null}

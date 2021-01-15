@@ -59,7 +59,7 @@ export default function Admin() {
             ></span>
           </div>
 
-          <div className="px-4 mx-auto">
+          <div className="px-4 mx-auto h-screen">
 
             {/*
             TODO LIST
