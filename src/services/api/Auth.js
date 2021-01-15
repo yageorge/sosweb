@@ -2,8 +2,11 @@ import axios from "axios"
 
 export default {
 
-    login: (credentials) =>
-        axios.post('/login', credentials).then(response => response.data),
+    login: (firebaseToken) =>
+        axios.post('/login', {
+            'firebaseToken': firebaseToken,
+            'platform': 'web'
+        }).then(response => response.data),
 
     signup: (credentials) =>
         axios.post('/signup', credentials).then(response => response.data),

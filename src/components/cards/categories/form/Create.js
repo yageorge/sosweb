@@ -16,6 +16,7 @@ export default function Create() {
   // Saving User input in category state
   const onChange = (event) => {
     category[event.target.name] = event.target.value
+
     setCategory(category)
     setShowAlert(false)
   }

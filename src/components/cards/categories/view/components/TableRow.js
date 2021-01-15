@@ -2,10 +2,11 @@ import React from 'react';
 import { Link } from "react-router-dom";
 import moment from "moment";
 
+import Api from "../../../../../services/api/Api";
+
 import AlertConfirmation from '../../../../../services/alert/AlertConfirmation';
 import AlertModal from '../../../../../services/alert/AlertModal';
-
-import Api from "../../../../../services/api/Api";
+import ColorPreview from "../../../../ColorPreview"
 
 
 // Rendering 1 category row
@@ -50,7 +51,7 @@ export default function Row(props) {
     function Cell(props) {
 
         return (
-            <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 uppercase text-xs whitespace-no-wrap p-4">
+            <td className="border-t-0 px-6 text-left border-l-0 border-r-0 uppercase text-xs whitespace-no-wrap p-4">
                 {props.value}
             </td>
         );
@@ -61,9 +62,15 @@ export default function Row(props) {
     return (<>
 
         <tr className="transform hover:bg-gray-700 font-bold">
+
+            {/* Color  Value */}
+            <ColorPreview
+                initColor={category ? category.colorVal : "03a9f4"}
+            />
+
             <Cell value={category.name} />
 
-            <Cell value={moment(category.created_at).format("DD MMM YYYY - hh:mm a")} />
+            <Cell value={moment(category.created_at).format("DD MMM YYYY")} />
 
             {/* Edit button */}
             <td>

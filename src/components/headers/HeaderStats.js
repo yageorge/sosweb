@@ -9,37 +9,41 @@ export default function HeaderStats() {
 
   const [usersCount, setUsersCount] = useState('...');
   const [coursesCount, setCoursesCount] = useState('...');
+  const [enrollments, setEnrollments] = useState('...');
+  const [completions, setCompletions] = useState('...');
+  const [completionsPoints, setCompletionsPoints] = useState('...');
+  const [modulesMinutes, setModulesMinutes] = useState('...');
 
-
-  const getUsersCount = async () => {
+  const getDashboardData = async () => {
     try {
 
-      const response = await Api.users.getUsersCount();
-      setUsersCount(response.data);
+      // Users Count
+      Api.users.getUsersCount().then(function (response) {
+        setUsersCount(response.data)
+      })
+
+      // Courses Count
+      Api.courses.getCoursesCount().then(function (response) {
+        setCoursesCount(response.data)
+      })
+
+      // Enrollments / Completions / Completions Points Count
+      Api.courses.getEnrollments().then(function (response) {
+        setModulesMinutes(response.data.totalModulesMinutes)
+        setEnrollments(response.data.totalEnrollments)
+        setCompletions(response.data.totalCompletions)
+        setCompletionsPoints(response.data.totalCompletionsPoints)
+      })
+
 
     } catch (e) {
       AlertModal('An error has occurred: ' + e.message)
     }
   }
 
-  const getCoursesCount = async () => {
-    try {
-
-      const response = await Api.courses.getCoursesCount();
-      setCoursesCount(response.data);
-
-    } catch (e) {
-      AlertModal('An error has occurred: ' + e.message)
-    }
-  }
-
-  const getStatsData = async () => {
-    await getUsersCount()
-    await getCoursesCount()
-  }
 
   useEffect(() => {
-    getStatsData()
+    getDashboardData()
   }, [])
 
 
@@ -69,25 +73,33 @@ export default function HeaderStats() {
             <div className="w-full lg:w-6/12 xl:w-3/12 px-4 m-2">
               <CardStats
                 statSubtitle="Enrollments"
-                statTitle="78"
-                statIconName="fas fa-clipboard-check"
-                statIconColor="bg-pink-500"
+                statTitle={enrollments}
+                statIconName="fas fa-boxes"
+                statIconColor="bg-amber-500"
               />
             </div>
             <div className="w-full lg:w-6/12 xl:w-3/12 px-4 m-2">
               <CardStats
-                statSubtitle="KPI Points"
-                statTitle="178"
-                statIconName="fas fa-clipboard-check"
-                statIconColor="bg-pink-500"
+                statSubtitle="Acquired KPI Points"
+                statTitle={completionsPoints}
+                statIconName="fas fa-star"
+                statIconColor="bg-purple-500"
               />
             </div>
             <div className="w-full lg:w-6/12 xl:w-3/12 px-4 m-2">
               <CardStats
                 statSubtitle="Completed Courses"
-                statTitle="24"
-                statIconName="fas fa-percent"
+                statTitle={completions}
+                statIconName="fas fa-check-double"
                 statIconColor="bg-blue-500"
+              />
+            </div>
+            <div className="w-full lg:w-6/12 xl:w-3/12 px-4 m-2">
+              <CardStats
+                statSubtitle="Modules Minutes"
+                statTitle={modulesMinutes}
+                statIconName="fas fa-clock"
+                statIconColor="bg-indigo-700"
               />
             </div>
           </div>

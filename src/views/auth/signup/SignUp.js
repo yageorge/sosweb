@@ -1,10 +1,13 @@
-import React, { useContext, useState } from "react";
-import { useHistory } from "react-router-dom";
-import { useCookies } from "react-cookie";
+import React, { useContext, useState } from "react"
+import { useHistory } from "react-router-dom"
+import { useCookies } from "react-cookie"
+import firebase from 'firebase/app';
+import 'firebase/auth';
 
 import { AppContext } from "../../../services/context/AppContext"
-import Api from "../../../services/api/Api";
-import Alert from "../../../services/alert/Alert";
+import Api from "../../../services/api/Api"
+import Alert from "../../../services/alert/Alert"
+import LoadingSpinner from "../../../components/spinner/LoadingSpinner"
 
 import UserInput from "../../../components/cards/common/UserInput"
 
@@ -19,6 +22,7 @@ export default function SignUp() {
 
   const [alert, setAlert] = useState('')
   const [showAlert, setShowAlert] = useState(false)
+  const [isLoading, setIsLoading] = useState(false)
 
   // Set the new value + update credentials State
   const onChange = (event) => {
@@ -30,15 +34,26 @@ export default function SignUp() {
   const signUp = async (event) => {
     //Avoid form submission / refresh
     event.preventDefault()
-
+    setIsLoading(true)
     // setShowError(false)
     try {
-      const response = await Api.auth.signup(credentials);
-      const token = response.data.token;
+
+      // Firebase Registration
+      const UserCredentials = await firebase.auth()
+        .createUserWithEmailAndPassword(credentials.email, credentials.password)
+
+      const firebaseToken = await UserCredentials.user.getIdToken()
+
+
+      console.log('.then((firebaseToken) => {', { ...credentials, firebaseToken })
+
+      // Laravel signUp with credentials + Firebase token
+      const response = await Api.auth.signup({ ...credentials, firebaseToken })
+      const token = response.data.token
       const userName = response.data.userName
 
       //Saving token in a cookie + in apis header
-      setCookie("userToken", token, { path: '/' });
+      setCookie("userToken", token, { path: '/' })
       Api.init(token)
 
       //Saving token in App Context
@@ -63,10 +78,12 @@ export default function SignUp() {
 
 
       //Redirecting to /admin
-      history.push('/admin');
+      history.push('/admin')
+
 
     } catch (e) {
-      setAlert("SignUp failed! Please check the console log for more details :D")
+      setAlert("SignUp failed! Please try again")
+      setIsLoading(false)
       setShowAlert(true)
     }
   }
@@ -77,7 +94,7 @@ export default function SignUp() {
       <div className="container mx-auto px-4 h-full">
         <div className="flex content-center items-center justify-center h-full">
           <div className="w-full lg:w-6/12 px-4">
-            <div className="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-gray-300 border-0">
+            <div className="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-white opacity-60 border-0">
               <div className="rounded-t mb-0 px-6 py-6">
                 <div className="text-center mb-3">
                   <h6 className="text-gray-600 text-md font-bold">
@@ -154,15 +171,22 @@ export default function SignUp() {
                     onChange={onChange}
                   />
 
-                  <div className="text-center mt-6">
-                    <button
-                      className="bg-gray-900 text-white active:bg-gray-700 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 w-full transition ease-linear transition-all duration-200 hover:bg-gray-700"
-                      type="submit"
-                      form="signup_form"
-                    >
-                      Create Admin Account
+                  {isLoading ?
+                    <div className="flex m-2">
+                      <LoadingSpinner />
+                    </div>
+                    :
+                    <div className="text-center mt-6">
+                      <button
+                        className="bg-teal-900 text-white active:bg-gray-700 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 w-full transition ease-linear transition-all duration-200 hover:bg-teal-700"
+                        type="submit"
+                        form="signup_form"
+                      >
+                        Create Admin Account
                       </button>
-                  </div>
+                    </div>
+                  }
+
                 </form>
               </div>
             </div>

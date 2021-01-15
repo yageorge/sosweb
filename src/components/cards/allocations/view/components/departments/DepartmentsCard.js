@@ -46,7 +46,7 @@ export default function DepartmentsCard(props) {
                     "text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal transform hover:scale-105 transition-all ease-in-out duration-700 " +
                     (openTab === department.id
                       ? "text-white bg-teal-900"
-                      : "text-teal-900 bg-white")
+                      : "text-teal-900 bg-gray-300")
                   }
                   onClick={event => {
                     onButtonClick(event, department.id)

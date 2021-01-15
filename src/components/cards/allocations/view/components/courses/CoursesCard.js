@@ -1,7 +1,7 @@
-import React, { useState } from "react"
+import React, { useState } from 'react'
 
-import LoadingSpinner from "../../../../../spinner/LoadingSpinner"
-import SearchBar from "../../../../../searchbar/SearchBar"
+import LoadingSpinner from '../../../../../spinner/LoadingSpinner'
+import SearchBar from '../../../../../searchbar/SearchBar'
 
 
 export default function CoursesCard(props) {
@@ -35,8 +35,8 @@ export default function CoursesCard(props) {
     return (
 
       <ul
-        className="grid grid-cols-2 gap-4 pb-6"
-        role="tablist"
+        className='grid grid-cols-2 gap-4 pb-6'
+        role='tablist'
       >
 
         {courses.filter(
@@ -45,21 +45,33 @@ export default function CoursesCard(props) {
 
           .map((course) => (
 
-            <li className="text-center">
+            <li className='text-center'>
 
+              {/* Course title + image */}
               <a
                 className={
-                  "text-xs font-bold uppercase px-5 py-3 shadow-lg rounded-xl block leading-normal text-teal-900 bg-white transform hover:scale-105 hover:bg-teal-800 hover:text-gray-100 transition-all ease-in-out duration-700"
+                  'text-xs font-bold uppercase px-5 py-3 shadow-lg rounded-xl block leading-normal text-teal-900 bg-white transform hover:scale-105 transition-all ease-in-out duration-700'
                 }
                 onClick={event => {
                   onButtonClick(event, course.id)
                 }}
-                data-toggle="tab"
-                href="#link1"
-                role="tablist"
+                data-toggle='tab'
+                href='#link1'
+                role='tablist'
               >
                 {course.title}
+
+                {course.urlImage !== '' ?
+                  <img
+                    className='pt-2'
+                    alt=''
+                    src={course.urlImage}
+                  />
+                  : null
+                }
               </a>
+
+
 
             </li>
 
@@ -73,14 +85,14 @@ export default function CoursesCard(props) {
   // Rendering table
   return (
 
-    <div className="flex flex-col w-2/4">
+    <div className='flex flex-col w-2/4'>
 
-      <p className="rounded-t-lg bg-gray-700 mx-4 p-4 text-center text-md font-bold text-amber-400">
+      <p className='rounded-t-lg bg-gray-700 mx-4 p-4 text-center text-md font-bold text-amber-400'>
         {props.title}
       </p>
 
 
-      <div className="rounded-b-lg bg-gray-700 mx-4 mb-4 px-4">
+      <div className='rounded-b-lg bg-gray-700 mx-4 mb-4 px-4'>
 
         { // If not loading show courses
           !loading ?
@@ -89,9 +101,9 @@ export default function CoursesCard(props) {
               <div>
 
                 {/* User input search bar */}
-                <div className="mb-6">
+                <div className='mb-6'>
                   <SearchBar
-                    className="flex flex-row relative"
+                    className='flex flex-row relative justify-center'
                     onChange={onSearch}
                   />
                 </div>
@@ -103,12 +115,12 @@ export default function CoursesCard(props) {
               </div>
               :
               // If Courses not available
-              <div className="text-center text-sm text-white m-6">
+              <div className='text-center text-sm text-white m-6'>
                 No courses
             </div>
             // If loading show LoadingSpinner
             :
-            <div className="flex m-16">
+            <div className='flex m-16'>
               <LoadingSpinner />
             </div>
         }

@@ -9,6 +9,7 @@ export default function Landing() {
   return (
     <>
       <Navbar transparent />
+
       <main>
 
         <div className="relative pt-16 pb-32 flex content-center items-center justify-center min-h-screen-75">
@@ -23,38 +24,28 @@ export default function Landing() {
               id="blackOverlay"
               className="w-full h-full absolute opacity-75 bg-black"
             ></span>
-
-            {/* Below effect of cutting right high left low, worked, but not adaptive to screen size, need a bit of adjustment */}
-            {/* <svg
-              preserveAspectRatio="none"
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="16 0 330 95" // polygon position + sizes
-              className="absolute left-0 w-full block h-95-px -top-94-px"
-            >
-              <polygon
-                points="-10,95 583,95 583,70" // polygon position + sizes
-                className="text-blue-400 fill-current"
-              ></polygon>
-            </svg> */}
-
           </div>
 
           <div className="container relative mx-auto">
             <div className="items-center flex flex-wrap">
-              <div className="w-full lg:w-6/12 px-4 ml-auto mr-auto text-center">
+              <div className="w-full lg:w-6/12 px-4 ml-auto mr-auto mt-8 text-center mt-28">
                 <div className="pr-12">
+
                   <h1 className="text-white font-semibold text-5xl">
                     Your In-House digital learning platform.
                   </h1>
+
                   <p className="mt-4 text-lg text-gray-300">
                     SO will revolutionize how you train your employees.
                     <br />
                     Ensuring essential skills to every employee.
                   </p>
+
                 </div>
               </div>
             </div>
           </div>
+
         </div>
 
         <section className="pb-20 bg-gray-100">
@@ -65,9 +56,11 @@ export default function Landing() {
                 {/* Left Section */}
                 <div className="w-full md:w-5/12 px-4 mr-auto ml-auto">
 
-                  <div className="text-gray-600 p-3 text-center inline-flex items-center justify-center w-16 h-16 mb-6 shadow-lg rounded-full bg-gray-100">
-                    <i className="fas fa-user-friends text-xl text-gray-800"></i>
+                  {/* Circle Logo Icon */}
+                  <div className="text-gray-600 bg-teal-600 p-3 text-center inline-flex items-center justify-center w-16 h-16 mb-6 shadow-lg rounded-full">
+                    <i className="fas fa-user-friends text-xl text-gray-300"></i>
                   </div>
+
                   <h3 className="text-3xl mb-2 font-semibold leading-normal">
                     Build customized Training and Courses now!
                 </h3>

@@ -1,5 +1,6 @@
 import React from 'react';
 
+import FilePicker from "../../../../files/FilePicker";
 import UserInput from "../../../common/UserInput"
 import SelectDepartment from "../../../departments/common/SelectDepartment"
 import CheckBox from "../../../departments/common/CheckBox"
@@ -20,6 +21,7 @@ export default function Forum(props) {
         inputType="email"
         defaultValue={user ? user.email : ""}
         maxLength="64"
+        required={true}
         onChange={props.onChange}
       />
 
@@ -31,6 +33,7 @@ export default function Forum(props) {
         defaultValue={user ? user.email : ""}
         minLength="8"
         maxLength="64"
+        required={true}
         onChange={props.onChange}
       />
 
@@ -42,6 +45,7 @@ export default function Forum(props) {
         defaultValue={user ? user.email : ""}
         minLength="8"
         maxLength="64"
+        required={true}
         onChange={props.onChange}
       />
 
@@ -62,6 +66,7 @@ export default function Forum(props) {
           inputType="text"
           defaultValue={user ? user.firstName : ""}
           maxLength="64"
+          required={true}
           onChange={props.onChange}
         />
 
@@ -72,6 +77,7 @@ export default function Forum(props) {
           inputType="text"
           defaultValue={user ? user.lastName : ""}
           maxLength="64"
+          required={true}
           onChange={props.onChange}
         />
 
@@ -82,6 +88,7 @@ export default function Forum(props) {
           inputType="number"
           defaultValue={user ? user.pointsTarget : ""}
           max="999"
+          required={true}
           onChange={props.onChange}
         />
 
@@ -104,6 +111,14 @@ export default function Forum(props) {
         <CheckBox
           defaultValue={user ? user.isAdmin : 0}
           onChange={props.onChange}
+        />
+
+
+        {/* Upload Image */}
+        <FilePicker
+          title="Upload user picture"
+          defaultValue={user ? user.urlImage : ""}
+          onFilePick={props.onFilePick}
         />
 
         {/* Submit form Button */}

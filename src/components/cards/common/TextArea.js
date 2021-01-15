@@ -13,7 +13,8 @@ export default function TextArea(props) {
       </label>
 
       <textarea
-        className="px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:shadow-outline w-full ease-linear transition-all duration-150"
+        className="px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow w-full ease-linear transition-all duration-150 
+                    focus:outline-none focus:ring focus:ring-teal-600 "
         required={true}
         id={props.inputId}
         name={props.inputId}

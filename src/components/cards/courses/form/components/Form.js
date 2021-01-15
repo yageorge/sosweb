@@ -1,5 +1,6 @@
 import React from 'react';
 
+import FilePicker from "../../../../files/FilePicker";
 import UserInput from "../../../common/UserInput"
 import TextArea from "../../../common/TextArea"
 import SelectCategory from "../../../categories/common/SelectCategory"
@@ -20,6 +21,7 @@ export default function Forum(props) {
           inputType="text"
           defaultValue={course ? course.title : ""}
           maxLength="64"
+          required={true}
           onChange={props.onChange}
         />
 
@@ -41,6 +43,7 @@ export default function Forum(props) {
           inputType="number"
           defaultValue={course ? course.points : ""}
           max="999"
+          required={true}
           onChange={props.onChange}
         />
 
@@ -48,6 +51,13 @@ export default function Forum(props) {
         <SelectCategory
           defaultValue={course ? course.category_id : ""}
           onChange={props.onChange}
+        />
+
+        {/* Upload Image */}
+        <FilePicker
+          title="Upload course image"
+          defaultValue={course ? course.urlImage : ""}
+          onFilePick={props.onFilePick}
         />
 
         {/* Submit form Button */}

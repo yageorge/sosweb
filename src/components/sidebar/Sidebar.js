@@ -3,6 +3,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 import Tab from "./elements/Tab"
+import soslogo from "../../assets/img/sos_logo.png"
 
 export default function Sidebar() {
   const [collapseShow, setCollapseShow] = React.useState("hidden");
@@ -10,14 +11,14 @@ export default function Sidebar() {
     <>
 
       {/* md for medium regular screens */}
-      <nav className="md:left-0 md:block md:fixed md:top-0 md:bottom-0 md:overflow-y-auto md:flex-row md:flex-no-wrap md:overflow-hidden shadow-xl bg-gray-900 flex flex-wrap items-center justify-between relative md:w-58 z-10 py-4 px-6">
+      <nav className="md:left-0 md:block md:fixed md:top-0 md:bottom-0 md:overflow-y-auto md:flex-row md:flex-no-wrap md:overflow-hidden shadow-xl bg-gray-900 flex flex-wrap items-center justify-between relative md:w-46 z-10 py-4 px-6">
         <div className="md:flex-col md:items-stretch md:min-h-full md:flex-no-wrap px-0 flex flex-wrap items-center justify-between w-full mx-auto">
 
           {/* Drawer Button To appear on small screens */}
           <button
             className="cursor-pointer text-white opacity-50 md:hidden px-3 py-1 text-xl leading-none bg-transparent rounded border border-solid border-transparent"
             type="button"
-            onClick={() => setCollapseShow("bg-white m-2 py-3 px-6")}
+            onClick={() => setCollapseShow("bg-gray-900 m-2 py-3 px-6")}
           >
             <i className="fas fa-bars"></i>
           </button>
@@ -49,10 +50,12 @@ export default function Sidebar() {
                     Skill Optimizer
                   </Link>
                 </div>
+
+                {/* Close dropdown sidebar button - in small screen size */}
                 <div className="w-6/12 flex justify-end">
                   <button
                     type="button"
-                    className="cursor-pointer text-black opacity-50 md:hidden px-3 py-1 text-xl leading-none bg-transparent rounded border border-solid border-transparent"
+                    className="cursor-pointer text-gray-300 opacity-50 md:hidden px-3 py-1 text-xl leading-none bg-transparent rounded border border-solid border-transparent"
                     onClick={() => setCollapseShow("hidden")}
                   >
                     <i className="fas fa-times"></i>
@@ -83,9 +86,9 @@ export default function Sidebar() {
                 icon="fas fa-layer-group"
               />
 
-              {/* Courses/trainings Tab */}
+              {/* Modules Tab */}
               <Tab
-                title="Courses/Trainings"
+                title="Modules"
                 selectedClassName="bg-blue-800"
                 path="/admin/courses"
                 icon="fas fa-graduation-cap"
@@ -123,8 +126,14 @@ export default function Sidebar() {
               {/* User Logout */}
               <Tab
                 title="Logout"
+                selectedClassName="bg-gray-600"
                 path="/auth/logout"
                 icon="fas fa-sign-out-alt"
+              />
+
+              <img
+                className="h-24 w-24 mt-36 ml-2 transform hover:scale-110 transition-all ease-in-out duration-500"
+                src={soslogo}
               />
 
             </ul>

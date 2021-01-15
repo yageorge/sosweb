@@ -1,4 +1,8 @@
 import React, { useEffect, useState, useContext } from "react"
+import firebase from 'firebase/app';
+import 'firebase/auth';
+
+import firebaseConfig from '../services/FireBaseConfig'
 
 import Landing from "../views/landing/Landing"
 import Auth from "../views/auth/Auth"
@@ -18,12 +22,21 @@ import {
 } from "react-router-dom"
 
 function AppRouter() {
+
+  //Initialiaze Firebase Auth - if not already initialized
+  if (!firebase.apps.length) {
+    firebase.initializeApp(firebaseConfig);
+  }
+  else {
+    firebase.app(); // if already initialized
+  }
+
   //Loading AppContext to get cookie state
   const { state } = useContext(AppContext);
 
   //Setting auth bool init if cookie exist
   const [auth, setAuth] = useState(state.userToken ? true : false)
-
+  console.log('user token:', state.userToken)
 
   useEffect(() => {
     //Listener to reset auth bool when cookie state is modified

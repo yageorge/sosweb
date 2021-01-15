@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import UserInput from "../../../common/UserInput"
 import TextArea from "../../../common/TextArea"
@@ -19,6 +19,7 @@ export default function Forum(props) {
           inputType="text"
           defaultValue={lecture ? lecture.title : ""}
           maxLength="64"
+          required={true}
           onChange={props.onChange}
         />
 
@@ -29,6 +30,7 @@ export default function Forum(props) {
           inputType="number"
           defaultValue={lecture ? lecture.duration : ""}
           max="9999"
+          required={true}
           onChange={props.onChange}
         />
 
@@ -39,6 +41,7 @@ export default function Forum(props) {
           inputType="url"
           defaultValue={lecture ? lecture.urlVideo : ""}
           maxLength="64"
+          required={false}
           onChange={props.onChange}
         />
 
@@ -48,7 +51,7 @@ export default function Forum(props) {
           inputName="Content"
           defaultValue={lecture ? lecture.content : ""}
           onChange={props.onChange}
-          rows={26}
+          rows={16}
         />
 
         {/* Submit form Button */}

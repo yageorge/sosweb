@@ -1,6 +1,8 @@
 import { useEffect, useContext } from "react";
 import { useHistory } from "react-router-dom";
 import { useCookies } from "react-cookie";
+import firebase from 'firebase/app';
+import 'firebase/auth';
 
 import { AppContext } from "../../../services/context/AppContext"
 import Api from "../../../services/api/Api";
@@ -17,6 +19,10 @@ export default function Logout() {
   const logUserOut = async () => {
 
     try {
+      // Firebase logout
+      await firebase.auth().signOut()
+
+      // Laravel logout
       await Api.auth.logout();
       // Deleting user cookies
       removeCookie("userToken");
