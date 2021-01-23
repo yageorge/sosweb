@@ -35,7 +35,6 @@ export default function HeaderStats() {
         setCompletionsPoints(response.data.totalCompletionsPoints)
       })
 
-
     } catch (e) {
       AlertModal('An error has occurred: ' + e.message)
     }

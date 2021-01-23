@@ -9,9 +9,6 @@ import Auth from "../views/auth/Auth"
 import Admin from "../views/admin/Admin"
 import Logout from "../views/auth/logout/Logout"
 
-// To Delete
-import Test from "../views/admin/Test"
-
 import { AppContext } from "../services/context/AppContext"
 
 import {
@@ -36,7 +33,6 @@ function AppRouter() {
 
   //Setting auth bool init if cookie exist
   const [auth, setAuth] = useState(state.userToken ? true : false)
-  console.log('user token:', state.userToken)
 
   useEffect(() => {
     //Listener to reset auth bool when cookie state is modified
@@ -79,10 +75,6 @@ function AppRouter() {
           component={Admin}
           redirectTo="/auth"
         />
-
-
-        {/* Test Page to Delete */}
-        <Route exact path="/test" component={Test} />
 
       </Switch>
     </BrowserRouter>

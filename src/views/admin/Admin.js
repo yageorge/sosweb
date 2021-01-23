@@ -61,15 +61,6 @@ export default function Admin() {
 
           <div className="px-4 mx-auto h-screen">
 
-            {/*
-            TODO LIST
-            ------------------- THIS IS A TODO LIST -------------------------
-            - change right side scroller bar to something better + in courses/Trainings
-            - clean code all - espacially Login/Signup / dashboard sidebar etc etc
-            ---------- UPDATE DASHBOARD CHART TO REAL FIGURES
-            */}
-
-
             <Switch>
               <Route exact path="/admin/dashboard" component={Dashboard} />
 

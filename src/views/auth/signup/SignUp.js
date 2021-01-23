@@ -44,9 +44,6 @@ export default function SignUp() {
 
       const firebaseToken = await UserCredentials.user.getIdToken()
 
-
-      console.log('.then((firebaseToken) => {', { ...credentials, firebaseToken })
-
       // Laravel signUp with credentials + Firebase token
       const response = await Api.auth.signup({ ...credentials, firebaseToken })
       const token = response.data.token
