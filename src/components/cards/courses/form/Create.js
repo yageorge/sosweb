@@ -45,7 +45,7 @@ export default function Create() {
 
       // Api create course
       const response = await Api.courses.addCourse(course)
-      console.log('response:', response.body)
+
       if (!response.data['error']) {
         // If no errors updating, return to courses
         history.push('/admin/courses')

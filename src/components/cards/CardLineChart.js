@@ -25,7 +25,7 @@ export default function CardLineChart(props) {
             label: new Date().getFullYear(),
             backgroundColor: "#4c51bf",
             borderColor: "#4c51bf",
-            data: props.data2021,
+            data: props.dataCurrentYear,
             fill: false,
           },
           {
@@ -33,7 +33,7 @@ export default function CardLineChart(props) {
             fill: false,
             backgroundColor: "#fff",
             borderColor: "#fff",
-            data: props.data2020,
+            data: props.dataPreviousYear,
           },
         ],
       },

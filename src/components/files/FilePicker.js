@@ -26,14 +26,12 @@ export default function FilePicker(props) {
           selectFile(
             { accept: 'image/*' },
             ({ source, name, size, file }) => {
-              // if (size < 500000) {
+      
               props.onFilePick({
                 'fileName': name,
                 'file': file,
               })
-              // } else {
-              //   console.log('nooooooooope')
-              // }
+       
             }
           )
         }}

@@ -8,8 +8,6 @@ import Footer from "../../components/footers/Footer"
 import Login from "./login/Login"
 import SignUp from "./signup/SignUp"
 
-//TODO move common functions / like states etc etc to this file and pass them in props / check group project
-
 export default function Auth() {
   return (
     <>

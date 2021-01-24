@@ -34,7 +34,6 @@ export default function Row(props) {
 
             // Laravel user deletion
             const response = await Api.users.deleteUser(id);
-            console.log('response', response)
 
             // If no error occurred:
             if (!response.data['error']) {
