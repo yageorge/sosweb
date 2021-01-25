@@ -1,4 +1,4 @@
-<p align="center"><a href="https://reactjs.org" target="_blank"><img src="https://www.pinclipart.com/picdir/middle/91-918525_react-logos-download-green-tree-logo-tree-logo.png" width="400"></a></p>
+<p align="center"><a href="https://reactjs.org" target="_blank"><img src="https://www.metaltoad.com/sites/default/files/styles/large_personal_photo_870x500_/public/2020-05/react-js-blog-header.png?itok=VbfDeSgJ" width="400"></a></p>
 
 Skill Optimizer - Web / Admin Panel
 
